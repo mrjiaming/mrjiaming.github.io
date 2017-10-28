@@ -110,14 +110,14 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-如何避免ANR" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Fragment为什么需要空的构造方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/如何避免ANR/"  target="_blank"  >如何避免anr</a>
+      <a class="article-title" href="/2017/06/13/Fragment为什么需要空的构造方法/"  target="_blank"  >Android Fragment为什么需要空的构造方法</a>
     </h1>
   
 
@@ -134,17 +134,15 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/如何避免ANR/"  target="_blank" >
+            <a href="/2017/06/13/Fragment为什么需要空的构造方法/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="如何避免anr" title="如何避免anr">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android Fragment为什么需要空的构造方法" title="Android Fragment为什么需要空的构造方法">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                哪些操作会导致ANR 在主线程执行以下操作：1、高耗时的操作，如图像变换 2、磁盘读写，数据库读写操作3、大量的创建新对象
-如何避免1、UI线程尽量只做跟UI相关的工作2、耗时的操作(比如数据库操作，I/O，连接网络或者别的有可能阻塞UI线程的操作)把它放在单独的线程处理3、尽量用Handler来处理UIThread和别的Thread之间的交互
-解决的逻辑1、使用Asyn...
+                每一个Fragment必须有一个空的构造方法，这样当Activity恢复状态时Fragment能够被实例化。强烈建议当我们继承Fragment类时，不要添加带有参数的构造方法，因为当Fragment被重新实例化时，这些构造方法不会被调用。如果需要给Fragment传递参数，可以调用setArguments(Bundle)方法，然后在Fragment中调用getArgume...
             </p>
         </div>
       
@@ -153,7 +151,7 @@
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-06-13</li>
             
             
   <li class="article-footer-tags">
@@ -165,7 +163,7 @@
 
         </ul>
         
-            <a href="/2017/10/28/如何避免ANR/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/06/13/Fragment为什么需要空的构造方法/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -173,14 +171,14 @@
 
 
   
-    <article id="post-Android-ImageView-ScaleType-Src-Background的区别" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-图形的渲染" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank"  >Android imageview属性讲解</a>
+      <a class="article-title" href="/2017/06/02/Android-图形的渲染/"  target="_blank"  >Android图像的渲染</a>
     </h1>
   
 
@@ -197,16 +195,16 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank" >
+            <a href="/2017/06/02/Android-图形的渲染/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android imageview属性讲解" title="Android imageview属性讲解">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android图像的渲染" title="Android图像的渲染">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                首先ImageView有两个显示图片的属性，分别是src和background。从名字上看可以知道第一个是资源（画），第二个是背景（画框）。
-12345678910//backgroundmImageView.setBackground();mImageView.setBackgroundResource();mImageView.setBackgroundColor()...
+                1、 图形的渲染可分为两种：软件渲染和硬件渲染。软件渲染是靠CPU计算各种坐标并绘制，主要是占用内存；硬件渲染是靠GPU，主要占用显存，一般的3D图形程序（OpenGL、DirectX）都是GPU加速的。
+在Android3.0之前，2D绘图API只支持软件渲染模式，从Android3.0开始，2D绘图API开始支持GPU硬件渲染，即View中的Canvas的绘图操作会使...
             </p>
         </div>
       
@@ -215,7 +213,7 @@
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-06-02</li>
             
             
   <li class="article-footer-tags">
@@ -227,7 +225,7 @@
 
         </ul>
         
-            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/06/02/Android-图形的渲染/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -235,14 +233,14 @@
 
 
   
-    <article id="post-数据库-索引" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-使用nginx、tomcat搭建静态网站" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/数据库-索引/"  target="_blank"  >数据库-索引</a>
+      <a class="article-title" href="/2017/05/18/使用nginx、tomcat搭建静态网站/"  target="_blank"  >使用nginx，tomcat搭建静态博客网站</a>
     </h1>
   
 
@@ -250,7 +248,7 @@
               <span class="header-cate">
                 <i class="fa fa-map-marker"></i>
                   
-                  <a href="/categories/数据库/">数据库</a>
+                  <a href="/categories/nginx/">nginx</a>
                   
               </span>
           
@@ -259,20 +257,16 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/数据库-索引/"  target="_blank" >
+            <a href="/2017/05/18/使用nginx、tomcat搭建静态网站/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="数据库-索引" title="数据库-索引">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="使用nginx，tomcat搭建静态博客网站" title="使用nginx，tomcat搭建静态博客网站">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                一、索引的概念
-索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。
-二、索引的特点
-1.索引可以加快数据库的检索速度 &lt;br&gt;
-2.索引降低了数据库插入、修改、删除等维护任务的速度 &lt;br&gt;
-3....
+                Nginx说到 Nginx，可能第一反应就是 反向代理 和 负载均衡 了。那么什么是 反向代理，什么又是 负载均衡 呢？
+反向代理首先了解一下什么是 前向代理 。代理 (Proxy) 也称网络代理，是一种特殊的网络服务，通俗来讲，就是在客户端和目标服务器之间的充当中间人，接收客户端的请求，再根据客户端请求向目标服务器发起相应的请求，从目标服务器获得指定资源后返回给客户端。...
             </p>
         </div>
       
@@ -281,19 +275,19 @@
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-05-18</li>
             
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/数据库/" class="color4">数据库</a>
+    <a href="/tags/nginx/" class="color1">nginx</a>
       
   </li>
 
         </ul>
         
-            <a href="/2017/10/28/数据库-索引/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/05/18/使用nginx、tomcat搭建静态网站/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -301,14 +295,14 @@
 
 
   
-    <article id="post-解决Canvas的drawText绘制文本是不会自动换行的-staticlayout" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SharedPreference存储数据的两种方式：commit与apply的异同点" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/"  target="_blank"  >解决canvas的drawtext绘制文本不会换行</a>
+      <a class="article-title" href="/2017/05/09/SharedPreference存储数据的两种方式：commit与apply的异同点/"  target="_blank"  >Android sharepreference存储数据的两种方式</a>
     </h1>
   
 
@@ -325,16 +319,20 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/"  target="_blank" >
+            <a href="/2017/05/09/SharedPreference存储数据的两种方式：commit与apply的异同点/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="解决canvas的drawtext绘制文本不会换行" title="解决canvas的drawtext绘制文本不会换行">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android sharepreference存储数据的两种方式" title="Android sharepreference存储数据的两种方式">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                使用Canvas的drawText绘制文本是不会自动换行的，即使一个很长很长的字符串，drawText也只显示一行，超出部分被隐藏在屏幕之外。可以逐个计算每个字符的宽度，通过一定的算法将字符串分割成多个部分，然后分别调用drawText一部分一部分的显示， 但是这种显示效率会很低。
-StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
+                相同点：
+两者都可以提交数据 
+两者都是原子过程。
+不同点：
+1.apply没有返回值而commit返回boolean表明修改是否提交成功 
+2.apply是将修改数据原子提交到内存，而后异步真正提交到硬件磁盘；而commit是同步的提交到硬件磁盘，因此，在多个并发的提交commit的时候，他们会等待正在处理的commit保存到磁盘后在操作，从而降低了效率。而apply只...
             </p>
         </div>
       
@@ -343,7 +341,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-05-09</li>
             
             
   <li class="article-footer-tags">
@@ -351,11 +349,13 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
       
     <a href="/tags/Andorid/" class="color3">Andorid</a>
       
+    <a href="/tags/Java/" class="color5">Java</a>
+      
   </li>
 
         </ul>
         
-            <a href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/05/09/SharedPreference存储数据的两种方式：commit与apply的异同点/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -363,14 +363,14 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
 
   
-    <article id="post-Android下Affinities和Task" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-GC在什么时候，对什么东西，做了什么事情。" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/Android下Affinities和Task/"  target="_blank"  >andoridAffinities和Task</a>
+      <a class="article-title" href="/2017/05/05/GC在什么时候，对什么东西，做了什么事情。/"  target="_blank"  >Android GC在什么时候，对什么东西，做了什么事情</a>
     </h1>
   
 
@@ -387,15 +387,16 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Android下Affinities和Task/"  target="_blank" >
+            <a href="/2017/05/05/GC在什么时候，对什么东西，做了什么事情。/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="andoridAffinities和Task" title="andoridAffinities和Task">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android GC在什么时候，对什么东西，做了什么事情" title="Android GC在什么时候，对什么东西，做了什么事情">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                 默认情况下，一个应用程序中的所有activity都有一个affinity–这让它们属于同一个task。然而，每个activity可以通过中的taskAffinity属性设置单独的affinity。不同应用程序中的activity可以共享同一个affinity，同一个应用程序中的不同activity也可以设置成不同的affinity。affinity属性在2种情况下起作用...
+                首先是“什么时候”，不同层次的回答从低到高排列：1.系统空闲的时候。    分析：这种回答大约占30%，遇到的话一般我就会准备转向别的话题，譬如算法、譬如SSH看看能否发掘一些他擅长的其他方面。 
+2.系统自身决定，不可预测的时间/调用System.gc()的时候。    分析：这种回答大约占55%，大部分应届生都能回答到这个答案，起码不能算错误是吧，后续应当细分一下到底...
             </p>
         </div>
       
@@ -404,7 +405,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-05-05</li>
             
             
   <li class="article-footer-tags">
@@ -416,7 +417,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
         </ul>
         
-            <a href="/2017/10/28/Android下Affinities和Task/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/05/05/GC在什么时候，对什么东西，做了什么事情。/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -424,14 +425,14 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
 
   
-    <article id="post-Android-关闭导航栏" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-哪些操作在子线程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/Android-关闭导航栏/"  target="_blank"  >Android关闭系统导航栏</a>
+      <a class="article-title" href="/2017/05/02/Android-哪些操作在子线程/"  target="_blank"  >Android哪些操作才子线程中</a>
     </h1>
   
 
@@ -448,16 +449,23 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Android-关闭导航栏/"  target="_blank" >
+            <a href="/2017/05/02/Android-哪些操作在子线程/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android关闭系统导航栏" title="Android关闭系统导航栏">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android哪些操作才子线程中" title="Android哪些操作才子线程中">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                软件名：悬浮菜单。软件本身不需要root，关虚拟按键才需要rootroot手机，用abd命令取得system读写权限，之后修改build文件，最后一行添加qemu.hw.mainkeys=0推荐打开系统的悬浮球，防止一不小心手抖在后台把悬浮菜单关掉。
+                哪些操作需要加上检查，检查是否在子线程进行
+本地IO读写
+网络操作
+Bitmap相关的缩放等
+其他耗时的任务
 
+这里，本文将介绍一个更加简单有效的方法。相比StrictMode来说更加便于发现问题，相比Method Tracing来说更加容易操作。
+首先，我们有这样一个程序代码
+123456789101112131415161718192021222324252627@O...
             </p>
         </div>
       
@@ -466,7 +474,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-05-02</li>
             
             
   <li class="article-footer-tags">
@@ -478,7 +486,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
         </ul>
         
-            <a href="/2017/10/28/Android-关闭导航栏/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/05/02/Android-哪些操作在子线程/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -486,14 +494,14 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
 
   
-    <article id="post-Android应用优化--网络优化-、内存优化、图片优化" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/"  target="_blank"  >Android应用优化-网络优化</a>
+      <a class="article-title" href="/2017/04/28/Android-技巧/"  target="_blank"  >Android开发技巧一</a>
     </h1>
   
 
@@ -510,17 +518,16 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/"  target="_blank" >
+            <a href="/2017/04/28/Android-技巧/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android应用优化-网络优化" title="Android应用优化-网络优化">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android开发技巧一" title="Android开发技巧一">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                网络优化为什么?
-现在App几乎都需要联网操作,做好网络优化一方面可以提高体验,另一方面可以减少流量和电量的损耗.另外,无论是对用户还是网络服务提供者,网络同样是一种资源,任何开发者都不应该假设网络资源是无限制的.
-如何检测?1、使用Android Studio里的Network Traffic Tools来查看网络请求2、使用Android Studio中的Monito...
+                Space控件Space控件是在Android 4.0中加入，是个空白的view，用于进行分隔。我们在组件中加入一下XML代码，布局上下隔出20dip的空隙。12&lt;Space android:layout_width="wrap_content"         android:layout_height="20dip" /&gt;
+TextView.setErro...
             </p>
         </div>
       
@@ -529,7 +536,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-04-28</li>
             
             
   <li class="article-footer-tags">
@@ -541,7 +548,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
         </ul>
         
-            <a href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/04/28/Android-技巧/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -549,14 +556,14 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
 
   
-    <article id="post-andorid开发进阶" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-布局居中的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/andorid开发进阶/"  target="_blank"  >andorid开发进阶</a>
+      <a class="article-title" href="/2017/04/28/Android-布局居中的几种方式/"  target="_blank"  >Android布局居中的几种方式</a>
     </h1>
   
 
@@ -573,17 +580,21 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/andorid开发进阶/"  target="_blank" >
+            <a href="/2017/04/28/Android-布局居中的几种方式/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="andorid开发进阶" title="andorid开发进阶">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android布局居中的几种方式" title="Android布局居中的几种方式">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                MrWu-This is a summary一. 主题简介
-  MiHo 是一款单栏响应式的Hexo主题；基于 Hexo 3.0+ 制作，兼容移动端浏览；主题的代码托管在GitHub上，欢迎Star和Fork；如遇到问题或发表建议，可以提Issues，也可以在博客中留言给我。
+                Android的布局文件中，如果想让一个组件（布局或View）居中显示在另一个布局（组件）中，可以由这么几种做法：
 
+android:layout_gravity
+android:gravity
+android:layout_centerInParent
+
+layout_gravityandroid:layout_gravity，用来指定当前组件（布局或View）在父组件...
             </p>
         </div>
       
@@ -592,7 +603,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-04-28</li>
             
             
   <li class="article-footer-tags">
@@ -604,7 +615,7 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
         </ul>
         
-            <a href="/2017/10/28/andorid开发进阶/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/04/28/Android-布局居中的几种方式/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -612,85 +623,14 @@ StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
 
 
   
-    <article id="post-效率工具" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Okhttp-的addInterceptor-和-addNetworkInterceptor-的区别？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/效率工具/"  target="_blank"  >效率工具</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/工具/">工具</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/10/28/效率工具/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="效率工具" title="效率工具">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                系统及制作工具1、ubuntu 下载网站
-http://releases.ubuntu.com/
-2、ubuntu 启动U盘制作工具
-YUMI – Multiboot USB Creator
-rufus制作工具
-软件1、微信
-2、unbutu更换下载源
-3、gradle please 快速找到最新版本
-４、在线发编译工具
-５、代理规则列表
-6、phoenix-usb-pr...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/工具/" class="color3">工具</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/10/28/效率工具/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-善用tools" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/善用tools/"  target="_blank"  >善用tools属性</a>
+      <a class="article-title" href="/2017/04/05/Okhttp-的addInterceptor-和-addNetworkInterceptor-的区别？/"  target="_blank"  >Okhttp优化</a>
     </h1>
   
 
@@ -707,15 +647,20 @@ rufus制作工具
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/善用tools/"  target="_blank" >
+            <a href="/2017/04/05/Okhttp-的addInterceptor-和-addNetworkInterceptor-的区别？/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="善用tools属性" title="善用tools属性">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Okhttp优化" title="Okhttp优化">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                tools:context这个属性用在layout文件的根元素上，指明与当前layout相关联的Activity，从而在预览时使用Activity的主题（theme一般定义在Manifest文件中并且与activities联系在一起，而非layout）。可以使用Activity的全名，也可以利用manifest中定义的包名作为前缀：12345678&lt;?xml ver...
+                Okhttp 的addInterceptor 和 addNetworkInterceptor 的区别？
+addInterceptor（应用拦截器）：
+1，不需要担心中间过程的响应,如重定向和重试.
+2，总是只调用一次,即使HTTP响应是从缓存中获取.
+3，观察应用程序的初衷. 不关心OkHttp注入的头信息如: If-None-Match.
+4，允许短路而不调用 Chai...
             </p>
         </div>
       
@@ -724,7 +669,71 @@ rufus制作工具
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-04-05</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+    <a href="/tags/Java/" class="color5">Java</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/04/05/Okhttp-的addInterceptor-和-addNetworkInterceptor-的区别？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android-性能优化之布局优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/28/Android-性能优化之布局优化/"  target="_blank"  >Android性能优化-布局优化</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/03/28/Android-性能优化之布局优化/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android性能优化-布局优化" title="Android性能优化-布局优化">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                include重用 merge减少布局层级 ViewStub延迟加载1、&lt; include/&gt;重用比如我们要写一个TitleBar（title_bar_layout.xml）,是这样子的。
+1234567891011121314151617181920212223242526&lt;?xml version="1.0" encoding="utf-8"?&gt...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-03-28</li>
             
             
   <li class="article-footer-tags">
@@ -736,7 +745,7 @@ rufus制作工具
 
         </ul>
         
-            <a href="/2017/10/28/善用tools/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/03/28/Android-性能优化之布局优化/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -804,7 +813,7 @@ rufus制作工具
             <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -837,7 +846,7 @@ rufus制作工具
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
 </div>

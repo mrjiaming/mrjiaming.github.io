@@ -110,14 +110,14 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-Android-布局居中的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-关于-Android-应用多进程的整理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/Android-布局居中的几种方式/"  target="_blank"  >Android布局居中的几种方式</a>
+      <a class="article-title" href="/2016/08/28/关于-Android-应用多进程的整理/"  target="_blank"  >关于Android应用多进程的整理</a>
     </h1>
   
 
@@ -134,21 +134,18 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/04/28/Android-布局居中的几种方式/"  target="_blank" >
+            <a href="/2016/08/28/关于-Android-应用多进程的整理/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android布局居中的几种方式" title="Android布局居中的几种方式">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="关于Android应用多进程的整理" title="关于Android应用多进程的整理">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                Android的布局文件中，如果想让一个组件（布局或View）居中显示在另一个布局（组件）中，可以由这么几种做法：
-
-android:layout_gravity
-android:gravity
-android:layout_centerInParent
-
-layout_gravityandroid:layout_gravity，用来指定当前组件（布局或View）在父组件...
+                关于 Android 应用多进程的整理
+在计算机操作系统中，进程是进行资源分配和调度的基本单位。这对于基于Linux内核的Android系统也不例外。在Android的设计中，一个应用默认有一个(主)进程。但是我们通过配置可以实现一个应用对应多个进程。
+本文将试图对于Android中应用多进程做一些整理总结。
+android:process应用实现多进程需要依赖于andr...
             </p>
         </div>
       
@@ -157,7 +154,7 @@ layout_gravityandroid:layout_gravity，用来指定当前组件（布局或View�
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-04-28</li>
+                <li><i class="fa fa-calendar"></i>2016-08-28</li>
             
             
   <li class="article-footer-tags">
@@ -169,7 +166,7 @@ layout_gravityandroid:layout_gravity，用来指定当前组件（布局或View�
 
         </ul>
         
-            <a href="/2017/04/28/Android-布局居中的几种方式/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/08/28/关于-Android-应用多进程的整理/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -177,14 +174,14 @@ layout_gravityandroid:layout_gravity，用来指定当前组件（布局或View�
 
 
   
-    <article id="post-Android-技巧" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java的一些小细节" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/Android-技巧/"  target="_blank"  >Android开发技巧一</a>
+      <a class="article-title" href="/2016/08/05/Java的一些小细节/"  target="_blank"  >Java一些小细节</a>
     </h1>
   
 
@@ -201,16 +198,16 @@ layout_gravityandroid:layout_gravity，用来指定当前组件（布局或View�
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/04/28/Android-技巧/"  target="_blank" >
+            <a href="/2016/08/05/Java的一些小细节/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android开发技巧一" title="Android开发技巧一">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Java一些小细节" title="Java一些小细节">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                Space控件Space控件是在Android 4.0中加入，是个空白的view，用于进行分隔。我们在组件中加入一下XML代码，布局上下隔出20dip的空隙。12&lt;Space android:layout_width="wrap_content"         android:layout_height="20dip" /&gt;
-TextView.setErro...
+                1、尽量减少对变量的重复计算明确一个概念，对方法的调用，即使方法中只有一句语句，也是有消耗的，包括创建栈帧、调用方法时保护现场、调用方法完毕时恢复现场等。所以例如下面的操作：1234for (int i = 0; i &lt; list.size(); i++)&#123;    ...&#125;
+替换为1234for (int i = 0, int length = ...
             </p>
         </div>
       
@@ -219,7 +216,7 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-04-28</li>
+                <li><i class="fa fa-calendar"></i>2016-08-05</li>
             
             
   <li class="article-footer-tags">
@@ -227,11 +224,13 @@ TextView.setErro...
       
     <a href="/tags/Andorid/" class="color3">Andorid</a>
       
+    <a href="/tags/Java/" class="color5">Java</a>
+      
   </li>
 
         </ul>
         
-            <a href="/2017/04/28/Android-技巧/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/08/05/Java的一些小细节/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -239,14 +238,14 @@ TextView.setErro...
 
 
   
-    <article id="post-Android-性能优化之布局优化" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-为什么非静态内部类引用外部类的引用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/28/Android-性能优化之布局优化/"  target="_blank"  >Android性能优化-布局优化</a>
+      <a class="article-title" href="/2016/07/28/为什么非静态内部类引用外部类的引用/"  target="_blank"  >为什么非静态内部类引用外部累的引用</a>
     </h1>
   
 
@@ -254,7 +253,7 @@ TextView.setErro...
               <span class="header-cate">
                 <i class="fa fa-map-marker"></i>
                   
-                  <a href="/categories/Android/">Android</a>
+                  <a href="/categories/Java/">Java</a>
                   
               </span>
           
@@ -263,16 +262,19 @@ TextView.setErro...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/03/28/Android-性能优化之布局优化/"  target="_blank" >
+            <a href="/2016/07/28/为什么非静态内部类引用外部类的引用/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android性能优化-布局优化" title="Android性能优化-布局优化">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="为什么非静态内部类引用外部累的引用" title="为什么非静态内部类引用外部累的引用">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                include重用 merge减少布局层级 ViewStub延迟加载1、&lt; include/&gt;重用比如我们要写一个TitleBar（title_bar_layout.xml）,是这样子的。
-1234567891011121314151617181920212223242526&lt;?xml version="1.0" encoding="utf-8"?&gt...
+                ##下面回头看上面写的例子:
+
+这其实是一个我们在编程中经常用到的场景，就是在一个内部类里面访问外部类的private成员变量或者方法，这是可以的。这是为什么，不是private修饰的成员只能被成员所述的类才能访问么？难道private真的失效了么？其实是编译器帮我们做了一些我们看不到的工作，下面我们通过反编译把这些看不到的工作都扒出来看看
+##反编译后
+1.下面这一份是...
             </p>
         </div>
       
@@ -281,69 +283,7 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-03-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Andorid/" class="color3">Andorid</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/03/28/Android-性能优化之布局优化/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-依赖注入" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/28/依赖注入/"  target="_blank"  >依赖注入</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Android/">Android</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/03/28/依赖注入/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="依赖注入" title="依赖注入">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                什么是依赖注入在面向对象编程中，我们经常处理处理的问题就是解耦，程序的耦合性越低表明这个程序的可读性以及可维护性越高。控制反转(Inversion of Control或IoC)就是常用的面向对象编程的设计原则，使用这个原则我们可以降低耦合性。其中依赖注入是控制反转最常用的实现。
-什么是依赖依赖是程序中常见的现象，比如类Car中用到了GasEnergy类的实例energy...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-03-28</li>
+                <li><i class="fa fa-calendar"></i>2016-07-28</li>
             
             
   <li class="article-footer-tags">
@@ -351,13 +291,11 @@ TextView.setErro...
       
     <a href="/tags/Java/" class="color5">Java</a>
       
-    <a href="/tags/Android/" class="color3">Android</a>
-      
   </li>
 
         </ul>
         
-            <a href="/2017/03/28/依赖注入/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/07/28/为什么非静态内部类引用外部类的引用/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -365,14 +303,14 @@ TextView.setErro...
 
 
   
-    <article id="post-Android-proguard混淆的一些理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-面试一些问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/18/Android-proguard混淆的一些理解/"  target="_blank"  >Android proguard混淆的一些理解</a>
+      <a class="article-title" href="/2016/07/18/Android-面试一些问题/"  target="_blank"  >Android面试问题</a>
     </h1>
   
 
@@ -389,17 +327,16 @@ TextView.setErro...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/03/18/Android-proguard混淆的一些理解/"  target="_blank" >
+            <a href="/2016/07/18/Android-面试一些问题/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android proguard混淆的一些理解" title="Android proguard混淆的一些理解">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android面试问题" title="Android面试问题">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                1)  ProGuard是一个开源的Java代码混淆器。它可以混淆Android项目里面的java代码，对的，你没看错，仅仅是java代码。它是无法混淆Native代码，资源文件drawable、xml等。
-2) ProGuard作用压缩: 移除无效的类、属性、方法等优化: 优化字节码，并删除未使用的结构混淆: 将类名、属性名、方法名混淆为难以读懂的字母，比如a,b,c
-...
+                Android基础1、View的绘制流程； 自定义View如何考虑机型适配；自定义View的事件分发机制；View和ViewGroup分别有哪些事件分发相关的回调方法；自定义View如何提供获取View属性的接口；
+2、Art和Dalvik对比；虚拟机原理，如何自己设计一个虚拟机(内存管理，类加载，双亲委派)；JVM内存模型及类加载机制；内存对象的循环引用及避免内存回收机...
             </p>
         </div>
       
@@ -408,7 +345,7 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-03-18</li>
+                <li><i class="fa fa-calendar"></i>2016-07-18</li>
             
             
   <li class="article-footer-tags">
@@ -420,7 +357,7 @@ TextView.setErro...
 
         </ul>
         
-            <a href="/2017/03/18/Android-proguard混淆的一些理解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/07/18/Android-面试一些问题/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -428,14 +365,14 @@ TextView.setErro...
 
 
   
-    <article id="post-关于APK签名的介绍" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-px-与-dp换算公式？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/28/关于APK签名的介绍/"  target="_blank"  >关于apk签名的介绍</a>
+      <a class="article-title" href="/2016/07/05/px-与-dp换算公式？/"  target="_blank"  >Px与dp换算公式</a>
     </h1>
   
 
@@ -452,16 +389,20 @@ TextView.setErro...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/02/28/关于APK签名的介绍/"  target="_blank" >
+            <a href="/2016/07/05/px-与-dp换算公式？/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="关于apk签名的介绍" title="关于apk签名的介绍">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Px与dp换算公式" title="Px与dp换算公式">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                从您的构建文件中移除签署信息在您创建签署配置时，Android Studio 会以纯文本形式将您的签署信息添加到模块的 build.gradle 文件中。如果您是团队协作开发或者将您的代码开源，那么您应当将此敏感信息从构建文件中移出，以免被其他人轻易获取。为此，您应创建一个单独的属性文件来存储安全信息并按以下步骤操作，在您的构建文件中引用该文件：
-创建一个签署配置，并将其...
+                
+dp是虚拟像素，在不同的像素密度的设备上会自动适配，比如:
+在320x480分辨率，像素密度为160,1dp=1px
+在480x800分辨率，像素密度为240,1dp=1.5px
+计算公式:1dp*像素密度/160 = 实际像素数
+
             </p>
         </div>
       
@@ -470,7 +411,7 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-02-28</li>
+                <li><i class="fa fa-calendar"></i>2016-07-05</li>
             
             
   <li class="article-footer-tags">
@@ -478,11 +419,13 @@ TextView.setErro...
       
     <a href="/tags/Andorid/" class="color3">Andorid</a>
       
+    <a href="/tags/Java/" class="color5">Java</a>
+      
   </li>
 
         </ul>
         
-            <a href="/2017/02/28/关于APK签名的介绍/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/07/05/px-与-dp换算公式？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -490,14 +433,14 @@ TextView.setErro...
 
 
   
-    <article id="post-Android-开发：开始一个项目前，做好哪些准备可以事半功倍？" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java泛型的好处" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/"  target="_blank"  >Android开始一个项目前，首先做什么？</a>
+      <a class="article-title" href="/2016/07/05/Java泛型的好处/"  target="_blank"  >Java泛型的好处</a>
     </h1>
   
 
@@ -514,17 +457,17 @@ TextView.setErro...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/"  target="_blank" >
+            <a href="/2016/07/05/Java泛型的好处/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android开始一个项目前，首先做什么？" title="Android开始一个项目前，首先做什么？">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Java泛型的好处" title="Java泛型的好处">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                1、所有第三方库进行二次封装，一个项目中大概只能用到一个库特性的10分之一甚至更少，我们最好将这部分二次封装起来以备后期的偷梁换柱。
-2、每天开发以前流浪一边android.text.TextUtils和android.text.format.DateUtils里面的方法，别没事傻乎乎的写一些充满bug的staticHelperMethod
-3、把所有的BeanClass...
+                1，类型安全。 泛型的主要目标是提高 Java 程序的类型安全。通过知道使用泛型定义的变量的类型限制，编译器可以在一个高得多的程度上验证类型假设。没有泛型，这些假设就只存在于程序员的头脑中（或者如果幸运的话，还存在于代码注释中）。
+2，消除强制类型转换。 泛型的一个附带好处是，消除源代码中的许多强制类型转换。这使得代码更加可读，并且减少了出错机会。
+3，潜在的性能收益。 ...
             </p>
         </div>
       
@@ -533,7 +476,7 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-01-28</li>
+                <li><i class="fa fa-calendar"></i>2016-07-05</li>
             
             
   <li class="article-footer-tags">
@@ -541,11 +484,13 @@ TextView.setErro...
       
     <a href="/tags/Andorid/" class="color3">Andorid</a>
       
+    <a href="/tags/Java/" class="color5">Java</a>
+      
   </li>
 
         </ul>
         
-            <a href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/07/05/Java泛型的好处/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -553,14 +498,14 @@ TextView.setErro...
 
 
   
-    <article id="post-Android-onPause与onStop的一些理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Fragment点击事件穿透解决方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/25/Android-onPause与onStop的一些理解/"  target="_blank"  >Android onPause和onStop的讲解</a>
+      <a class="article-title" href="/2016/07/02/Fragment点击事件穿透解决方法/"  target="_blank"  >Android Fragment点击事件穿透解决方法</a>
     </h1>
   
 
@@ -577,16 +522,17 @@ TextView.setErro...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/01/25/Android-onPause与onStop的一些理解/"  target="_blank" >
+            <a href="/2016/07/02/Fragment点击事件穿透解决方法/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android onPause和onStop的讲解" title="Android onPause和onStop的讲解">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android Fragment点击事件穿透解决方法" title="Android Fragment点击事件穿透解决方法">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                onPause在正常使用应用的过程中，应用有时会失去焦点，导致 Activity 暂停。例如，当应用在多窗口模式下运行时，仅有一个应用随时具备焦点；系统将暂停所有其他应用。 例如，当半透明 Activity 打开时（比如对话框样式中的 Activity），上一个 Activity 会暂停。 只要 Activity 仍然部分可见但目前又未处于焦点之中，它会一直暂停。
-但是，...
+                问题描述:从A fragment跳转到B fragment ,为了返回时不从新加载A fragment内容,通常使用add方法来将a添加到后退栈.
+但是这样会出现一个小问题:
+在B Fragment 中点击一个空白区域，如果A Fragment的该位置正好有一个可以点击的控件,则A Fragment会响应到点击事件，更有甚者,如果B Fragment有时候还会和A Fra...
             </p>
         </div>
       
@@ -595,7 +541,7 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-01-25</li>
+                <li><i class="fa fa-calendar"></i>2016-07-02</li>
             
             
   <li class="article-footer-tags">
@@ -607,7 +553,7 @@ TextView.setErro...
 
         </ul>
         
-            <a href="/2017/01/25/Android-onPause与onStop的一些理解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/07/02/Fragment点击事件穿透解决方法/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -615,77 +561,14 @@ TextView.setErro...
 
 
   
-    <article id="post-DigitalOcean--搭建Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java-堆和栈的详解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/DigitalOcean--搭建Shadowsocks/"  target="_blank"  >Digitalocean 搭建ss的方法</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Shadowsocks/">Shadowsocks</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2016/10/28/DigitalOcean--搭建Shadowsocks/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Digitalocean 搭建ss的方法" title="Digitalocean 搭建ss的方法">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                安装Shadowsocks和Supervisor安装命令
-12345# yum -y install epel-release# yum update# yum -y install python-setuptools supervisor# easy_install pip# pip install shadowsocks
-配置Shadowsocks执行一下命令1# v...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2016-10-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Shadowsocks/" class="color2">Shadowsocks</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2016/10/28/DigitalOcean--搭建Shadowsocks/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Android-Studio-管理gradle配置以及第三方App_key" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/"  target="_blank"  >Android studio 管理gradle配置</a>
+      <a class="article-title" href="/2016/06/05/Java-堆和栈的详解/"  target="_blank"  >Java堆和栈的详解</a>
     </h1>
   
 
@@ -702,16 +585,18 @@ TextView.setErro...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/"  target="_blank" >
+            <a href="/2016/06/05/Java-堆和栈的详解/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android studio 管理gradle配置" title="Android studio 管理gradle配置">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Java堆和栈的详解" title="Java堆和栈的详解">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                第三方API的KEY的管理Android开发，基本都会用到第三方SDK，例如百度地图、支付宝支付等。通常第三方的KEY都是保存在AndroidManifest中：
-1234&lt;!-- 百度地图的KEY--&gt;&lt;meta-data  android:name="com.baidu.lbsapi.API_KEY" android:value="百度地图注册的KE...
+                一种说法是分为: 堆（Heap），栈（Stacks）方法区（MethodArea），运行时常量池（RuntimeConstant Pool），本地方法栈（NativeMethod Stacks），PC Register(PC寄存器)。是从抽象的JVM的角度去看的。
+
+在这问题中，我们主要要弄清楚，什么是堆，什么是栈，堆栈内存有什么区别？
+Heap内存的分配也叫做动态内存分...
             </p>
         </div>
       
@@ -720,7 +605,72 @@ TextView.setErro...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2016-10-28</li>
+                <li><i class="fa fa-calendar"></i>2016-06-05</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+    <a href="/tags/Java/" class="color5">Java</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2016/06/05/Java-堆和栈的详解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android-设置应用的底部导航栏(虚拟按键)背景颜色" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/28/Android-设置应用的底部导航栏(虚拟按键)背景颜色/"  target="_blank"  >Android设置应用的底部导航栏</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2016/05/28/Android-设置应用的底部导航栏(虚拟按键)背景颜色/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android设置应用的底部导航栏" title="Android设置应用的底部导航栏">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                状态栏和标题栏的颜色设置可以通过theme主题来控制,这里不做介绍了,下面说一下如何改变底部虚拟按键的背景颜色：在Window类中有一个方法可以设置虚拟按键的背景颜色
+1public abstract void setNavigationBarColor(@ColorInt int color);
+大家看到了这是一个抽象方法,那么Window的子类有没有实现这个方法呢,W...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2016-05-28</li>
             
             
   <li class="article-footer-tags">
@@ -732,7 +682,72 @@ TextView.setErro...
 
         </ul>
         
-            <a href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/05/28/Android-设置应用的底部导航栏(虚拟按键)背景颜色/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-IP地址" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/IP地址/"  target="_blank"  >IP地址</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2016/05/15/IP地址/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="IP地址" title="IP地址">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                1、IP地址由网络地址和主机地址两部分标识组成
+2、同一网段内网络地址相同，网段不同则必须配置不同的主机值
+3、IP地址可以分为A类、B类、C类，D类
+1、A类从1到8位是它的网络标识2、B类从1到16位是它的网络标识3、C类从1到24位是它的网络标识4、D类从1到32位是它的网络标识
+1、广播地址广播地址用于在同一个链路中相互连接的主机之间发送数据包。将IP地址中的主机...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2016-05-15</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2016/05/15/IP地址/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -800,7 +815,7 @@ TextView.setErro...
             <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -833,7 +848,7 @@ TextView.setErro...
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
 </div>

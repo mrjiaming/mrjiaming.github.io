@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android socket怎么三次握手，保持长连接 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="通过IP地址，端口号，协议号进行通信识别TCP／IP通常采用5个信息来识别一个通信。它们是，源IP地址，目标IP地址，协议号，源端口号，目标端口号。 server的生命周期大致如下：1、创建socket。2、绑定（bind）地址端口3、监听网络连接4、接受连接5、关闭连接 client的生命周期则稍微简单点：1、创建socket2、绑定地址3、发起连接4、关闭连接 socket与握手细节握手的连接">
+<meta name="keywords" content="Andorid,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android socket怎么三次握手，保持长连接">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="通过IP地址，端口号，协议号进行通信识别TCP／IP通常采用5个信息来识别一个通信。它们是，源IP地址，目标IP地址，协议号，源端口号，目标端口号。 server的生命周期大致如下：1、创建socket。2、绑定（bind）地址端口3、监听网络连接4、接受连接5、关闭连接 client的生命周期则稍微简单点：1、创建socket2、绑定地址3、发起连接4、关闭连接 socket与握手细节握手的连接">
+<meta property="og:locale" content="Java">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1990324-59829fb0a995993c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1990324-14caece6b9383442.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-10-28T10:29:45.638Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android socket怎么三次握手，保持长连接">
+<meta name="twitter:description" content="通过IP地址，端口号，协议号进行通信识别TCP／IP通常采用5个信息来识别一个通信。它们是，源IP地址，目标IP地址，协议号，源端口号，目标端口号。 server的生命周期大致如下：1、创建socket。2、绑定（bind）地址端口3、监听网络连接4、接受连接5、关闭连接 client的生命周期则稍微简单点：1、创建socket2、绑定地址3、发起连接4、关闭连接 socket与握手细节握手的连接">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1990324-59829fb0a995993c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Socket-怎样三次握手，怎样保持长连接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android socket怎么三次握手，保持长连接
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-08-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="通过IP地址，端口号，协议号进行通信识别"><a href="#通过IP地址，端口号，协议号进行通信识别" class="headerlink" title="通过IP地址，端口号，协议号进行通信识别"></a>通过IP地址，端口号，协议号进行通信识别</h3><p>TCP／IP通常采用5个信息来识别一个通信。它们是，源IP地址，目标IP地址，协议号，源端口号，目标端口号。</p>
+<h3 id="server的生命周期大致如下："><a href="#server的生命周期大致如下：" class="headerlink" title="server的生命周期大致如下："></a>server的生命周期大致如下：</h3><p>1、创建socket。<br><br>2、绑定（bind）地址端口<br><br>3、监听网络连接<br><br>4、接受连接<br><br>5、关闭连接<br></p>
+<h3 id="client的生命周期则稍微简单点："><a href="#client的生命周期则稍微简单点：" class="headerlink" title="client的生命周期则稍微简单点："></a>client的生命周期则稍微简单点：</h3><p>1、创建socket<br>2、绑定地址<br>3、发起连接<br>4、关闭连接</p>
+<h3 id="socket与握手细节"><a href="#socket与握手细节" class="headerlink" title="socket与握手细节"></a>socket与握手细节</h3><p>握手的连接发生在客户端connect，服务端的accept返回连接。握手的细节其实是客户端connet和服务端的listen过程，而accept只是返回队列里的连接。下面通过nc和wireshaker抓包来分析tcp三次握手和socket的通信细节。</p>
+<p>server进行listen监听</p>
+<h3 id="listen-amp-accept函数"><a href="#listen-amp-accept函数" class="headerlink" title="listen&amp;accept函数"></a>listen&amp;accept函数</h3><p>通过上述的实验，可见tcp三次握手发生在client的connect调用之后，server端的listen函数调用之后，但是并不是由listen函数完成的，listen()的作用仅仅告诉内核一些信息，即连接队列的大小，三次握手是以后内核完成的。一旦完成了三次握手，内核就把连接放入连接队列之中。</p>
+<p>当socket对象调用accpet函数的时候，就从连接队列中将tcp连接取出并返回。如果连接队列中没有连接，那么accept函数调用将会阻塞（如果socket是非阻塞模式，accept此时会返回，并触发一个异常）</p>
+<h3 id="TCP保活计时器（keepalive-timer）"><a href="#TCP保活计时器（keepalive-timer）" class="headerlink" title="TCP保活计时器（keepalive timer）"></a>TCP保活计时器（keepalive timer）</h3><p>客户已主动与服务器建立TCP连接，但是后来客户端的主机突然出故障了，显然，服务器以后就不能再收到客户端发来的数据，因此，应当有措施，这时就是这个保活计时器，通常是两个小时，服务器每收到一次客户端的数据，就重置这个计时器，若是这个计时器到了，还没有收到客户的数据，服务器就会发送一个探测报文段，75分钟发送一次 ，若一连发送10个探测报文段后仍然无客户的响应，服务器就认为客户端出了故障，接着关闭这个连接。</p>
+<h3 id="关闭连接shutdown"><a href="#关闭连接shutdown" class="headerlink" title="关闭连接shutdown"></a>关闭连接shutdown</h3><p>如果无论如何都立即关闭终止连接，shutdown系统调用（相对close函数来说，这个是专门为网络编程设计的）</p>
+<h3 id="关闭连接close"><a href="#关闭连接close" class="headerlink" title="关闭连接close"></a>关闭连接close</h3><h4 id="三次握手其实在socket编程中的listen函数完成的"><a href="#三次握手其实在socket编程中的listen函数完成的" class="headerlink" title="三次握手其实在socket编程中的listen函数完成的"></a>三次握手其实在socket编程中的listen函数完成的</h4><p>我以前以为三次握手是在accept函数中，但是最近在处理我程序高并发的时候发现了，其实三次握手是在listen函数中完成的。（再次证明懂底层才是优化的王道）</p>
+<p>心跳机制是TCP在一段时间间隔后发送确认连接端是否还存在，如果存在的话就会回传一个包确定网络有效，如果心跳包有问题，则通知上层应用当前网络有问题了。 <br><br>这取决于你的server端的超时配置， 每个socket连接都是长连接，它是一个相当占用系统资源的通信管道， 如果这个长连接什么事也没干硬是要占着资源，则server端可以选择关闭这个连接，以省下资源让更多的用户连接进来。 <br><br>所以，即便客户端的是采用死循环while(true)方式连到服务端，对于特定的客户端和服务端类型来说也需要一定时间间隔的心跳（告诉服务端，我还活着，虽然我没干活也没说话，但别把我关了）<br><br>心跳包一般来说都是在逻辑层发送空的echo包来实现的。下一个定时器，在一定时间间隔下发送一个空包给客户端，然后客户端反馈一个同样的空包回来，服务器如果在一定时间内收不到客户端发送过来的反馈包，那就只有认定说掉线了。<br><br>其实，要判定掉线，只需要send或者recv一下，如果结果为零，则为掉线。</p>
+<h3 id="为什么需要三次握手？"><a href="#为什么需要三次握手？" class="headerlink" title="为什么需要三次握手？"></a>为什么需要三次握手？</h3><p>为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。</p>
+<p>具体例子：“已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。”</p>
+<h3 id="为什么要四次分手？"><a href="#为什么要四次分手？" class="headerlink" title="为什么要四次分手？"></a>为什么要四次分手？</h3><p>TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议。TCP是全双工模式，这就意味着，当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了；但是，这个时候主机1还是可以接受来自主机2的数据；当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的；当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接。</p>
+<h3 id="窗口控制与重发控制"><a href="#窗口控制与重发控制" class="headerlink" title="窗口控制与重发控制"></a>窗口控制与重发控制</h3><p>首先，我们先考虑确认应答未能返回的情况。在这种情况下，数据已经到达对端，是不需要在进行重发的。然而，在没有使用窗口控制的时候，没有收到确认应答的数据都会被重发。而使用了窗口控制，某些确认应答即便丢失也无需重发。</p>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制<br></h3><p>TCP提供一种机制可以让发送端根据接收端的实际接受能力控制发送的数据量。这就是所谓的流量控制。它的具体操作是，接收端主机向发送端主机通知自己可以接收数据的大小，于是发送端会发送不超过这个限度的数据。该大小限度就被称作窗口大小。  <br></p>
+<p>在TCP首部中，专门有一个字端用来通知窗口的大小。接收主机将自己可以接收的缓冲区大小放入这个字端中通知发送端。这个字段的值越大，说明网络的吞吐量越大。</p>
+<h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制<br></h3><p>首先，为了在发送端调节所要发送数据的量，定义了一个叫做“拥塞窗口”，于是慢启动的时候，将这个勇拥塞窗口的大小设置为1个数据段，发送数据，之后每收到一次确认应答，拥塞窗口的值就增加1，在发送数据包时，将拥塞窗口的大小与接收端主机通知的窗口大小做比较，然后它们当中较小那个值，发送比其还要小的数据量。<br><br>如果重发采用超时机制，那么拥塞窗口的初始值可以设置为1以后再进行慢启动修正。有了上述的机制，就可以有效地减少通信开始时连续发包导致的网络拥堵，还可以避免网络拥塞情况的发生。</p>
+<p>TCP以段为单位发送数据<br>在建立TCP连接的同时，也可以确定发送数据包的单位，我们也可以称其为“最大消息长度”（MSS）。<br><br>MSS是在三次握手的时候，在两端主机之间被计算得出。两端的主机在发出建立连接的请求时，会在TCP首部中写入MSS选项，告诉对方自己的借口能够适应的MSS的大小。然后会在两者之间选择一个较小的值投入使用。</p>
+<h3 id="利用窗口控制提高速度"><a href="#利用窗口控制提高速度" class="headerlink" title="利用窗口控制提高速度"></a>利用窗口控制提高速度</h3><p>窗口大小就是指无需等待确认应答而可以继续发送数据的最大值。这个机制实现了大量的缓冲区，通过对多个段同时进行确认应答的功能，。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1990324-59829fb0a995993c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1990324-14caece6b9383442.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>参考：<br><br><a href="http://www.jianshu.com/p/3f42172f582b" target="_blank" rel="external">http://www.jianshu.com/p/3f42172f582b</a><br></p>
+<p><a href="http://www.jianshu.com/p/a3a1ff562468" target="_blank" rel="external">http://www.jianshu.com/p/a3a1ff562468</a></p>
+<p><a href="http://youbingchenyoubing.leanote.com/post/%E4%BB%8E%E5%8E%9F%E7%90%86%E4%B8%8A%E8%AF%A6%E8%A7%A3socket-TCP%E8%BF%9E%E6%8E%A5" target="_blank" rel="external">http://youbingchenyoubing.leanote.com/post/%E4%BB%8E%E5%8E%9F%E7%90%86%E4%B8%8A%E8%AF%A6%E8%A7%A3socket-TCP%E8%BF%9E%E6%8E%A5</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 18:29</p>
+        <p>原始链接： <a class="post-url" href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/" title="Android socket怎么三次握手，保持长连接">https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/&title=《Android socket怎么三次握手，保持长连接》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/&title=《Android socket怎么三次握手，保持长连接》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android socket怎么三次握手，保持长连接》 — MrWu Blog&url=https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/08/07/Socket-怎样三次握手，怎样保持长连接/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+    <a href="/tags/Java/" class="color5">Java</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过IP地址，端口号，协议号进行通信识别"><span class="post-toc-text">通过IP地址，端口号，协议号进行通信识别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#server的生命周期大致如下："><span class="post-toc-text">server的生命周期大致如下：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#client的生命周期则稍微简单点："><span class="post-toc-text">client的生命周期则稍微简单点：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#socket与握手细节"><span class="post-toc-text">socket与握手细节</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#listen-amp-accept函数"><span class="post-toc-text">listen&accept函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#TCP保活计时器（keepalive-timer）"><span class="post-toc-text">TCP保活计时器（keepalive timer）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭连接shutdown"><span class="post-toc-text">关闭连接shutdown</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关闭连接close"><span class="post-toc-text">关闭连接close</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#三次握手其实在socket编程中的listen函数完成的"><span class="post-toc-text">三次握手其实在socket编程中的listen函数完成的</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么需要三次握手？"><span class="post-toc-text">为什么需要三次握手？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要四次分手？"><span class="post-toc-text">为什么要四次分手？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#窗口控制与重发控制"><span class="post-toc-text">窗口控制与重发控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流量控制"><span class="post-toc-text">流量控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拥塞控制"><span class="post-toc-text">拥塞控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#利用窗口控制提高速度"><span class="post-toc-text">利用窗口控制提高速度</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/08/09/Android下Affinities和Task/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          andoridAffinities和Task
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/07/08/Android-样式的开发：shape/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android样式开发</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

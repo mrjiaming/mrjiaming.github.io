@@ -110,22 +110,40 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-Java的一些小细节" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-解决Canvas的drawText绘制文本是不会自动换行的-staticlayout" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/"  target="_blank"  >解决canvas的drawtext绘制文本不会换行</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Java的一些小细节/"  target="_blank" >
+            <a href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="解决canvas的drawtext绘制文本不会换行" title="解决canvas的drawtext绘制文本不会换行">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                1、尽量减少对变量的重复计算明确一个概念，对方法的调用，即使方法中只有一句语句，也是有消耗的，包括创建栈帧、调用方法时保护现场、调用方法完毕时恢复现场等。所以例如下面的操作：1234for (int i = 0; i &lt; list.size(); i++)&#123;    ...&#125;
-替换为1234for (int i = 0, int length = ...
+                使用Canvas的drawText绘制文本是不会自动换行的，即使一个很长很长的字符串，drawText也只显示一行，超出部分被隐藏在屏幕之外。可以逐个计算每个字符的宽度，通过一定的算法将字符串分割成多个部分，然后分别调用drawText一部分一部分的显示， 但是这种显示效率会很低。
+StaticLayout是android中处理文字换行的一个工具类，StaticLayou...
             </p>
         </div>
       
@@ -137,9 +155,16 @@
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Java的一些小细节/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -147,23 +172,44 @@
 
 
   
-    <article id="post-Java泛型的好处" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-数据库-索引" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/数据库-索引/"  target="_blank"  >数据库-索引</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/数据库/">数据库</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Java泛型的好处/"  target="_blank" >
+            <a href="/2017/10/28/数据库-索引/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="数据库-索引" title="数据库-索引">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                1，类型安全。 泛型的主要目标是提高 Java 程序的类型安全。通过知道使用泛型定义的变量的类型限制，编译器可以在一个高得多的程度上验证类型假设。没有泛型，这些假设就只存在于程序员的头脑中（或者如果幸运的话，还存在于代码注释中）。
-2，消除强制类型转换。 泛型的一个附带好处是，消除源代码中的许多强制类型转换。这使得代码更加可读，并且减少了出错机会。
-3，潜在的性能收益。 ...
+                一、索引的概念
+索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。
+二、索引的特点
+1.索引可以加快数据库的检索速度 &lt;br&gt;
+2.索引降低了数据库插入、修改、删除等维护任务的速度 &lt;br&gt;
+3....
             </p>
         </div>
       
@@ -175,9 +221,16 @@
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/数据库/" class="color4">数据库</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Java泛型的好处/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/数据库-索引/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -185,25 +238,40 @@
 
 
   
-    <article id="post-Linux--Vim-命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-ImageView-ScaleType-Src-Background的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank"  >Android imageview属性讲解</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Linux--Vim-命令/"  target="_blank" >
+            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android imageview属性讲解" title="Android imageview属性讲解">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                cat 命令cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
-1．命令格式：　　　cat [选项] [文件]…
-2．命令功能：　　cat主要有三大功能：
-1.一次显示整个文件:cat filename
-2.从键盘创建一个文件:cat &gt; filename 只能...
+                首先ImageView有两个显示图片的属性，分别是src和background。从名字上看可以知道第一个是资源（画），第二个是背景（画框）。
+12345678910//backgroundmImageView.setBackground();mImageView.setBackgroundResource();mImageView.setBackgroundColor()...
             </p>
         </div>
       
@@ -215,9 +283,16 @@
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Linux--Vim-命令/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -225,23 +300,40 @@
 
 
   
-    <article id="post-Java双亲委派模型" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-关闭导航栏" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/Android-关闭导航栏/"  target="_blank"  >Android关闭系统导航栏</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Java双亲委派模型/"  target="_blank" >
+            <a href="/2017/10/28/Android-关闭导航栏/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android关闭系统导航栏" title="Android关闭系统导航栏">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                双亲委派模型双亲委派模型的工作流程是：如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把请求委托给父加载器去完成，依次向上，因此，所有的类加载请求最终都应该被传递到顶层的启动类加载器中，只有当父加载器在它的搜索范围中没有找到所需的类时，即无法完成该加载，子加载器才会尝试自己去加载该类。
+                软件名：悬浮菜单。软件本身不需要root，关虚拟按键才需要rootroot手机，用abd命令取得system读写权限，之后修改build文件，最后一行添加qemu.hw.mainkeys=0推荐打开系统的悬浮球，防止一不小心手抖在后台把悬浮菜单关掉。
 
-这样的好处是不同层次的类加载器具有不同优先级，比如所有Jav...
             </p>
         </div>
       
@@ -253,9 +345,16 @@
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Java双亲委派模型/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/Android-关闭导航栏/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -263,24 +362,41 @@
 
 
   
-    <article id="post-Java-堆和栈的详解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android应用优化--网络优化-、内存优化、图片优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/"  target="_blank"  >Android应用优化-网络优化</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Java-堆和栈的详解/"  target="_blank" >
+            <a href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android应用优化-网络优化" title="Android应用优化-网络优化">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                一种说法是分为: 堆（Heap），栈（Stacks）方法区（MethodArea），运行时常量池（RuntimeConstant Pool），本地方法栈（NativeMethod Stacks），PC Register(PC寄存器)。是从抽象的JVM的角度去看的。
-
-在这问题中，我们主要要弄清楚，什么是堆，什么是栈，堆栈内存有什么区别？
-Heap内存的分配也叫做动态内存分...
+                网络优化为什么?
+现在App几乎都需要联网操作,做好网络优化一方面可以提高体验,另一方面可以减少流量和电量的损耗.另外,无论是对用户还是网络服务提供者,网络同样是一种资源,任何开发者都不应该假设网络资源是无限制的.
+如何检测?1、使用Android Studio里的Network Traffic Tools来查看网络请求2、使用Android Studio中的Monito...
             </p>
         </div>
       
@@ -292,9 +408,16 @@ Heap内存的分配也叫做动态内存分...
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Java-堆和栈的详解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -302,22 +425,49 @@ Heap内存的分配也叫做动态内存分...
 
 
   
-    <article id="post-ImageView中-contentDescription的作用是什么？" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-效率工具" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/效率工具/"  target="_blank"  >效率工具</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/工具/">工具</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/ImageView中-contentDescription的作用是什么？/"  target="_blank" >
+            <a href="/2017/10/28/效率工具/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="效率工具" title="效率工具">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                这个属性是做什么的呢？
-其实这个属性是方便一些生理功能有缺陷的人使用应用程序的。比如我们有一个ImageView里面放置一张颜色复杂的图片，可能一些色弱色盲的人，分不清这张图片中画的是什么东西。如果用户安装了辅助浏览工具比如TalkBack,TalkBack就会大声朗读出用户目前正在浏览的内容。TextView控件TalkBack可以直接读出里面的内容，但是ImageVi...
+                系统及制作工具1、ubuntu 下载网站
+http://releases.ubuntu.com/
+2、ubuntu 启动U盘制作工具
+YUMI – Multiboot USB Creator
+rufus制作工具
+软件1、微信
+2、unbutu更换下载源
+3、gradle please 快速找到最新版本
+４、在线发编译工具
+５、代理规则列表
+6、phoenix-usb-pr...
             </p>
         </div>
       
@@ -329,9 +479,16 @@ Heap内存的分配也叫做动态内存分...
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/工具/" class="color3">工具</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/ImageView中-contentDescription的作用是什么？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/效率工具/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -339,25 +496,39 @@ Heap内存的分配也叫做动态内存分...
 
 
   
-    <article id="post-IP地址" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-善用tools" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/善用tools/"  target="_blank"  >善用tools属性</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/IP地址/"  target="_blank" >
+            <a href="/2017/10/28/善用tools/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="善用tools属性" title="善用tools属性">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                1、IP地址由网络地址和主机地址两部分标识组成
-2、同一网段内网络地址相同，网段不同则必须配置不同的主机值
-3、IP地址可以分为A类、B类、C类，D类
-1、A类从1到8位是它的网络标识2、B类从1到16位是它的网络标识3、C类从1到24位是它的网络标识4、D类从1到32位是它的网络标识
-1、广播地址广播地址用于在同一个链路中相互连接的主机之间发送数据包。将IP地址中的主机...
+                tools:context这个属性用在layout文件的根元素上，指明与当前layout相关联的Activity，从而在预览时使用Activity的主题（theme一般定义在Manifest文件中并且与activities联系在一起，而非layout）。可以使用Activity的全名，也可以利用manifest中定义的包名作为前缀：12345678&lt;?xml ver...
             </p>
         </div>
       
@@ -369,9 +540,16 @@ Heap内存的分配也叫做动态内存分...
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/IP地址/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/善用tools/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -379,26 +557,41 @@ Heap内存的分配也叫做动态内存分...
 
 
   
-    <article id="post-Home" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-如何避免ANR" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/如何避免ANR/"  target="_blank"  >如何避免anr</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Home/"  target="_blank" >
+            <a href="/2017/10/28/如何避免ANR/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="如何避免anr" title="如何避免anr">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                Android 开发录Android-开发：开始一个项目前，做好哪些准备可以事半功倍？
-Android-Bitmap-Decodefile-and-DecodeResource的区别
-Android-Common类方法
-Android-ImageView-ScaleType-Src-Background的区别
-Android-Layout属性的讲解
-Android-性能优...
+                哪些操作会导致ANR 在主线程执行以下操作：1、高耗时的操作，如图像变换 2、磁盘读写，数据库读写操作3、大量的创建新对象
+如何避免1、UI线程尽量只做跟UI相关的工作2、耗时的操作(比如数据库操作，I/O，连接网络或者别的有可能阻塞UI线程的操作)把它放在单独的线程处理3、尽量用Handler来处理UIThread和别的Thread之间的交互
+解决的逻辑1、使用Asyn...
             </p>
         </div>
       
@@ -410,9 +603,16 @@ Android-性能优...
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Home/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/如何避免ANR/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -420,21 +620,40 @@ Android-性能优...
 
 
   
-    <article id="post-HTTP的长连接和短连接" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android中一张图片占内存多大" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank"  >Android中一张图片占内存多大</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/HTTP的长连接和短连接/"  target="_blank" >
+            <a href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android中一张图片占内存多大" title="Android中一张图片占内存多大">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                HTTP1.1规定了默认保持长连接（HTTP persistent connection ，也有翻译为持久连接），数据传输完成了保持TCP连接不断开（不发RST包、不四次握手），等待在同域名下继续用这个通道传输数据；相反的就是短连接。 TCP的keep alive是检查当前TCP连接是否活着；HTTP的Keep-alive是要让一个TCP连接活久点。它们是不同层次的概念。...
+                Android中一张图片（Bitmap）占用的内存由以下三个因素决定：1、图片的像素点个数2、单位像素占用的字节数3、其中图片的像素点个数是图片的宽度与调试的积，所以一张图片占用的内存值为：    图片长度    图片宽度    单位像素占用的字节数
+ALPHA_8只存储透明度信息而无颜色值；ARGB_8888是指把每个像素点的透明度、R、G、B色值都用一个byte来表示...
             </p>
         </div>
       
@@ -443,12 +662,19 @@ Android-性能优...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-08-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/HTTP的长连接和短连接/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/08/28/Android中一张图片占内存多大/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -456,22 +682,41 @@ Android-性能优...
 
 
   
-    <article id="post-GC在什么时候，对什么东西，做了什么事情。" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-drawable与bitmap内存占用大小" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/drawable与bitmap内存占用大小/"  target="_blank"  >Android Drawable与Bitmap内存占用大小</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/GC在什么时候，对什么东西，做了什么事情。/"  target="_blank" >
+            <a href="/2017/08/28/drawable与bitmap内存占用大小/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android Drawable与Bitmap内存占用大小" title="Android Drawable与Bitmap内存占用大小">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                首先是“什么时候”，不同层次的回答从低到高排列：1.系统空闲的时候。    分析：这种回答大约占30%，遇到的话一般我就会准备转向别的话题，譬如算法、譬如SSH看看能否发掘一些他擅长的其他方面。 
-2.系统自身决定，不可预测的时间/调用System.gc()的时候。    分析：这种回答大约占55%，大部分应届生都能回答到这个答案，起码不能算错误是吧，后续应当细分一下到底...
+                1，  比较Drawable与Bitmap占用内存大小2，  比较BitmapFactory类的decodeResource方法与decodeStream方法的效率
+好吧，先来看第1个测试！以下这个是测试加载1000个Drawable对象的代码，很简单的，我就不解释了！
+123456789101112131415161718192021 public class Main...
             </p>
         </div>
       
@@ -480,12 +725,19 @@ Android-性能优...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-08-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/GC在什么时候，对什么东西，做了什么事情。/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/08/28/drawable与bitmap内存占用大小/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -553,7 +805,7 @@ Android-性能优...
             <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -586,7 +838,7 @@ Android-性能优...
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
 </div>

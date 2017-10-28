@@ -110,14 +110,14 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-Android-图片放置哪个文件夹合适" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-依赖注入" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/Android-图片放置哪个文件夹合适/"  target="_blank"  >Android图片放置在哪个文件夹合适</a>
+      <a class="article-title" href="/2017/03/28/依赖注入/"  target="_blank"  >依赖注入</a>
     </h1>
   
 
@@ -134,22 +134,16 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/07/08/Android-图片放置哪个文件夹合适/"  target="_blank" >
+            <a href="/2017/03/28/依赖注入/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android图片放置在哪个文件夹合适" title="Android图片放置在哪个文件夹合适">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="依赖注入" title="依赖注入">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                传统的出多个分辨率图片的做法在大厂中已经发生了改变，阿里系、腾讯系的产品都采用了一套图走天下的路子。这样的做法还是有利有弊的，权衡之下我给出如下建议：
-
-聊天表情就出一套图，放在hdpi中
-纯色小icon用svg做
-背景等大图，出一套放在xhdpi中
-logo等权重较大的图片可针对hdpi，xhdpi做两套图
-如果某些图在真机中确实展示异常，那就用多套图
-如果遇到奇葩机型...
+                什么是依赖注入在面向对象编程中，我们经常处理处理的问题就是解耦，程序的耦合性越低表明这个程序的可读性以及可维护性越高。控制反转(Inversion of Control或IoC)就是常用的面向对象编程的设计原则，使用这个原则我们可以降低耦合性。其中依赖注入是控制反转最常用的实现。
+什么是依赖依赖是程序中常见的现象，比如类Car中用到了GasEnergy类的实例energy...
             </p>
         </div>
       
@@ -158,7 +152,72 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-07-08</li>
+                <li><i class="fa fa-calendar"></i>2017-03-28</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Java/" class="color5">Java</a>
+      
+    <a href="/tags/Android/" class="color3">Android</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/03/28/依赖注入/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android-proguard混淆的一些理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/18/Android-proguard混淆的一些理解/"  target="_blank"  >Android proguard混淆的一些理解</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/03/18/Android-proguard混淆的一些理解/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android proguard混淆的一些理解" title="Android proguard混淆的一些理解">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                1)  ProGuard是一个开源的Java代码混淆器。它可以混淆Android项目里面的java代码，对的，你没看错，仅仅是java代码。它是无法混淆Native代码，资源文件drawable、xml等。
+2) ProGuard作用压缩: 移除无效的类、属性、方法等优化: 优化字节码，并删除未使用的结构混淆: 将类名、属性名、方法名混淆为难以读懂的字母，比如a,b,c
+...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-03-18</li>
             
             
   <li class="article-footer-tags">
@@ -170,7 +229,7 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
 
         </ul>
         
-            <a href="/2017/07/08/Android-图片放置哪个文件夹合适/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/03/18/Android-proguard混淆的一些理解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -178,14 +237,14 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
 
 
   
-    <article id="post-Android-样式的开发：shape" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-HTTP的长连接和短连接" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/Android-样式的开发：shape/"  target="_blank"  >Android样式开发</a>
+      <a class="article-title" href="/2017/03/12/HTTP的长连接和短连接/"  target="_blank"  >Http的长连接和短连接</a>
     </h1>
   
 
@@ -202,15 +261,15 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/07/08/Android-样式的开发：shape/"  target="_blank" >
+            <a href="/2017/03/12/HTTP的长连接和短连接/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android样式开发" title="Android样式开发">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Http的长连接和短连接" title="Http的长连接和短连接">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                123456789101112131415161718192021222324252627282930313233343536solid: 设置形状填充的颜色，只有android:color一个属性android:color 填充的颜色padding: 设置内容与形状边界的内间距，可分别设置左右上下的距离android:left 左内间距android:right 右内间...
+                HTTP1.1规定了默认保持长连接（HTTP persistent connection ，也有翻译为持久连接），数据传输完成了保持TCP连接不断开（不发RST包、不四次握手），等待在同域名下继续用这个通道传输数据；相反的就是短连接。 TCP的keep alive是检查当前TCP连接是否活着；HTTP的Keep-alive是要让一个TCP连接活久点。它们是不同层次的概念。...
             </p>
         </div>
       
@@ -219,7 +278,71 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-07-08</li>
+                <li><i class="fa fa-calendar"></i>2017-03-12</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+    <a href="/tags/Http/" class="color5">Http</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/03/12/HTTP的长连接和短连接/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-关于APK签名的介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/关于APK签名的介绍/"  target="_blank"  >关于apk签名的介绍</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/02/28/关于APK签名的介绍/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="关于apk签名的介绍" title="关于apk签名的介绍">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                从您的构建文件中移除签署信息在您创建签署配置时，Android Studio 会以纯文本形式将您的签署信息添加到模块的 build.gradle 文件中。如果您是团队协作开发或者将您的代码开源，那么您应当将此敏感信息从构建文件中移出，以免被其他人轻易获取。为此，您应创建一个单独的属性文件来存储安全信息并按以下步骤操作，在您的构建文件中引用该文件：
+创建一个签署配置，并将其...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-02-28</li>
             
             
   <li class="article-footer-tags">
@@ -231,7 +354,7 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
 
         </ul>
         
-            <a href="/2017/07/08/Android-样式的开发：shape/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/02/28/关于APK签名的介绍/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -239,14 +362,14 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
 
 
   
-    <article id="post-使用Docker搭建gitlab" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-开发：开始一个项目前，做好哪些准备可以事半功倍？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/使用Docker搭建gitlab/"  target="_blank"  >使用Docker搭建gitlab</a>
+      <a class="article-title" href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/"  target="_blank"  >Android开始一个项目前，首先做什么？</a>
     </h1>
   
 
@@ -263,18 +386,17 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/06/28/使用Docker搭建gitlab/"  target="_blank" >
+            <a href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="使用Docker搭建gitlab" title="使用Docker搭建gitlab">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android开始一个项目前，首先做什么？" title="Android开始一个项目前，首先做什么？">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                安装Docker在bash中输入命令安装最新的docker
-1234sudo apt-get purge docker.iocurl -s https://get.docker.io/ubuntu/ | sudo shsudo apt-get updatesudo apt-get install lxc-docker
-下载镜像
-以下脚本会下载gitlab,MySQL,Re...
+                1、所有第三方库进行二次封装，一个项目中大概只能用到一个库特性的10分之一甚至更少，我们最好将这部分二次封装起来以备后期的偷梁换柱。
+2、每天开发以前流浪一边android.text.TextUtils和android.text.format.DateUtils里面的方法，别没事傻乎乎的写一些充满bug的staticHelperMethod
+3、把所有的BeanClass...
             </p>
         </div>
       
@@ -283,133 +405,7 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-06-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/其他/" class="color3">其他</a>
-      
-    <a href="/tags/gitlab/" class="color2">gitlab</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/06/28/使用Docker搭建gitlab/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-使用Git的感想" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/使用Git的感想/"  target="_blank"  >使用Git的感想</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Git/">Git</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/06/28/使用Git的感想/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="使用Git的感想" title="使用Git的感想">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                GitHub，就是看你做了什么项目编码风格如何能不能用 Git 做好版本控制commit message 写得怎么样工程管理习惯等等
-怎么正确提交commit message1234567feat(超文本驱动和资源发现): 增加了 JSON API 方案fix(请求方法): 更新完资源后应该返回状态码 202chore(): 增加了补充性质的文件 SUPPLEMENT.m...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-06-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/git/" class="color4">git</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/06/28/使用Git的感想/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-解决配置方法数超过-64K-的应用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/28/解决配置方法数超过-64K-的应用/"  target="_blank"  >解决配置方法数超过64k的应用</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Android/">Android</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/06/28/解决配置方法数超过-64K-的应用/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="解决配置方法数超过64k的应用" title="解决配置方法数超过64k的应用">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                配置您的应用进行 Dalvik 可执行文件分包将您的应用项目设置为使用 Dalvik 可执行文件分包配置需要对您的应用项目进行以下修改，具体取决于应用支持的最低 Android 版本。
-如果您的 minSdkVersion 设置为 21 或更高值，您只需在模块级 build.gradle 文件中将 multiDexEnabled 设置为 true，如此处所示：123456...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-06-28</li>
+                <li><i class="fa fa-calendar"></i>2017-01-28</li>
             
             
   <li class="article-footer-tags">
@@ -421,7 +417,7 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
 
         </ul>
         
-            <a href="/2017/06/28/解决配置方法数超过-64K-的应用/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -429,98 +425,14 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
 
 
   
-    <article id="post-使用GitHub-Pages来Hexo一个独立博客" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-onPause与onStop的一些理解" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/20/使用GitHub-Pages来Hexo一个独立博客/"  target="_blank"  >使用github pages来搭建一个博客</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Git/">Git</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/06/20/使用GitHub-Pages来Hexo一个独立博客/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="使用github pages来搭建一个博客" title="使用github pages来搭建一个博客">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                安装Hexo安装Node.js
-安装Hexo1$ npm install -g hexo
-初始化Hexo在本地新建一个文件夹，名称自拟，在这里先把文件夹取名为hexo，进入该文件夹，执行Hexo的init命令来初始化：1$ hexo init
-稍等片刻，便会自动在hexo文件夹生成网站所需要的文件。
-下载模块在hexo/目录下，执行如下命令，下载生成网站所需要的插件模块。1$ npm install
-生成静态页面在hexo/目录下，执行如下命令，生成静态页面至hexo/public/目录。1$ hexo generate
-本地调试在hexo/目录下，执行如下命令，启动本地服务，进行博客预览调试：打开浏览器，输入http://localhost:4000就可以看到网站的效果。1$ hexo server
-生成文章在hexo/目录下，执行如下命令，生成文章。
-1$ hexo new [layout] &quot;名称&quot;
-其中layout是可选参数，默认值为post。Hexo默认提供三种layout选择，具体可到hexo/scaffolds目录下查看文件，分别是draft、page与post。可以自定义其内容或者新建一种layout。
-
-参数post的作用为新建一篇文章。指定名称的md文件存在于hexo/source/_post目录下，当我们使用命令hexo generate来生成静态页面的时候，该目录下的文章会生成到public文件夹里面，当我们更新数据到网站上时，该文章就会显示在网页上。
-
-参数draft的作用为新建一篇文章草稿。指定名称的md文件存在于hexo/source/_drafts目录里面，当我们生成静态页面的时候，该目录下的文章不会生成到public文件夹里面，即不会同步到我们网站上。当你认为可以发布该文章的时候，应把该文章的md文件移到hexo/source/_post目录下。
-
-参数page的作用为新建一个网站页面。该命令会在hexo/source目录下新建一个指定名称的文件夹，该文件夹下有一个index.md文件。
-
-
-编辑文章生成文章后，打开相应的md文件，就可以开始编辑了。
-文章开头格式如下：
-123456789title: postName #文章的名称，可以任意修改，不会出现在URL中date: 2017-04-25 15:30:16 #文章的时间，一般不改，当然也可以任意修改categories: #文章的分类目录，可以为空tags: #文章的标签，多标签请用格式[tag1,tag2,tag3]，可以为空description: #本页的描述，可以为空---&lt;!--这里开始使用markdown格式输入你的正文。--&gt;......
-需要注意的是，上面所有:后面必须要有一个空格，不然会报错的。
-如果需要文章摘要功能，只需在正文中添加如下代码：
-123以上是摘要&lt;!--more--&gt;以下是余下全文
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-06-20</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Git/" class="color4">Git</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/06/20/使用GitHub-Pages来Hexo一个独立博客/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Android-开发技巧二" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/Android-开发技巧二/"  target="_blank"  >Android开发技巧二</a>
+      <a class="article-title" href="/2017/01/25/Android-onPause与onStop的一些理解/"  target="_blank"  >Android onPause和onStop的讲解</a>
     </h1>
   
 
@@ -537,16 +449,16 @@ logo等权重较大的图片可针对hdpi，xhdpi做两套图
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/06/18/Android-开发技巧二/"  target="_blank" >
+            <a href="/2017/01/25/Android-onPause与onStop的一些理解/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android开发技巧二" title="Android开发技巧二">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android onPause和onStop的讲解" title="Android onPause和onStop的讲解">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。android:layout_gravity是设置控件相对父控件的位置android:gravity是设置控件内部的内容的位置，如button的text的位置设置就使用android:gravity
-View类的post和postDelayed方法稍微有点经验的安卓开发人...
+                onPause在正常使用应用的过程中，应用有时会失去焦点，导致 Activity 暂停。例如，当应用在多窗口模式下运行时，仅有一个应用随时具备焦点；系统将暂停所有其他应用。 例如，当半透明 Activity 打开时（比如对话框样式中的 Activity），上一个 Activity 会暂停。 只要 Activity 仍然部分可见但目前又未处于焦点之中，它会一直暂停。
+但是，...
             </p>
         </div>
       
@@ -555,7 +467,7 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-06-18</li>
+                <li><i class="fa fa-calendar"></i>2017-01-25</li>
             
             
   <li class="article-footer-tags">
@@ -567,7 +479,7 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
 
         </ul>
         
-            <a href="/2017/06/18/Android-开发技巧二/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/01/25/Android-onPause与onStop的一些理解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -575,14 +487,14 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
 
 
   
-    <article id="post-Android-图形的渲染" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-Studio-管理gradle配置以及第三方App_key" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/Android-图形的渲染/"  target="_blank"  >Android图像的渲染</a>
+      <a class="article-title" href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/"  target="_blank"  >Android studio 管理gradle配置</a>
     </h1>
   
 
@@ -599,16 +511,16 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/06/02/Android-图形的渲染/"  target="_blank" >
+            <a href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android图像的渲染" title="Android图像的渲染">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android studio 管理gradle配置" title="Android studio 管理gradle配置">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                1、 图形的渲染可分为两种：软件渲染和硬件渲染。软件渲染是靠CPU计算各种坐标并绘制，主要是占用内存；硬件渲染是靠GPU，主要占用显存，一般的3D图形程序（OpenGL、DirectX）都是GPU加速的。
-在Android3.0之前，2D绘图API只支持软件渲染模式，从Android3.0开始，2D绘图API开始支持GPU硬件渲染，即View中的Canvas的绘图操作会使...
+                第三方API的KEY的管理Android开发，基本都会用到第三方SDK，例如百度地图、支付宝支付等。通常第三方的KEY都是保存在AndroidManifest中：
+1234&lt;!-- 百度地图的KEY--&gt;&lt;meta-data  android:name="com.baidu.lbsapi.API_KEY" android:value="百度地图注册的KE...
             </p>
         </div>
       
@@ -617,7 +529,7 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-06-02</li>
+                <li><i class="fa fa-calendar"></i>2016-10-28</li>
             
             
   <li class="article-footer-tags">
@@ -629,7 +541,7 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
 
         </ul>
         
-            <a href="/2017/06/02/Android-图形的渲染/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -637,76 +549,14 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
 
 
   
-    <article id="post-使用nginx、tomcat搭建静态网站" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Gradle-自动版本号以及自定义apk包名" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/18/使用nginx、tomcat搭建静态网站/"  target="_blank"  >使用nginx，tomcat搭建静态博客网站</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/nginx/">nginx</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/05/18/使用nginx、tomcat搭建静态网站/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="使用nginx，tomcat搭建静态博客网站" title="使用nginx，tomcat搭建静态博客网站">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Nginx说到 Nginx，可能第一反应就是 反向代理 和 负载均衡 了。那么什么是 反向代理，什么又是 负载均衡 呢？
-反向代理首先了解一下什么是 前向代理 。代理 (Proxy) 也称网络代理，是一种特殊的网络服务，通俗来讲，就是在客户端和目标服务器之间的充当中间人，接收客户端的请求，再根据客户端请求向目标服务器发起相应的请求，从目标服务器获得指定资源后返回给客户端。...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-05-18</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/nginx/" class="color1">nginx</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/05/18/使用nginx、tomcat搭建静态网站/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Android-哪些操作在子线程" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/02/Android-哪些操作在子线程/"  target="_blank"  >Android哪些操作才子线程中</a>
+      <a class="article-title" href="/2016/10/28/Gradle-自动版本号以及自定义apk包名/"  target="_blank"  >Gradle自动版本阿訇以及自定义apk包名</a>
     </h1>
   
 
@@ -723,23 +573,18 @@ View类的post和postDelayed方法稍微有点经验的安卓开发人...
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/05/02/Android-哪些操作在子线程/"  target="_blank" >
+            <a href="/2016/10/28/Gradle-自动版本号以及自定义apk包名/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android哪些操作才子线程中" title="Android哪些操作才子线程中">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Gradle自动版本阿訇以及自定义apk包名" title="Gradle自动版本阿訇以及自定义apk包名">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                哪些操作需要加上检查，检查是否在子线程进行
-本地IO读写
-网络操作
-Bitmap相关的缩放等
-其他耗时的任务
-
-这里，本文将介绍一个更加简单有效的方法。相比StrictMode来说更加便于发现问题，相比Method Tracing来说更加容易操作。
-首先，我们有这样一个程序代码
-123456789101112131415161718192021222324252627@O...
+                1 自动版本号昨天 2016.03.02 刚发现的好东西，更优雅的 Android 发布自动版本号方案
+这里简单总结下，配合 git 获取软件版本号和版本名
+版本号 versionCode使用 Git 中 commit 的数量来作为版本号——versionCode
+12345678def cmd = 'git rev-list HEAD --first-parent --...
             </p>
         </div>
       
@@ -748,7 +593,7 @@ Bitmap相关的缩放等
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-05-02</li>
+                <li><i class="fa fa-calendar"></i>2016-10-28</li>
             
             
   <li class="article-footer-tags">
@@ -760,7 +605,134 @@ Bitmap相关的缩放等
 
         </ul>
         
-            <a href="/2017/05/02/Android-哪些操作在子线程/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2016/10/28/Gradle-自动版本号以及自定义apk包名/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-DigitalOcean--搭建Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/28/DigitalOcean--搭建Shadowsocks/"  target="_blank"  >Digitalocean 搭建ss的方法</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Shadowsocks/">Shadowsocks</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2016/10/28/DigitalOcean--搭建Shadowsocks/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Digitalocean 搭建ss的方法" title="Digitalocean 搭建ss的方法">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                安装Shadowsocks和Supervisor安装命令
+12345# yum -y install epel-release# yum update# yum -y install python-setuptools supervisor# easy_install pip# pip install shadowsocks
+配置Shadowsocks执行一下命令1# v...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2016-10-28</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Shadowsocks/" class="color2">Shadowsocks</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2016/10/28/DigitalOcean--搭建Shadowsocks/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-RxJava-中-flatMap-和-concatMap-有什么区别？" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/10/RxJava-中-flatMap-和-concatMap-有什么区别？/"  target="_blank"  >RxJava的优化</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2016/09/10/RxJava-中-flatMap-和-concatMap-有什么区别？/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="RxJava的优化" title="RxJava的优化">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                RxJava 中 flatMap 和 concatMap 有什么区别？
+concatMap和flatMap的功能是一样的， 将一个发射数据的Observable变换为多个Observables，然后将它们发射的数据放进一个单独的Observable。只不过最后合并Observables flatMap采用的merge，而concatMap采用的是连接(concat)。总之...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2016-09-10</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+    <a href="/tags/Java/" class="color5">Java</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2016/09/10/RxJava-中-flatMap-和-concatMap-有什么区别？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -828,7 +800,7 @@ Bitmap相关的缩放等
             <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -861,7 +833,7 @@ Bitmap相关的缩放等
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Http/" style="font-size: 10px;">Http</a> <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 13.33px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
         </div>
     </div>
 </div>
