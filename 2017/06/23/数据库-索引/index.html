@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MrWu Blog</title>
+  <title>数据库-索引 | MrWu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MrWu Blog" />
   
-  <meta name="description" content="总结得很好的一篇文章：https://zhuanlan.zhihu.com/p/20559606">
+  <meta name="description" content="一、索引的概念 索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。 二、索引的特点 1.索引可以加快数据库的检索速度 &amp;lt;br&amp;gt; 2.索引降低了数据库插入、修改、删除等维护任务的速度 &amp;lt;br&amp;gt; 3.索引创建在表上，不能创建在">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MrWu Blog">
-<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/index.html">
+<meta property="og:title" content="数据库-索引">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/06/23/数据库-索引/index.html">
 <meta property="og:site_name" content="MrWu Blog">
-<meta property="og:description" content="总结得很好的一篇文章：https://zhuanlan.zhihu.com/p/20559606">
+<meta property="og:description" content="一、索引的概念 索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。 二、索引的特点 1.索引可以加快数据库的检索速度 &amp;lt;br&amp;gt; 2.索引降低了数据库插入、修改、删除等维护任务的速度 &amp;lt;br&amp;gt; 3.索引创建在表上，不能创建在">
 <meta property="og:locale" content="Java">
-<meta property="og:updated_time" content="2017-10-28T09:46:13.786Z">
+<meta property="og:updated_time" content="2017-10-28T10:41:32.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MrWu Blog">
-<meta name="twitter:description" content="总结得很好的一篇文章：https://zhuanlan.zhihu.com/p/20559606">
+<meta name="twitter:title" content="数据库-索引">
+<meta name="twitter:description" content="一、索引的概念 索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。 二、索引的特点 1.索引可以加快数据库的检索速度 &amp;lt;br&amp;gt; 2.索引降低了数据库插入、修改、删除等维护任务的速度 &amp;lt;br&amp;gt; 3.索引创建在表上，不能创建在">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -109,18 +110,70 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-相机开发过程遇到的坑" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-数据库-索引" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      数据库-索引
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/数据库/">数据库</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-23
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
     
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>总结得很好的一篇文章：<a href="https://zhuanlan.zhihu.com/p/20559606" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/20559606</a></p>
+            <p>一、索引的概念</p>
+<p>索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中，索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅速地找到表中的数据，而不必扫描整个数据库。</p>
+<p>二、索引的特点</p>
+<pre><code>1.索引可以加快数据库的检索速度 &lt;br&gt;
+2.索引降低了数据库插入、修改、删除等维护任务的速度 &lt;br&gt;
+3.索引创建在表上，不能创建在视图上 &lt;br&gt;
+4.索引既可以直接创建，也可以间接创建 &lt;br&gt;
+5.可以在优化隐藏中，使用索引 &lt;br&gt;
+6.使用查询处理器执行SQL语句，在一个表上，一次只能使用一个索引 &lt;br&gt;
+7.其他
+</code></pre><p>1.直接创建索引和间接创建索引<br></p>
+<pre><code>直接创建索引： CREATE INDEX mycolumn_index ON mytable (myclumn)&lt;br&gt;
+间接创建索引：定义主键约束或者唯一性键约束，可以间接创建索引
+</code></pre><p> 2.普通索引和唯一性索引<br></p>
+<pre><code>普通索引：CREATE INDEX mycolumn_index ON mytable (myclumn)&lt;br&gt;
+唯一性索引：保证在索引列中的全部数据是唯一的，对聚簇索引和非聚簇索引都可以使用&lt;br&gt;
+CREATE UNIQUE COUSTERED INDEX myclumn_cindex ON mytable(mycolumn)
+</code></pre><p> 3.单个索引和复合索引<br></p>
+<pre><code>单个索引：即非复合索引&lt;br&gt;
+复合索引：又叫组合索引，在索引建立语句中同时包含多个字段名，最多16个字段&lt;br&gt;
+CREATE INDEX name_index ON username(firstname,lastname)
+</code></pre><p> 4.聚簇索引和非聚簇索引(聚集索引，群集索引)<br></p>
+<p>   聚簇索引：物理索引，与基表的物理顺序相同，数据值的顺序总是按照顺序排列<br><br>    CREATE CLUSTERED INDEX mycolumn_cindex ON mytable(mycolumn) WITH<br>    ALLOW_DUP_ROW(允许有重复记录的聚簇索引)<br><br>   非聚簇索引：CREATE UNCLUSTERED INDEX mycolumn_cindex ON mytable(mycolumn)</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年10月28日 17:46</p>
-        <p>原始链接： <a class="post-url" href="/2017/10/28/相机开发过程遇到的坑/" title="">https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/</a></p>
+        <p>最后更新： 2017年10月28日 18:41</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/23/数据库-索引/" title="数据库-索引">https://mrjiaming.github.io/2017/06/23/数据库-索引/</a></p>
         <footer>
             <a href="https://mrjiaming.github.io">
                 <img src="/images/logo.png" alt="Mrwu">
@@ -142,7 +195,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/&title=MrWu Blog&pic=https://mrjiaming.github.ioimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/06/23/数据库-索引/&title=《数据库-索引》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -152,22 +205,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/&title=MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/06/23/数据库-索引/&title=《数据库-索引》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/06/23/数据库-索引/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/&via=https://mrjiaming.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数据库-索引》 — MrWu Blog&url=https://mrjiaming.github.io/2017/06/23/数据库-索引/&via=https://mrjiaming.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/06/23/数据库-索引/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -177,7 +230,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/相机开发过程遇到的坑/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/06/23/数据库-索引/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -186,6 +239,13 @@
         <ul class="article-footer-menu">
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/数据库/" class="color4">数据库</a>
+      
+  </li>
+
         </ul>
         
     </footer>
@@ -196,9 +256,19 @@
 
 <nav id="article-nav">
   
+    <a href="/2017/06/24/Java双亲委派模型/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Java双亲委派模型
+        
+      </span>
+    </a>
   
-    <a href="/2017/10/28/android图片圆角怎么简单高效实现？/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title"></span>
+  
+    <a href="/2017/06/20/使用GitHub-Pages来Hexo一个独立博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">使用github pages来搭建一个博客</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

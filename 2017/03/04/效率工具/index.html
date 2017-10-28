@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>解决canvas的drawtext绘制文本不会换行 | MrWu Blog</title>
+  <title>效率工具 | MrWu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MrWu Blog" />
   
-  <meta name="description" content="使用Canvas的drawText绘制文本是不会自动换行的，即使一个很长很长的字符串，drawText也只显示一行，超出部分被隐藏在屏幕之外。可以逐个计算每个字符的宽度，通过一定的算法将字符串分割成多个部分，然后分别调用drawText一部分一部分的显示， 但是这种显示效率会很低。 StaticLayout是android中处理文字换行的一个工具类，StaticLayout已经实现了文本绘制换行处">
-<meta name="keywords" content="Andorid">
+  <meta name="description" content="系统及制作工具1、ubuntu 下载网站 http://releases.ubuntu.com/ 2、ubuntu 启动U盘制作工具 YUMI – Multiboot USB Creator rufus制作工具 软件1、微信 2、unbutu更换下载源 3、gradle please 快速找到最新版本 ４、在线发编译工具 ５、代理规则列表 6、phoenix-usb-pro刷固件 7、Androi">
+<meta name="keywords" content="工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决canvas的drawtext绘制文本不会换行">
-<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/index.html">
+<meta property="og:title" content="效率工具">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/03/04/效率工具/index.html">
 <meta property="og:site_name" content="MrWu Blog">
-<meta property="og:description" content="使用Canvas的drawText绘制文本是不会自动换行的，即使一个很长很长的字符串，drawText也只显示一行，超出部分被隐藏在屏幕之外。可以逐个计算每个字符的宽度，通过一定的算法将字符串分割成多个部分，然后分别调用drawText一部分一部分的显示， 但是这种显示效率会很低。 StaticLayout是android中处理文字换行的一个工具类，StaticLayout已经实现了文本绘制换行处">
+<meta property="og:description" content="系统及制作工具1、ubuntu 下载网站 http://releases.ubuntu.com/ 2、ubuntu 启动U盘制作工具 YUMI – Multiboot USB Creator rufus制作工具 软件1、微信 2、unbutu更换下载源 3、gradle please 快速找到最新版本 ４、在线发编译工具 ５、代理规则列表 6、phoenix-usb-pro刷固件 7、Androi">
 <meta property="og:locale" content="Java">
-<meta property="og:updated_time" content="2017-10-28T09:46:11.767Z">
+<meta property="og:updated_time" content="2017-10-28T10:40:34.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决canvas的drawtext绘制文本不会换行">
-<meta name="twitter:description" content="使用Canvas的drawText绘制文本是不会自动换行的，即使一个很长很长的字符串，drawText也只显示一行，超出部分被隐藏在屏幕之外。可以逐个计算每个字符的宽度，通过一定的算法将字符串分割成多个部分，然后分别调用drawText一部分一部分的显示， 但是这种显示效率会很低。 StaticLayout是android中处理文字换行的一个工具类，StaticLayout已经实现了文本绘制换行处">
+<meta name="twitter:title" content="效率工具">
+<meta name="twitter:description" content="系统及制作工具1、ubuntu 下载网站 http://releases.ubuntu.com/ 2、ubuntu 启动U盘制作工具 YUMI – Multiboot USB Creator rufus制作工具 软件1、微信 2、unbutu更换下载源 3、gradle please 快速找到最新版本 ４、在线发编译工具 ５、代理规则列表 6、phoenix-usb-pro刷固件 7、Androi">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,14 +110,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-解决Canvas的drawText绘制文本是不会自动换行的-staticlayout" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-效率工具" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      解决canvas的drawtext绘制文本不会换行
+      效率工具
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -125,12 +125,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/Android/">Android</a>
+                      <a href="/categories/工具/">工具</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2017-10-28
+          <i class="fa fa-calendar"></i>  2017-03-04
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -146,13 +146,40 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>使用Canvas的drawText绘制文本是不会自动换行的，即使一个很长很长的字符串，drawText也只显示一行，超出部分被隐藏在屏幕之外。可以逐个计算每个字符的宽度，通过一定的算法将字符串分割成多个部分，然后分别调用drawText一部分一部分的显示， 但是这种显示效率会很低。</p>
-<p>StaticLayout是android中处理文字换行的一个工具类，StaticLayout已经实现了文本绘制换行处理，下面是如何使用StaticLayout的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(<span class="keyword">new</span> MyView(<span class="keyword">this</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;  </div><div class="line">                                                                                                                                                                                                                                                                                     </div><div class="line">        Paint mPaint; <span class="comment">//画笔,包含了画几何图形、文本等的样式和颜色信息  </span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context)</span> </span>&#123;  </div><div class="line">            <span class="keyword">super</span>(context);     </div><div class="line">        &#125;  </div><div class="line">                                                                                                                                                                                                                                                                                     </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyView</span><span class="params">(Context context, AttributeSet attrs)</span></span>&#123;  </div><div class="line">            <span class="keyword">super</span>(context, attrs);  </div><div class="line">        &#125;  </div><div class="line">                                                                                                                                                                                                                                                                                     </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span></span>&#123;  </div><div class="line">            <span class="keyword">super</span>.onDraw(canvas);  </div><div class="line">            TextPaint tp = <span class="keyword">new</span> TextPaint();</div><div class="line">            tp.setColor(Color.BLUE);</div><div class="line">            tp.setStyle(Style.FILL);</div><div class="line">            tp.setTextSize(<span class="number">50</span>);</div><div class="line">            String message = <span class="string">"paint,draw paint指用颜色画,如油画颜料、水彩或者水墨画,而draw 通常指用铅笔、钢笔或者粉笔画,后者一般并不涂上颜料。两动词的相应名词分别为p"</span>;</div><div class="line">            StaticLayout myStaticLayout = <span class="keyword">new</span> StaticLayout(message, tp, canvas.getWidth(), Alignment.ALIGN_NORMAL, <span class="number">1.0f</span>, <span class="number">0.0f</span>, <span class="keyword">false</span>);</div><div class="line">            myStaticLayout.draw(canvas);</div><div class="line">            canvas.restore();</div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <h2 id="系统及制作工具"><a href="#系统及制作工具" class="headerlink" title="系统及制作工具"></a>系统及制作工具</h2><p>1、ubuntu 下载网站</p>
+<p><a href="http://releases.ubuntu.com/" target="_blank" rel="external">http://releases.ubuntu.com/</a></p>
+<p>2、ubuntu 启动U盘制作工具</p>
+<p><a href="https://www.pendrivelinux.com/yumi-multiboot-usb-creator/" target="_blank" rel="external">YUMI – Multiboot USB Creator</a></p>
+<p><a href="http://rufus.akeo.ie/?locale=zh_CN" target="_blank" rel="external">rufus制作工具</a></p>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><p>1、<a href="https://github.com/geeeeeeeeek/electronic-wechat" target="_blank" rel="external">微信</a></p>
+<p>2、<a href="http://mirrors.163.com/.help/ubuntu.html" target="_blank" rel="external">unbutu更换下载源</a></p>
+<p>3、<a href="http://gradleplease.appspot.com/" target="_blank" rel="external">gradle please 快速找到最新版本</a></p>
+<p>４、<a href="http://apk-deguard.com/" target="_blank" rel="external">在线发编译工具</a></p>
+<p>５、<a href="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" target="_blank" rel="external">代理规则列表</a></p>
+<p>6、<a href="https://androidmtk.com/flash-stock-rom-using-phoenix-usb-pro" target="_blank" rel="external">phoenix-usb-pro刷固件</a></p>
+<p>7、<a href="http://androidxref.com/" target="_blank" rel="external">Android源码阅读网站</a></p>
+<p>8、<a href="https://www.gerritcodereview.com/" target="_blank" rel="external">Android源码创建仓库</a></p>
+<p>9、<a href="http://hacknical.com/github/AndroidPreView?locale=zh" target="_blank" rel="external">github简历</a></p>
+<p>10、<a href="https://uzer.me/" target="_blank" rel="external">在线ps</a></p>
+<p>11、<a href="https://developer.android.com/ndk/guides/abis.html" target="_blank" rel="external">android 不同 CPU 和架构的 ABI 设置</a></p>
+<p>12、<a href="http://www.gda.wiki:9090/" target="_blank" rel="external">反编译apk：代验证</a></p>
+<p>13、<a href="http://androidperformance.com/2015/02/04/build-rom-for-nexus5.html" target="_blank" rel="external">为Nexus5编译AndroidL固件</a></p>
+<p>14、<a href="https://blog.aritraroy.in/30-kickass-tools-to-develop-android-apps-like-a-pro-191e52b9419b" target="_blank" rel="external">30+ Kickass Tools to Develop Android Apps Like a Pro</a></p>
+<p>15、<a href="https://github.com/futurice/android-best-practices/blob/master/translations/Chinese/README.cn.md" target="_blank" rel="external">Android 开发最佳实践</a></p>
+<p>16、<a href="https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md" target="_blank" rel="external">android-guidelines</a></p>
+<p>17、<a href="https://symless.com/synergy" target="_blank" rel="external">跨鼠标神器</a></p>
+<p>18、<a href="">screenshot psd 分离出所有图片架构图层</a></p>
+<p>19、<a href="http://windowtabs.com/" target="_blank" rel="external">windowtabs</a></p>
+<p>20、<a href="http://b00merang.weebly.com/windows-10.html" target="_blank" rel="external">window 10 themes</a></p>
+<p>21、<a href="https://www.netsarang.com/products/xfp_overview.html" target="_blank" rel="external">Xftp是用于向服务器上传文件或从服务器下载文件的工具</a></p>
+<p>22、<a href="https://www.netsarang.com/products/xsh_overview.html" target="_blank" rel="external">Xshell是用于远程连接服务器并执行命令的工具</a></p>
+<p>23、<a href="https://mp.weixin.qq.com/s/9ywtTzG8dX4C6-ijVPFlKg" target="_blank" rel="external">如何在 Windows 下像 Mac 一样优雅开发</a></p>
+<p>24、<a href="https://pngquant.org/" target="_blank" rel="external">图片压缩工具</a></p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年10月28日 17:46</p>
-        <p>原始链接： <a class="post-url" href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/" title="解决canvas的drawtext绘制文本不会换行">https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/</a></p>
+        <p>最后更新： 2017年10月28日 18:40</p>
+        <p>原始链接： <a class="post-url" href="/2017/03/04/效率工具/" title="效率工具">https://mrjiaming.github.io/2017/03/04/效率工具/</a></p>
         <footer>
             <a href="https://mrjiaming.github.io">
                 <img src="/images/logo.png" alt="Mrwu">
@@ -174,7 +201,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/&title=《解决canvas的drawtext绘制文本不会换行》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/03/04/效率工具/&title=《效率工具》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -184,22 +211,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/&title=《解决canvas的drawtext绘制文本不会换行》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/03/04/效率工具/&title=《效率工具》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/03/04/效率工具/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《解决canvas的drawtext绘制文本不会换行》 — MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/&via=https://mrjiaming.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《效率工具》 — MrWu Blog&url=https://mrjiaming.github.io/2017/03/04/效率工具/&via=https://mrjiaming.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/03/04/效率工具/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -209,7 +236,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/03/04/效率工具/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -221,7 +248,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/Andorid/" class="color3">Andorid</a>
+    <a href="/tags/工具/" class="color3">工具</a>
       
   </li>
 
@@ -232,22 +259,28 @@
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系统及制作工具"><span class="post-toc-text">系统及制作工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件"><span class="post-toc-text">软件</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
-    <a href="/2017/10/28/学习过程中遇到的生词/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/12/HTTP的长连接和短连接/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          学习使用过程的单词
+          Http的长连接和短连接
         
       </span>
     </a>
   
   
-    <a href="/2017/10/28/效率工具/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">效率工具</span>
+    <a href="/2017/02/28/关于APK签名的介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">关于apk签名的介绍</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

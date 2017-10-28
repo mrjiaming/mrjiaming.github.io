@@ -3,23 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>线程池参数的讲解 | MrWu Blog</title>
+  <title>Tag: Andorid | MrWu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MrWu Blog" />
   
-  <meta name="description" content="1234567public ThreadPoolExecutor(int corePoolSize,                                int maximumPoolSize,                                long keepAliveTime,                                TimeUnit unit,">
-<meta name="keywords" content="Andorid,Java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线程池参数的讲解">
-<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/index.html">
+  <meta name="description" content="专注 Android 开发的技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MrWu Blog">
+<meta property="og:url" content="https://mrjiaming.github.io/tags/Andorid/page/6/index.html">
 <meta property="og:site_name" content="MrWu Blog">
-<meta property="og:description" content="1234567public ThreadPoolExecutor(int corePoolSize,                                int maximumPoolSize,                                long keepAliveTime,                                TimeUnit unit,">
+<meta property="og:description" content="专注 Android 开发的技术博客">
 <meta property="og:locale" content="Java">
-<meta property="og:updated_time" content="2017-10-28T10:31:32.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线程池参数的讲解">
-<meta name="twitter:description" content="1234567public ThreadPoolExecutor(int corePoolSize,                                int maximumPoolSize,                                long keepAliveTime,                                TimeUnit unit,">
+<meta name="twitter:title" content="MrWu Blog">
+<meta name="twitter:description" content="专注 Android 开发的技术博客">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -110,159 +108,99 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-线程池参数的最佳讲解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+        <section id="main" class="body-wrap">
   
-    <h1 class="post-title" itemprop="name">
-      线程池参数的讲解
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2015" class="archive-year">2015</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2015/03/28/Android-Layout属性的讲解/" class="archive-article-date">
+  <time datetime="2015-03-27T16:00:00.000Z" itemprop="datePublished">03-28</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2015/03/28/Android-Layout属性的讲解/"  target="_blank"  >Android layout属性的讲解</a>
     </h1>
-    <div class="post-title-bar">
-      <ul>
-          
-              <li>
-                  <i class="fa fa-book"></i>
-                  
-                      <a href="/categories/Java/">Java</a>
-                  
-              </li>
-          
-        <li>
-          <i class="fa fa-calendar"></i>  2017-10-28
-        </li>
-        <li>
-          <i class="fa fa-eye"></i>
-          <span id="busuanzi_value_page_pv"></span>
-        </li>
-      </ul>
-    </div>
   
 
-          
-      </header>
-    
-    <div class="article-entry post-content" itemprop="articleBody">
+    </header>
       
-            
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,  </span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> maximumPoolSize,  </span></span></div><div class="line"><span class="function"><span class="params">                              <span class="keyword">long</span> keepAliveTime,  </span></span></div><div class="line"><span class="function"><span class="params">                              TimeUnit unit,  </span></span></div><div class="line"><span class="function"><span class="params">                              BlockingQueue&lt;Runnable&gt; workQueue,  </span></span></div><div class="line"><span class="function"><span class="params">                              ThreadFactory threadFactory,  </span></span></div><div class="line"><span class="function"><span class="params">                              RejectedExecutionHandler handler)</span></span></div></pre></td></tr></table></figure>
-<p>核心池大小（corePoolSize），即固定大小，设定好之后，线程池的稳定峰值，达到这个值之后池的线程数大小不会释放。</p>
-<p>最大处理线程池数（maximumPoolSize），当线程池里面的线程数超过corePoolSize，小于maximumPoolSize时会动态创建与回收线程池里面的线程池资源。</p>
-<p>线程池的运行机制：</p>
-<p>举个栗子。假如有一个工厂，工厂里面有10个人，每个工人同时只能做一件事情。因此只要当10个工人中有工人是空闲的，来了任务就分配给空闲的工人做；当10个工人都有任务时，如果还来任务，就把任务进行排队等待。<br>如果说新任务数目增长的速度远远大于工作做任务的速度，那么此时工厂的主管可能就需要采取补救措施了，比如重新招4个工人进来；然后就将任务分配给这4个刚招进来的工人处理。</p>
-<p>如果说这14个工人做任务的速度还是不够，此时工厂主管就要考虑不再接受新的任务或者抛弃前面的一些任务了。当这14个工人当中有人空闲时，而新任务增长的速度又比较缓慢，工厂主管就要考虑辞掉4个临时工了，只保持原来10个工人，比较额外的工人是需要花费的。<br>而这个栗子中永远等待干活的10个工人机制就是workerQueue。这个栗子中的corePoolSize就是10，而maximumPoolSize就是14（10+4）。也就是说corePoolSize就是线程池的大小，maximumPoolSize在我看来就是一种线程池任务超过负荷的一种补救措施，即任务量突然过大时的一种补救措施。再看看下面图好好理解一下。工人永远在等待干活，就像workerQueue永远在循环干活一样，除非，整个线程池停止了。</p>
-<p>相比new Thread，Java提供的四种线程池的好处在于：<br>a. 重用存在的线程，减少对象创建、消亡的开销，性能佳。<br>b. 可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。<br>c. 提供定时执行、定期执行、单线程、并发数控制等功能。</p>
-
-            <div class="post-copyright">
-    <div class="content">
-        <p>最后更新： 2017年10月28日 18:31</p>
-        <p>原始链接： <a class="post-url" href="/2017/10/28/线程池参数的最佳讲解/" title="线程池参数的讲解">https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/</a></p>
-        <footer>
-            <a href="https://mrjiaming.github.io">
-                <img src="/images/logo.png" alt="Mrwu">
-                Mrwu
-            </a>
-        </footer>
-    </div>
-</div>
-
-      
-    </div>
-    <footer class="article-footer">
-        
-        
-<div class="post-share">
-    <a href="javascript:;" id="share-sub" class="post-share-fab">
-        <i class="fa fa-share-alt"></i>
-    </a>
-    <div class="post-share-list" id="share-list">
-        <ul class="share-icons">
-          <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/&title=《线程池参数的讲解》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
-              <i class="fa fa-weibo"></i>
-            </a>
-          </li>
-          <li>
-            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
-              <i class="fa fa-weixin"></i>
-            </a>
-          </li>
-          <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/&title=《线程池参数的讲解》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
-              <i class="fa fa-qq"></i>
-            </a>
-          </li>
-          <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/" data-title="Facebook">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《线程池参数的讲解》 — MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/&via=https://mrjiaming.github.io" data-title="Twitter">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/" data-title="Google+">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        </ul>
-     </div>
-</div>
-<div class="post-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;" id="wxShare-close">×</a>
-    <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/线程池参数的最佳讲解/" alt="微信分享二维码">
-</div>
-
-<div class="mask"></div>
-
-        
-        <ul class="article-footer-menu">
-            
+        <div class="archive-post-footer">
             
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
     <a href="/tags/Andorid/" class="color3">Andorid</a>
       
-    <a href="/tags/Java/" class="color5">Java</a>
-      
   </li>
 
-        </ul>
-        
-    </footer>
+        </div>
+      
   </div>
 </article>
 
-
-
-<nav id="article-nav">
   
-    <a href="/2017/10/28/效率工具/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          效率工具
-        
-      </span>
-    </a>
-  
-  
-    <a href="/2017/08/28/Android中一张图片占内存多大/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Android中一张图片占内存多大</span>
-      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-    </a>
-  
-</nav>
-
-
-
     
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2014" class="archive-year">2014</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2014/10/28/Android-Support支持库/" class="archive-article-date">
+  <time datetime="2014-10-27T16:00:00.000Z" itemprop="datePublished">10-28</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2014/10/28/Android-Support支持库/"  target="_blank"  >Android support支持库的讲解</a>
+    </h1>
+  
+
+    </header>
+      
+        <div class="archive-post-footer">
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </div>
+      
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/tags/Andorid/page/5/"><< Prev</a><a class="page-number" href="/tags/Andorid/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/Andorid/page/4/">4</a><a class="page-number" href="/tags/Andorid/page/5/">5</a><span class="page-number current">6</span>
+  </nav>
 </section>
         
       </div>
