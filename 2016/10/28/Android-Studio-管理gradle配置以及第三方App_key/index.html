@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android studio 管理gradle配置 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="第三方API的KEY的管理Android开发，基本都会用到第三方SDK，例如百度地图、支付宝支付等。通常第三方的KEY都是保存在AndroidManifest中： 1234&amp;lt;!-- 百度地图的KEY--&amp;gt;&amp;lt;meta-data  android:name=&quot;com.baidu.lbsapi.API_KEY&quot; android:value=&quot;百度地图注册的KEY&quot;/&amp;gt; 方法 An">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android studio 管理gradle配置">
+<meta property="og:url" content="https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="第三方API的KEY的管理Android开发，基本都会用到第三方SDK，例如百度地图、支付宝支付等。通常第三方的KEY都是保存在AndroidManifest中： 1234&amp;lt;!-- 百度地图的KEY--&amp;gt;&amp;lt;meta-data  android:name=&quot;com.baidu.lbsapi.API_KEY&quot; android:value=&quot;百度地图注册的KEY&quot;/&amp;gt; 方法 An">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:58:06.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android studio 管理gradle配置">
+<meta name="twitter:description" content="第三方API的KEY的管理Android开发，基本都会用到第三方SDK，例如百度地图、支付宝支付等。通常第三方的KEY都是保存在AndroidManifest中： 1234&amp;lt;!-- 百度地图的KEY--&amp;gt;&amp;lt;meta-data  android:name=&quot;com.baidu.lbsapi.API_KEY&quot; android:value=&quot;百度地图注册的KEY&quot;/&amp;gt; 方法 An">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android-Studio-管理gradle配置以及第三方App_key" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android studio 管理gradle配置
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2016-10-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="第三方API的KEY的管理"><a href="#第三方API的KEY的管理" class="headerlink" title="第三方API的KEY的管理"></a>第三方API的KEY的管理</h2><p>Android开发，基本都会用到第三方SDK，例如百度地图、支付宝支付等。<br>通常第三方的KEY都是保存在AndroidManifest中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 百度地图的KEY--&gt;</div><div class="line">&lt;meta-data</div><div class="line">  android:name=<span class="string">"com.baidu.lbsapi.API_KEY"</span></div><div class="line"> android:value=<span class="string">"百度地图注册的KEY"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>方法</p>
+<p>AndroidManifest中的KEY，我们用一个变量代替，在build.gradle中动态的替换，还以百度地图SDK的KEY为例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">       android:name=<span class="string">"com.baidu.lbsapi.API_KEY"</span></div><div class="line">       android:value=<span class="string">"$&#123;baidu_key&#125;"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>在build.gradle中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">debug &#123;</div><div class="line">         manifestPlaceholders = [baidu_key: 百度地图的KEY]</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     release &#123;</div><div class="line">        manifestPlaceholders = [baidu_key: 百度地图的KEY]</div><div class="line">     &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Gradle中版本管理"><a href="#Gradle中版本管理" class="headerlink" title="Gradle中版本管理"></a>Gradle中版本管理</h2><p>gradle中，包含包名、VersionCode、versionName、compileSdkVersion以及第三方依赖库等大量信息，管理起来，稍有不慎就会误删或者改错，导致编译失败，能不能像管理第三方KEY一样，将所有需要修改的参数统一管理起来，只修改参数，不干扰其他因素这样在版本升级中，无需打开gradle在繁杂的代码中修改各种版本号，例如：</p>
+<p>新建一个buildconfigure.gradle<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// model config file ,make app build.gradle clean</span></div><div class="line">ext &#123;</div><div class="line">    android = [</div><div class="line">            AndroidBuildToolsVersion : <span class="string">"23.0.2"</span>,</div><div class="line">            AndridMinSdkVersion : <span class="number">15</span>,</div><div class="line">            AndroidTargetSdkVersion : <span class="number">23</span>,</div><div class="line">            AndroidCompileSdkVersion : <span class="number">23</span>,</div><div class="line">            applicationId : <span class="string">"me.silencedut.nbaplus"</span>,</div><div class="line">            versionCode:<span class="number">10</span>,</div><div class="line">            versionName:<span class="string">"1.1.0"</span></div><div class="line">    ]</div><div class="line"></div><div class="line">    <span class="comment">//LibrariesVersion</span></div><div class="line">    googlesupportVersion=<span class="string">"23.1.1"</span></div><div class="line"></div><div class="line">    goodleDependencies =[</div><div class="line">            appcompat_v7: <span class="string">"com.android.support:appcompat-v7:$&#123;googlesupportVersion&#125;"</span>,</div><div class="line">            design : <span class="string">"com.android.support:design:$&#123;googlesupportVersion&#125;"</span>,</div><div class="line">            support_v4 :<span class="string">"com.android.support:support-v4:$&#123;googlesupportVersion&#125;"</span>,</div><div class="line">            recyclerview_v7: <span class="string">"com.android.support:recyclerview-v7:$&#123;googlesupportVersion&#125;"</span>,</div><div class="line">            cardview_v7 :<span class="string">"com.android.support:cardview-v7:$&#123;googlesupportVersion&#125;"</span></div><div class="line">    ]</div><div class="line"></div><div class="line">    otherDependdencies=[</div><div class="line">            butterknife :<span class="string">"com.jakewharton:butterknife:7.0.1+"</span>,</div><div class="line">            glide :<span class="string">"com.github.bumptech.glide:glide:3.6.1"</span>,</div><div class="line">            eventbus:<span class="string">"de.greenrobot:eventbus:2.4.0+"</span>,</div><div class="line">            materialish_progress:<span class="string">"com.pnikosis:materialish-progress:1.5+"</span>,</div><div class="line">            circleimageview :<span class="string">"de.hdodenhof:circleimageview:1.3.0+"</span>,</div><div class="line">            licensesdialog :<span class="string">"de.psdev.licensesdialog:licensesdialog:1.8.0+"</span>,</div><div class="line">            fir_sdk:<span class="string">"im.fir:sdk:latest.integration@aar"</span>,</div><div class="line">            retrofit_2_0:<span class="string">"com.squareup.retrofit:retrofit:2.0.0-beta2"</span>,</div><div class="line">            retrofit_converter_gson:<span class="string">"com.squareup.retrofit:converter-gson:2.0.0-beta2"</span>,</div><div class="line">            leakcanary_debug:<span class="string">"com.squareup.leakcanary:leakcanary-android:1.3.1"</span>,</div><div class="line">            leakcanary_release:<span class="string">"com.squareup.leakcanary:leakcanary-android-no-op:1.3.1"</span>,</div><div class="line">            adapter_rxjava:<span class="string">"com.squareup.retrofit:adapter-rxjava:2.0.0-beta2"</span>,</div><div class="line">            rxandroid:<span class="string">"io.reactivex:rxandroid:1.2.1"</span>,</div><div class="line">            rxjava:<span class="string">"io.reactivex:rxjava:1.1.6"</span>,</div><div class="line">            greendao:<span class="string">"de.greenrobot:greendao:2.0.0"</span>,</div><div class="line">            pickview:<span class="string">"com.brucetoo.pickview:library:1.1.1"</span>,</div><div class="line">            finestwebview:<span class="string">"com.thefinestartist:finestwebview:1.1.2"</span></div><div class="line">    ]</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在该项目目录build.gradle中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">添加buildconfigure.gradle插件</div><div class="line">apply from: <span class="string">"buildconfig.gradle"</span></div><div class="line">android&#123;</div><div class="line">  def globalConfiguration = rootProject.ext.android</div><div class="line">    compileSdkVersion globalConfiguration.AndroidCompileSdkVersion</div><div class="line">    buildToolsVersion globalConfiguration.AndroidBuildToolsVersion</div><div class="line"></div><div class="line">    defaultConfig &#123;</div><div class="line"></div><div class="line">        applicationId globalConfiguration.applicationId</div><div class="line">        minSdkVersion globalConfiguration.AndridMinSdkVersion</div><div class="line">        targetSdkVersion globalConfiguration.AndroidTargetSdkVersion</div><div class="line">        versionCode globalConfiguration.versionCode</div><div class="line">        versionName globalConfiguration.versionName</div><div class="line"></div><div class="line">    &#125;</div><div class="line"><span class="comment">//build变种生成不同名字的apk</span></div><div class="line">   applicationVariants.all &#123; variant -&gt;</div><div class="line">        variant.outputs.each &#123; output -&gt;</div><div class="line">            output.outputFile = <span class="keyword">new</span> File(</div><div class="line">                    output.outputFile.parent,</div><div class="line">                    <span class="string">"AndroidNode-$&#123;variant.versionName&#125;.apk"</span>.toLowerCase())</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在该项目依赖中添加如下代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line"></div><div class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></div><div class="line"><span class="function">    def googleDependencies </span>= rootProject.ext.goodleDependencies</div><div class="line">    def otherDependencies = rootProject.ext.otherDependdencies</div><div class="line">    compile googleDependencies.support_v4</div><div class="line">    compile googleDependencies.appcompat_v7</div><div class="line">    compile googleDependencies.design</div><div class="line">    compile googleDependencies.recyclerview_v7</div><div class="line">    compile googleDependencies.cardview_v7</div><div class="line">    compile otherDependencies.butterknife</div><div class="line">    compile otherDependencies.glide</div><div class="line">    compile otherDependencies.eventbus</div><div class="line">    compile otherDependencies.materialish_progress</div><div class="line">    compile otherDependencies.circleimageview</div><div class="line">    compile otherDependencies.licensesdialog</div><div class="line">    compile otherDependencies.fir_sdk</div><div class="line">    compile otherDependencies.retrofit_2_0</div><div class="line">    compile otherDependencies.retrofit_converter_gson</div><div class="line">    compile otherDependencies.rxandroid</div><div class="line">    compile otherDependencies.rxjava</div><div class="line">    compile otherDependencies.adapter_rxjava</div><div class="line">    compile otherDependencies.greendao</div><div class="line">    compile otherDependencies.pickview</div><div class="line">    compile otherDependencies.finestwebview</div><div class="line">    debugCompile otherDependencies.leakcanary_debug</div><div class="line">    releaseCompile otherDependencies.leakcanary_release</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="避免引入其他库"><a href="#避免引入其他库" class="headerlink" title="避免引入其他库"></a>避免引入其他库</h2><p>你的代码本身就是一个库了，因此我强烈不建议你的代码还引入别人的库。友盟推送的代码就是一个典型的反例，一个推送库引入了okhttp、okio等其他库，臃肿不堪，完全没有让我使用的欲望。<br><br>一个第三方库引入其他第三方库有很多坏处，使用者可能会遇到版本冲突的问题（比如：友盟反馈和友盟推送同时使用），方法数还会极速增多。<br><br>你可能会说appcompat这个库基本所有第三方库都会引入的，有没有什么好的办法可以避免呢？好在我们有provided关键字。provided可以将你需要的库引入，但是并不会将其打包到aar里面以CommonAdapter为例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    provided <span class="string">'com.android.support:recyclerview-v7:23.2.1'</span></div><div class="line">    provided <span class="string">'com.android.databinding:baseLibrary:1.0'</span></div><div class="line"></div><div class="line">    provided <span class="string">"org.projectlombok:lombok:1.12.6"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>都用了私有依赖的方式来做的。<br>首先，我能确定使用这个库的人，肯定使用了recyclerView，所以我通过私有依赖的方式将recyclerView的代码剔除，那么recyclerView的最终版本由使用者来定。</p>
+<p>＃＃　根据需求考虑是否提供no-op</p>
+<p>如果你开发的库可能只需要在debug时才用到，但库提供的类或方法需要写入现有的代码中，那么就可以采用no-op的方案。所谓no-op就是希望某些代码仅仅存在于debug环境中，在release版本中，可能就是保留了了一些代码接口，但是并不提供实现。<br>以leakcanary为例，它的文档中就给出了no-op的依赖。</p>
+<p>参考：<a href="http://www.jianshu.com/p/0aacd419cb7e#" target="_blank" rel="external">http://www.jianshu.com/p/0aacd419cb7e#</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:58</p>
+        <p>原始链接： <a class="post-url" href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/" title="Android studio 管理gradle配置">https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/&title=《Android studio 管理gradle配置》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/&title=《Android studio 管理gradle配置》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android studio 管理gradle配置》 — MrWu Blog&url=https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第三方API的KEY的管理"><span class="post-toc-text">第三方API的KEY的管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Gradle中版本管理"><span class="post-toc-text">Gradle中版本管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免引入其他库"><span class="post-toc-text">避免引入其他库</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2016/10/28/DigitalOcean--搭建Shadowsocks/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Digitalocean 搭建ss的方法
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2016/08/28/关于-Android-应用多进程的整理/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">关于Android应用多进程的整理</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

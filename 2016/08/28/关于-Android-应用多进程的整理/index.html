@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于Android应用多进程的整理 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="关于 Android 应用多进程的整理 在计算机操作系统中，进程是进行资源分配和调度的基本单位。这对于基于Linux内核的Android系统也不例外。在Android的设计中，一个应用默认有一个(主)进程。但是我们通过配置可以实现一个应用对应多个进程。 本文将试图对于Android中应用多进程做一些整理总结。 android:process应用实现多进程需要依赖于android:process这个">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Android应用多进程的整理">
+<meta property="og:url" content="https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="关于 Android 应用多进程的整理 在计算机操作系统中，进程是进行资源分配和调度的基本单位。这对于基于Linux内核的Android系统也不例外。在Android的设计中，一个应用默认有一个(主)进程。但是我们通过配置可以实现一个应用对应多个进程。 本文将试图对于Android中应用多进程做一些整理总结。 android:process应用实现多进程需要依赖于android:process这个">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:39:55.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于Android应用多进程的整理">
+<meta name="twitter:description" content="关于 Android 应用多进程的整理 在计算机操作系统中，进程是进行资源分配和调度的基本单位。这对于基于Linux内核的Android系统也不例外。在Android的设计中，一个应用默认有一个(主)进程。但是我们通过配置可以实现一个应用对应多个进程。 本文将试图对于Android中应用多进程做一些整理总结。 android:process应用实现多进程需要依赖于android:process这个">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-关于-Android-应用多进程的整理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      关于Android应用多进程的整理
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2016-08-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>关于 Android 应用多进程的整理</p>
+<p>在计算机操作系统中，进程是进行资源分配和调度的基本单位。这对于基于Linux内核的Android系统也不例外。在Android的设计中，一个应用默认有一个(主)进程。但是我们通过配置可以实现一个应用对应多个进程。</p>
+<p>本文将试图对于Android中应用多进程做一些整理总结。</p>
+<h2 id="android-process"><a href="#android-process" class="headerlink" title="android:process"></a>android:process</h2><p>应用实现多进程需要依赖于android:process这个属性<br>适用元素：Application, Activity, BroadcastReceiver, Service, ContentProvider。<br>通常情况下，这个属性的值应该是”:“开头。表示这个进程是应用私有的。无法在在跨应用之间共用。<br>如果该属性值以小写字母开头，表示这个进程为全局进程。可以被多个应用共用。（文章结尾会探讨这个问题）<br>一个应用 android:process 简单示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=&quot;.MusicPlayerActivity&quot; android:process=&quot;:music&quot;/&gt;</div><div class="line"></div><div class="line">&lt;activity android:name=&quot;.AnotherActivity&quot; android:process=&quot;droidyue.com&quot;/&gt;</div></pre></td></tr></table></figure>
+<h2 id="应用多进程有什么好处"><a href="#应用多进程有什么好处" class="headerlink" title="应用多进程有什么好处"></a>应用多进程有什么好处</h2><p>增加App可用内存</p>
+<p>在Android中，默认情况下系统会为每个App分配一定大小的内存。比如从最早的16M到后面的32M或者48M等。具体的内存大小取决于硬件和系统版本。</p>
+<p>这些有限的内存对于普通的App还算是够用，但是对于展示大量图片的应用来说，显得实在是捉襟见肘。</p>
+<p>仔细研究一下，你会发现原来系统的这个限制是作用于进程的(毕竟进程是作为资源分配的基本单位)。意思就是说，如果一个应用实现多个进程，那么这个应用可以获得更多的内存。</p>
+<p>于是，增加App可用内存成了应用多进程的重要原因。</p>
+<h2 id="独立于主进程"><a href="#独立于主进程" class="headerlink" title="独立于主进程"></a>独立于主进程</h2><p>除了增加App可用内存之外，确保使用多进程，可以独立于主进程，确保某些任务的执行和完成。</p>
+<p>举一个简单的例子，之前的一个项目存在退出的功能，其具体实现为杀掉进程。为了保证某些统计数据上报正常，不受当前进程退出的影响，我们可以使用独立的进程来完成。</p>
+<h2 id="多进程的不足与缺点"><a href="#多进程的不足与缺点" class="headerlink" title="多进程的不足与缺点"></a>多进程的不足与缺点</h2><h2 id="数据共享问题"><a href="#数据共享问题" class="headerlink" title="数据共享问题"></a>数据共享问题</h2><p>由于处于不同的进程导致了数据无法共享内容，无论是static变量还是单例模式的实现。<br>SharedPreferences 还没有增加对多进程的支持。<br>跨进程共享数据可以通过Intent,Messenger，AIDL等。<br>SQLite容易被锁</p>
+<p>由于每个进程可能会使用各自的SQLOpenHelper实例，如果两个进程同时对数据库操作，则会发生SQLiteDatabaseLockedException等异常。<br>解决方法：可以使用ContentProvider来实现或者使用其他存储方式。<br>不必要的初始化</p>
+<p>多进程之后，每个进程在创建的时候，都会执行自己的Application.onCreate方法。<br>通常情况下，onCreate中包含了我们很多业务相关的初始化，更重要的这其中没有做按照进程按需初始化，即每个进程都会执行全部的初始化。<br>按需初始化需要根据当前进程名称，进行最小需要的业务初始化。<br>按需初始化可以选择简单的if else判断，也可以结合工厂模式<br>一些简单的代码示例</p>
+<h2 id="获取当前的进程名"><a href="#获取当前的进程名" class="headerlink" title="获取当前的进程名"></a>获取当前的进程名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">private String getCurrentProcessName() &#123;</div><div class="line">    String currentProcName = &quot;&quot;;</div><div class="line">    int pid = android.os.Process.myPid();</div><div class="line">    ActivityManager manager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line">    for (ActivityManager.RunningAppProcessInfo processInfo : manager.getRunningAppProcesses()) &#123;</div><div class="line">        if (processInfo.pid == pid) &#123;</div><div class="line">            currentProcName = processInfo.processName;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return currentProcName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="基本的进程初始化类"><a href="#基本的进程初始化类" class="headerlink" title="基本的进程初始化类"></a>基本的进程初始化类</h2><h2 id="这个类用来每个进程共用的业务初始化逻辑。"><a href="#这个类用来每个进程共用的业务初始化逻辑。" class="headerlink" title="这个类用来每个进程共用的业务初始化逻辑。"></a>这个类用来每个进程共用的业务初始化逻辑。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class AppInitialization &#123;</div><div class="line">    @CallSuper</div><div class="line">    public void onAppCreate(Application application) &#123;</div><div class="line">        Log.i(&quot;AppInitialization&quot;, &quot;onAppCreate is being executed.&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="工厂模式的应用"><a href="#工厂模式的应用" class="headerlink" title="工厂模式的应用"></a>工厂模式的应用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">public class AppInitFactory &#123;</div><div class="line">    public static AppInitialization getAppInitialization(String processName) &#123;</div><div class="line">        AppInitialization appInitialization;</div><div class="line">        if (processName.endsWith(&quot;:game&quot;)) &#123;</div><div class="line">            appInitialization = new GameAppInitialization();</div><div class="line">        &#125; else if (processName.endsWith(&quot;:music&quot;)) &#123;</div><div class="line">            appInitialization = new MusicAppInitialization();</div><div class="line">        &#125; else &#123;</div><div class="line">            appInitialization = new AppInitialization();</div><div class="line">        &#125;</div><div class="line">        return appInitialization;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    static class GameAppInitialization extends AppInitialization &#123;</div><div class="line">        @Override</div><div class="line">        public void onAppCreate(Application application) &#123;</div><div class="line">            super.onAppCreate(application);</div><div class="line">            Log.i(&quot;GameAppInitialization&quot;, &quot;onAppCreate is being executed.&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    static class MusicAppInitialization extends AppInitialization &#123;</div><div class="line">        @Override</div><div class="line">        public void onAppCreate(Application application) &#123;</div><div class="line">            super.onAppCreate(application);</div><div class="line">            Log.i(&quot;MusicAppInitialization&quot;, &quot;onAppCreate is being executed.&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="具体的调用时的代码"><a href="#具体的调用时的代码" class="headerlink" title="具体的调用时的代码"></a>具体的调用时的代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class MyApplication extends Application&#123;</div><div class="line">    private static final String LOGTAG = &quot;MyApplication&quot;;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onCreate() &#123;</div><div class="line">        super.onCreate();</div><div class="line">        String currentProcessName = getCurrentProcessName();</div><div class="line">        Log.i(LOGTAG, &quot;onCreate currentProcessName=&quot; + currentProcessName);</div><div class="line">        AppInitialization appInitialization = AppInitFactory.getAppInitialization(currentProcessName);</div><div class="line">        if (appInitialization != null) &#123;</div><div class="line">            appInitialization.onAppCreate(this);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="是否需要多进程"><a href="#是否需要多进程" class="headerlink" title="是否需要多进程"></a>是否需要多进程</h2><h2 id="判断是否需要多进程，需要视具体情况而定。"><a href="#判断是否需要多进程，需要视具体情况而定。" class="headerlink" title="判断是否需要多进程，需要视具体情况而定。"></a>判断是否需要多进程，需要视具体情况而定。</h2><p>内存限制</p>
+<p>研究内存占用居高不下的原因<br>如果是由内存泄漏导致，尝试解决来降低内存占用<br>如有必要，可以通过配置largeHeap尝试解决<br>除了内存限制之外，还需要考虑是否真的需要独立于主进程来执行某些操作。</p>
+<h2 id="关于android-process的其他问题"><a href="#关于android-process的其他问题" class="headerlink" title="关于android:process的其他问题"></a>关于android:process的其他问题</h2><p>在android:process部分我们提到，如果这个属性值以小写字母开头，那么就是全局的进程，可以被其他应用共用。</p>
+<p>所谓的共用，指的是不同的App的组件运行在同一个指定的进程中。</p>
+<p>准备条件</p>
+<p>受制于Android系统的安全机制，我们需要做到以下两个准备条件才可以。</p>
+<p>这个应用使用同样的签名<br>两个应用指定同一个android:sharedUserId的值<br>具体示例</p>
+<p>第一个App的Manifest文件，AnotherActivity运行在名为droidyue.com的进程中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">          package=&quot;com.droidyue.androidmutipleprocesssample&quot;</div><div class="line">        android:sharedUserId=&quot;droidyue.com&quot;</div><div class="line">    &gt;</div><div class="line"></div><div class="line">    &lt;application</div><div class="line">            android:name=&quot;.MyApplication&quot;</div><div class="line">            android:allowBackup=&quot;true&quot;</div><div class="line">            android:icon=&quot;@mipmap/ic_launcher&quot;</div><div class="line">            android:label=&quot;@string/app_name&quot;</div><div class="line">            android:supportsRtl=&quot;true&quot;</div><div class="line">            android:theme=&quot;@style/AppTheme&quot;&gt;</div><div class="line"></div><div class="line">        &lt;activity android:name=&quot;.AnotherActivity&quot; android:process=&quot;droidyue.com&quot;/&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line"></div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+<p>第二个App的Manifest文件，SecondActivity运行在名为droidyue.com的进程中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    package=&quot;com.example.jishuxiaoheiwu.accessfromanotherprocess&quot;</div><div class="line">    android:sharedUserId=&quot;droidyue.com&quot;</div><div class="line">    &gt;</div><div class="line"></div><div class="line">    &lt;application</div><div class="line">        android:allowBackup=&quot;true&quot;</div><div class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:label=&quot;@string/app_name&quot;</div><div class="line">        android:supportsRtl=&quot;true&quot;</div><div class="line">        android:theme=&quot;@style/AppTheme&quot;&gt;</div><div class="line">        &lt;activity android:name=&quot;.SecondActivity&quot;</div><div class="line">            android:process=&quot;droidyue.com&quot;</div><div class="line">            /&gt;</div><div class="line">    &lt;/application&gt;</div><div class="line"></div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+<p>上面的AnotherActivity和SecondActivity会运行在一个名为droidyue.com的进程中，尽管他们位于不同的App中。</p>
+<p>但是这种共用进程的方式会引发很多问题，不太建议大家使用。<br><br>转载：<a href="http://droidyue.com/blog/2017/01/15/android-multiple-processes-summary/index.html" target="_blank" rel="external">http://droidyue.com/blog/2017/01/15/android-multiple-processes-summary/index.html</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:39</p>
+        <p>原始链接： <a class="post-url" href="/2016/08/28/关于-Android-应用多进程的整理/" title="关于Android应用多进程的整理">https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/&title=《关于Android应用多进程的整理》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/&title=《关于Android应用多进程的整理》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关于Android应用多进程的整理》 — MrWu Blog&url=https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2016/08/28/关于-Android-应用多进程的整理/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#android-process"><span class="post-toc-text">android:process</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用多进程有什么好处"><span class="post-toc-text">应用多进程有什么好处</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#独立于主进程"><span class="post-toc-text">独立于主进程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多进程的不足与缺点"><span class="post-toc-text">多进程的不足与缺点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据共享问题"><span class="post-toc-text">数据共享问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取当前的进程名"><span class="post-toc-text">获取当前的进程名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本的进程初始化类"><span class="post-toc-text">基本的进程初始化类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#这个类用来每个进程共用的业务初始化逻辑。"><span class="post-toc-text">这个类用来每个进程共用的业务初始化逻辑。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工厂模式的应用"><span class="post-toc-text">工厂模式的应用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#具体的调用时的代码"><span class="post-toc-text">具体的调用时的代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#是否需要多进程"><span class="post-toc-text">是否需要多进程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#判断是否需要多进程，需要视具体情况而定。"><span class="post-toc-text">判断是否需要多进程，需要视具体情况而定。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于android-process的其他问题"><span class="post-toc-text">关于android:process的其他问题</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android studio 管理gradle配置
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2016/07/28/为什么非静态内部类引用外部类的引用/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">为什么非静态内部类引用外部累的引用</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

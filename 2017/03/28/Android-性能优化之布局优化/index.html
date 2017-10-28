@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android性能优化-布局优化 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="include重用 merge减少布局层级 ViewStub延迟加载1、&amp;lt; include/&amp;gt;重用比如我们要写一个TitleBar（title_bar_layout.xml）,是这样子的。 1234567891011121314151617181920212223242526&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;LinearLa">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android性能优化-布局优化">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="include重用 merge减少布局层级 ViewStub延迟加载1、&amp;lt; include/&amp;gt;重用比如我们要写一个TitleBar（title_bar_layout.xml）,是这样子的。 1234567891011121314151617181920212223242526&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;LinearLa">
+<meta property="og:locale" content="Java">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1836169-26abc676ef4b9ad9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1836169-2a70199a8e7e150f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1836169-732f7e6aa1e1c6db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-10-28T09:52:10.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android性能优化-布局优化">
+<meta name="twitter:description" content="include重用 merge减少布局层级 ViewStub延迟加载1、&amp;lt; include/&amp;gt;重用比如我们要写一个TitleBar（title_bar_layout.xml）,是这样子的。 1234567891011121314151617181920212223242526&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;&amp;lt;LinearLa">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1836169-26abc676ef4b9ad9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android-性能优化之布局优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android性能优化-布局优化
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-03-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="include重用-merge减少布局层级-ViewStub延迟加载"><a href="#include重用-merge减少布局层级-ViewStub延迟加载" class="headerlink" title="include重用 merge减少布局层级 ViewStub延迟加载"></a>include重用 merge减少布局层级 ViewStub延迟加载</h2><h2 id="1、-lt-include-gt-重用"><a href="#1、-lt-include-gt-重用" class="headerlink" title="1、&lt; include/&gt;重用"></a>1、&lt; include/&gt;重用</h2><p>比如我们要写一个TitleBar（title_bar_layout.xml）,是这样子的。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"50dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:background</span>=<span class="string">"@drawable/back"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"竞技台"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"18sp"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"50dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"确定"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"18sp"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>每一个项目中都有TitleBar，所以使用&lt; include/&gt;进行服用，以便统一管理，在使用的时候，一行代码就OK了。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/activity_layout_opt"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"zhangwan.wj.com.myshare.activity.LayoutOptActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/title_bar_layout"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="2、-lt-merge-gt-减少视图层级"><a href="#2、-lt-merge-gt-减少视图层级" class="headerlink" title="2、&lt; merge/&gt;减少视图层级"></a>2、&lt; merge/&gt;减少视图层级</h2><p>为什么要减少视图层级，在加载布局的时候，rinflater是通过深度优先遍历来构造视图树，每解析到一个View，就会递归调用rinflater,直到这条路径的最后一个元素，然后再回溯过来将每一个View添加到他们的parent中，整个View树构建完毕。在使用了include后可能导致布局嵌套过多，出现不必要的layout节点，从而导致解析变慢。这个时候我们可以使用&lt; merge/&gt;标签。&lt; merge/&gt;标签可用于两种典型情况：<br></p>
+<p>布局顶结点是FrameLayout且不需要设置background或padding等属性，可以用merge代替，因为Activity内容试图的parent view就是个FrameLayout，所以可以用merge消除只剩一个。<br><br>某布局作为子布局被其他布局include时，使用merge当作该布局的顶节点，这样在被引入时顶结点会自动被忽略，而将其子节点全部合并到主布局中。<br>为了更好理解这两种情况，我们复习一下DecroView，DecroView是Activity的顶级View，继承与FramLayout,内部有一个竖直方向的LinerLayout,上面是标题栏，下面内容栏，内容栏是我们Activity的setContentView的布局，这个内容栏是个FramLayout。<br><img src="http://upload-images.jianshu.io/upload_images/1836169-26abc676ef4b9ad9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们看第一种情况，我们通过View Hierarchy工具看一下，如图：<br><img src="http://upload-images.jianshu.io/upload_images/1836169-2a70199a8e7e150f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>发现了有一个FrameLayout是不需要的。使用&lt; merge/&gt;修改。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">merge</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/activity_layout_opt"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"zhangwan.wj.com.myshare.activity.LayoutOptActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/title_bar_layout"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">merge</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我们在通过View Hierarchy工具看一下，如图：<br><img src="http://upload-images.jianshu.io/upload_images/1836169-732f7e6aa1e1c6db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们在看第二种情况</p>
+<p>比如，如果你有一个 Layout 是一个竖直方向的 LinearLayout，其中包含两个连续的 View 可以在别的 Layout 中重用，那么你会做一个 LinearLayout 来包含这两个 View ，以便重用。不过，当使用另一个 LinearLayout 来嵌套这个可重用的 LinearLayout 时，这种嵌套 LinearLayout 的方式除了减慢你的 UI 性能外没有任何意义。<br>为了避免这种情况，你可以用 &lt; merge/&gt; 元素来替代可重用 Layout 的根节点。例如：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">merge</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/add"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Button</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"fill_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"@string/delete"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">merge</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="ViewStub延迟加载"><a href="#ViewStub延迟加载" class="headerlink" title="ViewStub延迟加载"></a>ViewStub延迟加载</h2><p>延迟加载意味着我们可以分批次的将一个Layout中的View解析加载到内存，比如说，我们最先加载Loading的布局，等待网络请求，然后加载常规展示的布局，当网络请求发生错误或者空数据的时候，加载错误布局。分批次加载减轻了CPU和GPU的负担，ViewStub 是一个轻量的视图，不需要大小信息，也不会在被加入的 Layout 中绘制任何东西。ViewStub可见或是被inflate了，ViewStub就不存在了，取而代之的是被inflate的Layout。所以它也被称做惰性控件。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">merge</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">tools:context</span>=<span class="string">"zhangwan.wj.com.myshare.activity.LayoutOptActivity"</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/title_bar_layout"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ViewStub</span></span></div><div class="line"><span class="tag">        <span class="attr">android:inflatedId</span>=<span class="string">"@+id/no_data_view"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/no_data_view"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout</span>=<span class="string">"@layout/no_data_layout"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">merge</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>注意android:inflatedId指定的no_data_view是布局no_data_layout的根id, android:layout=”@layout/no_data_layout”是指定加载哪个布局。</p>
+<p>要让ViewStub显示出来，可以用viewStub.infalte()或viewStub.setVisibility(View.VISIBLE)来完成，如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showEmptyView</span><span class="params">()</span> </span>&#123;</div><div class="line">       <span class="comment">// listview.setVisibility(View.GONE);</span></div><div class="line">        <span class="keyword">if</span> (mNoDataView == <span class="keyword">null</span>) &#123;</div><div class="line">            ViewStub noDataViewStub = (ViewStub)findViewById(R.id.no_data_view);</div><div class="line">            mNoDataView = noDataViewStub.inflate();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            mNoDataView.setVisibility(View.VISIBLE);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>现在你可能会问，ViewStub和View.GONE的区别。他们的共同点是一开始的时候都不会显示，但是View.GONE在布局加载的时候，就已经添加到布局树上了，而ViewStub只会在显示的时候才会渲染布局。最后注意ViewStub加载的布局中不能有merge。</p>
+<h2 id="如何优化"><a href="#如何优化" class="headerlink" title="如何优化?"></a>如何优化?</h2><p>减少布局的层级,合理的使用include,merge,ViewStub<br><br>自定义组件的onDraw()中避免大量创建临时对象,比如String,以免频繁触发GC<br><br>自定义组件的onDraw()中,考虑使用canvas.clipRect()绘制需要被绘制的区域<br><br>对像ListView这样的组件容器,考虑使用convertView,使用ViewHolder,<br><br>考虑使用性能更高的组件,比如推荐使用RecycleView来代替ListView,</p>
+<p>###使用staticlayout来实现自动换行<br></p>
+<h2 id="针对代码优化"><a href="#针对代码优化" class="headerlink" title="针对代码优化"></a>针对代码优化</h2><h2 id="无用代码扫描"><a href="#无用代码扫描" class="headerlink" title="无用代码扫描"></a>无用代码扫描</h2><p>同无用资源扫描方式一样，可以针对无用的代码进行扫描，这里需要关注的一点就是在插件里面通过反射的方法调用的主应用的一些类和方法是不能删除的。</p>
+<p>也可以使用SonarQube扫描无用类，以及不同类里面的重复代码。</p>
+<p>详情请参考：<br><a href="https://github.com/SonarSource/sonarqube" target="_blank" rel="external">https://github.com/SonarSource/sonarqube</a> </p>
+<h2 id="针对整体优化"><a href="#针对整体优化" class="headerlink" title="针对整体优化"></a>针对整体优化</h2><h2 id="签名方式"><a href="#签名方式" class="headerlink" title="签名方式"></a>签名方式</h2><p>Google在Android7.0系统提供了新的apksigner签名工具，相比使用java提供的jarsigner签名工具，APK体积可以减小约5%（依赖文件数量）。</p>
+<p>对比未签名的APK，用jarsigner签名工具签名，APK里面所有压缩后的文件和文件夹体积都增大了；而apksigner签名工具签名，除了META_INF文件夹增大了以外，其它文件和文件夹的大小都没有改变。</p>
+<h2 id="产生上述变化的原因是："><a href="#产生上述变化的原因是：" class="headerlink" title="产生上述变化的原因是："></a>产生上述变化的原因是：</h2><p>jarsigner是针对每个文件进行了签名，然后针对签名后的文件计算摘要，并写入到META-INF文件夹下的MANIFEST.MF文件里面；而apksigner直接计算所有文件的摘要，写入MANIFEST.MF文件。</p>
+<p>新的apksigner工具，已经集成到Android 7.0 SDK中了，使用方法可以参考官方文档：</p>
+<p><a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="external">https://developer.android.com/studio/command-line/apksigner.html</a></p>
+<h2 id="针对整体优化-1"><a href="#针对整体优化-1" class="headerlink" title="针对整体优化"></a>针对整体优化</h2><h2 id="7ZIP压缩"><a href="#7ZIP压缩" class="headerlink" title="7ZIP压缩"></a>7ZIP压缩</h2><p>我们知道Apk文件实际上就是一个Zip文件。Android SDK的打包工具apkbuilder采用的是Deflate算法将Android App的代码、资源等文件进行压缩，压缩成Zip格式，然后签名发布。</p>
+<p>既然是压缩，那能不能改进其压缩方式，获取更小的Apk文件？通过分析Apk打包的流程图我们可以发现SignedJarBuilder类对整个工程包括代码Dex和一些压缩的资源、文件进行压缩，使用的是JDK中zip包下提供的算法。</p>
+<p>简单的方式我们可以在不改变App编译器工作的情况下，对生成的Apk文件进行二次压缩，同样使用Deflate算法，但是将压缩等级从标准提升到极限压缩。提高压缩级别可在不对Apk包本身的内容做任何修改的情况下得到更小的Apk。</p>
+<p>##　备注：</p>
+<p>需要注意这样极限压缩之后的签名被破坏，需要重新签名。</p>
+<p>Android平台对Apk安装包的解压算法只支持Deflate算法，其它算法如LZMA，虽然压缩率更好，但是由于Android平台默认不支持，所以如果采用这种算法压缩Apk，会导致Apk无法安装。</p>
+<p>目前在Mac上没发现好用的7Zip压缩软件，需要在Windows下使用。</p>
+<p>一般情况下面，AS直接编译生成的APK里面，.arsc文件是没有进行任何压缩的，前文中APK组成部分的第一张图就可以看出。</p>
+<p>下面，我们来解压APK，重新用7zip进行压缩，就会发现几乎所有文件都变小了，特别是.arsc文件，减小的比较多。</p>
+<ol>
+<li><p>将APK包解压到文件夹</p>
+</li>
+<li><p>全选所有文件，右键“添加到压缩包”</p>
+</li>
+</ol>
+<p>3.“压缩格式”必须“zip”</p>
+<p>4.“压缩等级”选择“极限压缩”</p>
+<p>5.“压缩方法”必须“Deflate”（试了Deflate64,BZip2,LZMA,PPMd都无法正常安装）</p>
+<p>6.“单词大小”选择“256”</p>
+<ol>
+<li>将后缀改为APK即可</li>
+</ol>
+<p>出现　adb - [INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION]　未签名的应用安装失败。</p>
+<p>##　从命令行构建和签署您的应用<br>不需要 Android Studio 也可以签署您的应用。您可以通过 apksigner 工具从命令行签署您的应用，或在构建期间配置 Gradle 来签署您的应用。无论使用哪一个方式，您必须首先使用 keytool 生成一个私钥。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">keytool -genkey -v -keystore my-release-key.jks</div><div class="line">-keyalg RSA -keysize 2048 -validity 10000 -alias my-alias</div></pre></td></tr></table></figure>
+<p>注：keytool 位于 JDK 中的 bin/ 目录中。要从 Android Studio 查找您的 JDK，选择 File &gt; Project Structure，然后点击 SDK Location，您将看到 JDK location。</p>
+<p>本示例会提示您输入密钥库和密钥的密码，并为您的密钥提供“Distinguished Name”字段。随后，它生成一个名为 my-release-key.jks 的密钥库文件，将它保存在当前目录中（您可以根据需要移动它）。此密钥库包含一个有效期为 10,000 天的密钥。</p>
+<p>现在，您可以构建一个未签署的 APK 并手动签署它，也可以配置 Gradle 以签署您的 APK。</p>
+<p>##　构建未签署 APK 并手动签署它<br>打开命令行，然后导航至项目的根目录 - 在 Android Studio 中，选择 View &gt; Tool Windows &gt; Terminal。然后调用 assembleRelease 任务：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gradlew assembleRelease</div></pre></td></tr></table></figure>
+<p>这将在 project_name/module_name/build/outputs/apk/ 中创建一个名为 module_name-unsigned.apk 的 APK。此 APK 此时处于未签署且未对齐的状态，使用您的私钥签署后才能安装。<br>使用 zipalign 对齐未签署的 APK：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zipalign -v -p 4 my-app-unsigned.apk my-app-unsigned-aligned.apk</div></pre></td></tr></table></figure>
+<p>zipalign 可以确保所有未压缩的数据的开头均相对于文件开头部分执行特定的字节对齐，这样可减少应用消耗的 RAM 量。<br>通过 apksigner 使用您的私钥签署 APK：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apksigner sign --ks my-release-key.jks --out my-app-release.apk my-app-unsigned-aligned.apk</div></pre></td></tr></table></figure>
+<p>在本例中，在使用单密钥库文件 my-release-key.jks 中存储的私钥和证书签署 APK 后，将以 my-app-release.apk 的形式输出签署的 APK。<br>apksigner 工具支持其他签署选项，包括使用单独的私钥和证书文件签署 APK 文件和使用多个签署人签署 APK。有关更多详情，请参阅 apksigner 参考。<br>注：要使用 apksigner 工具，您必须已安装 Android SDK Build Tool 的修订版 24.0.3 或更高版本。您可以使用 SDK 管理器更新此软件包。</p>
+<p>验证您的 APK 是否已签署：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apksigner verify my-app-release.apk</div></pre></td></tr></table></figure>
+<h2 id="针对资源优化"><a href="#针对资源优化" class="headerlink" title="针对资源优化"></a>针对资源优化</h2><h2 id="优化库中资源"><a href="#优化库中资源" class="headerlink" title="优化库中资源"></a>优化库中资源</h2><p>通常在大型的项目中，都会引入很多系统库和第三方的库。</p>
+<p>比如低版本兼容库V4、V7、网络请求库、图片处理库等，如果库中包含一些大图，而我们并不会用到，就可以采用1x1的透明图片替代，达到既能编译通过，又可以缩小库体积的目的。</p>
+<p>arsc文件优化 </p>
+<p>在剔除R文件小节中，大家已经看到了.arsc文件内容格式。在整体优化小节中，已经对.arsc进行了比较大的优化，接下来分析一下其它优化方式。</p>
+<p>可以采用混淆来缩减资源文件的名称，以及移除未使用的备用资源等方式来优化.arsc文件。如何移除未使用的备用资源，gradle里面</p>
+<p>增加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line">            resConfigs &quot;zh&quot;, &quot;zh_CN&quot;, &quot;zh_HK&quot;, &quot;zh_MO&quot;, &quot;zh_TW&quot;, &quot;en&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过该方式，爱奇艺客户端包体积可以缩减100多KB。</p>
+<h2 id="避免使用圆角的ImageView"><a href="#避免使用圆角的ImageView" class="headerlink" title="避免使用圆角的ImageView"></a>避免使用圆角的ImageView</h2><p>在实际项目内，经常会用到一些带圆角的图片，或者直接就是圆形的图片。圆形的图片，多数用于一些用户的头像之类的显示效果。</p>
+<p>而在 Android 下，也有大量的类似 XxxImageView 的开源控件，用于操作 Bitmap 以达到一个圆角图片的效果，例如 Github 上比较火的 RoundedImageView。</p>
+<p>它们大部分的原理，是接收到你传递的 Bitmap ，然后再输出一个与原来 Bitmap 等大的新 Bitmap ，在此基础之上，进行圆角的一些处理，这就导致了，实际上会在内存中，多持有一个 Bitmap ，一下一张图片占用的内存就被加倍了。</p>
+<h2 id="针对代码优化-1"><a href="#针对代码优化-1" class="headerlink" title="针对代码优化"></a>针对代码优化</h2><h2 id="剔除R文件"><a href="#剔除R文件" class="headerlink" title="剔除R文件"></a>剔除R文件</h2><p> 随着项目中资源的增加，会发现生成的dex文件里面R.class文件越来越大。我们知道真正使用资源的地方都是以R.xxx.xxx这种方式访问的，而R.xxx.xx是对应于.arsc文件里面的一个常量值。</p>
+<p>具体查看：<a href="https://github.com/meili/ThinRPlugin" target="_blank" rel="external">https://github.com/meili/ThinRPlugin</a></p>
+<p>参考：</p>
+<p><a href="http://www.jianshu.com/p/c0e0cca14162" target="_blank" rel="external">http://www.jianshu.com/p/c0e0cca14162</a></p>
+<p><a href="https://mp.weixin.qq.com/s/xVCJ-MMt1KSO7kpN4CFXBQ" target="_blank" rel="external">https://mp.weixin.qq.com/s/xVCJ-MMt1KSO7kpN4CFXBQ</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:52</p>
+        <p>原始链接： <a class="post-url" href="/2017/03/28/Android-性能优化之布局优化/" title="Android性能优化-布局优化">https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/&title=《Android性能优化-布局优化》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/&title=《Android性能优化-布局优化》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android性能优化-布局优化》 — MrWu Blog&url=https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/03/28/Android-性能优化之布局优化/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#include重用-merge减少布局层级-ViewStub延迟加载"><span class="post-toc-text">include重用 merge减少布局层级 ViewStub延迟加载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1、-lt-include-gt-重用"><span class="post-toc-text">1、< include/>重用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2、-lt-merge-gt-减少视图层级"><span class="post-toc-text">2、< merge/>减少视图层级</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ViewStub延迟加载"><span class="post-toc-text">ViewStub延迟加载</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何优化"><span class="post-toc-text">如何优化?</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#针对代码优化"><span class="post-toc-text">针对代码优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无用代码扫描"><span class="post-toc-text">无用代码扫描</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#针对整体优化"><span class="post-toc-text">针对整体优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#签名方式"><span class="post-toc-text">签名方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#产生上述变化的原因是："><span class="post-toc-text">产生上述变化的原因是：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#针对整体优化-1"><span class="post-toc-text">针对整体优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7ZIP压缩"><span class="post-toc-text">7ZIP压缩</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#针对资源优化"><span class="post-toc-text">针对资源优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化库中资源"><span class="post-toc-text">优化库中资源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#避免使用圆角的ImageView"><span class="post-toc-text">避免使用圆角的ImageView</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#针对代码优化-1"><span class="post-toc-text">针对代码优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#剔除R文件"><span class="post-toc-text">剔除R文件</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/04/28/Android-技巧/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android开发技巧一
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/03/28/依赖注入/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">依赖注入</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>andoridAffinities和Task | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="默认情况下，一个应用程序中的所有activity都有一个affinity–这让它们属于同一个task。然而，每个activity可以通过中的taskAffinity属性设置单独的affinity。不同应用程序中的activity可以共享同一个affinity，同一个应用程序中的不同activity也可以设置成不同的affinity。affinity属性在2种情况下起作用：当启动activity的">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="andoridAffinities和Task">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="默认情况下，一个应用程序中的所有activity都有一个affinity–这让它们属于同一个task。然而，每个activity可以通过中的taskAffinity属性设置单独的affinity。不同应用程序中的activity可以共享同一个affinity，同一个应用程序中的不同activity也可以设置成不同的affinity。affinity属性在2种情况下起作用：当启动activity的">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:46:44.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="andoridAffinities和Task">
+<meta name="twitter:description" content="默认情况下，一个应用程序中的所有activity都有一个affinity–这让它们属于同一个task。然而，每个activity可以通过中的taskAffinity属性设置单独的affinity。不同应用程序中的activity可以共享同一个affinity，同一个应用程序中的不同activity也可以设置成不同的affinity。affinity属性在2种情况下起作用：当启动activity的">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android下Affinities和Task" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      andoridAffinities和Task
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-10-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p> 默认情况下，一个应用程序中的所有activity都有一个affinity–这让它们属于同一个task。然而，每个activity可以通过<activity>中的taskAffinity属性设置单独的affinity。不同应用程序中的activity可以共享同一个affinity，同一个应用程序中的不同activity也可以设置成不同的affinity。affinity属性在2种情况下起作用：当启动activity的Intent对象包含FLAG_ACTIVITY_NEW_TASK标记，或当activity的allowTaskReparenting被设置成true。</activity></p>
+<h2 id="FLAG-ACTIVITY-NEW-TASK标记"><a href="#FLAG-ACTIVITY-NEW-TASK标记" class="headerlink" title="FLAG_ACTIVITY_NEW_TASK标记"></a>FLAG_ACTIVITY_NEW_TASK标记</h2><p>当传递给startActivity()的Intent对象包含FLAG_ACTIVITY_NEW_TASK标记时，系统会为需要启动的activity寻找与当前activity不同的task。如果要启动的activity的affinity属性与当前所有的task的affinity属性都不相同，系统会新建一个带那个affinity属性的task，并将要启动的activity压到新建的task栈中；否则将activity压入那个affinity属性相同的栈中。</p>
+<h2 id="allowTaskReparenting属性"><a href="#allowTaskReparenting属性" class="headerlink" title="allowTaskReparenting属性"></a>allowTaskReparenting属性</h2><p>如果一个activity的allowTaskReparenting属性为true，那么它可以从一个task（TASK1）移到另外一个有相同affinity的task（TASK2）中（TASK2带到前台时）。</p>
+<p>清空栈<br>当用户长时间离开task（当前task被转移到后台）时，系统会清除task中栈底activity外的所有activity。这样，当用户返回到task时，只留下那个task最初始的activity了。</p>
+<p>这是默认的情况，<activity>中有些属性可以改变这种行为。</activity></p>
+<h2 id="alwaysRetainTaskState属性"><a href="#alwaysRetainTaskState属性" class="headerlink" title="alwaysRetainTaskState属性"></a>alwaysRetainTaskState属性</h2><p>如果栈底activity的这个属性被设置为true，刚刚描述的情况就不会发生。task中的所有activity将被长时间保存。</p>
+<p>系统是否始终保持 Activity 所在任务的状态 —“true”表示保持，“false”表示允许系统在特定情况下将任务重置到其初始状态。 默认值为“false”。该属性只对任务的根 Activity 有意义；对于所有其他 Activity，均忽略该属性。<br>正常情况下，当用户从主屏幕重新选择某个任务时，系统会在特定情况下清除该任务（从根 Activity 之上的堆栈中移除所有 Activity）。 系统通常会在用户一段时间（如 30 分钟）内未访问任务时执行此操作。</p>
+<p>不过，如果该属性的值是“true”，则无论用户如何到达任务，将始终返回到最后状态的任务。 例如，在网络浏览器这类存在大量用户不愿失去的状态（如多个打开的标签）的应用中，该属性会很有用。</p>
+<h2 id="clearTaskOnLaunch属性"><a href="#clearTaskOnLaunch属性" class="headerlink" title="clearTaskOnLaunch属性"></a>clearTaskOnLaunch属性</h2><p>如果栈底activity的这个属性被设置为true，一旦用户离开task，则task栈中的activity将被清空到只剩下栈底activity。这种情况刚好与alwaysRetainTaskState相反。即使用户只是短暂地离开，task也会返回到初始状态（只剩下栈底acitivty）。</p>
+<h2 id="finishOnTaskLaunch属性"><a href="#finishOnTaskLaunch属性" class="headerlink" title="finishOnTaskLaunch属性"></a>finishOnTaskLaunch属性</h2><p>这个属性与clearTaskOnLaunch相似，但它只对单独的activity操作，而不是整个task。它可以结束任何activity，包括栈底的activity。当它设置为true时，当前的activity只在当前会话期间作为task的一部分存在，当用户退出activity再返回时，它将不存在。</p>
+<p>另外还有一种方法能将activity强行从stack中移出。如果intent对象包含FLAG_ACTIVITY_CLEAR_TOP标记，当目标task中已存在与接收该intent对象的activity类型相同的activity实例存在时，所有位于该activity对象上面的activity将被清空，这样接收该intent的activity就位于栈顶，可以响应到来的intent对象。如果目标activity的运行模式为standard，则目标activtiy也会被清空。因为当运行模式为standard时，总会创建新的activity对象来接收到来的intent对象。</p>
+<p>FLAG_ACTIVITY_CLEAR_TOP标记常常和FLAG_ACTIVITY_NEW_TASK一起使用。用2个标记可以定位已存在的activity并让它处于可以响应intent的位置。</p>
+<p>参考：<a href="https://developer.android.com/guide/topics/manifest/activity-element.html?hl=zh-cn" target="_blank" rel="external">https://developer.android.com/guide/topics/manifest/activity-element.html?hl=zh-cn</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:46</p>
+        <p>原始链接： <a class="post-url" href="/2017/10/28/Android下Affinities和Task/" title="andoridAffinities和Task">https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/&title=《andoridAffinities和Task》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/&title=《andoridAffinities和Task》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《andoridAffinities和Task》 — MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/Android下Affinities和Task/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#FLAG-ACTIVITY-NEW-TASK标记"><span class="post-toc-text">FLAG_ACTIVITY_NEW_TASK标记</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#allowTaskReparenting属性"><span class="post-toc-text">allowTaskReparenting属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#alwaysRetainTaskState属性"><span class="post-toc-text">alwaysRetainTaskState属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#clearTaskOnLaunch属性"><span class="post-toc-text">clearTaskOnLaunch属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#finishOnTaskLaunch属性"><span class="post-toc-text">finishOnTaskLaunch属性</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/10/28/解决Canvas的drawText绘制文本是不会自动换行的-staticlayout/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          解决canvas的drawtext绘制文本不会换行
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/10/28/Android-关闭导航栏/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android关闭系统导航栏</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

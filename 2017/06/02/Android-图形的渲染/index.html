@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android图像的渲染 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="1、 图形的渲染可分为两种：软件渲染和硬件渲染。软件渲染是靠CPU计算各种坐标并绘制，主要是占用内存；硬件渲染是靠GPU，主要占用显存，一般的3D图形程序（OpenGL、DirectX）都是GPU加速的。 在Android3.0之前，2D绘图API只支持软件渲染模式，从Android3.0开始，2D绘图API开始支持GPU硬件渲染，即View中的Canvas的绘图操作会使用GPU，所以从Andro">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android图像的渲染">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="1、 图形的渲染可分为两种：软件渲染和硬件渲染。软件渲染是靠CPU计算各种坐标并绘制，主要是占用内存；硬件渲染是靠GPU，主要占用显存，一般的3D图形程序（OpenGL、DirectX）都是GPU加速的。 在Android3.0之前，2D绘图API只支持软件渲染模式，从Android3.0开始，2D绘图API开始支持GPU硬件渲染，即View中的Canvas的绘图操作会使用GPU，所以从Andro">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:49:14.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android图像的渲染">
+<meta name="twitter:description" content="1、 图形的渲染可分为两种：软件渲染和硬件渲染。软件渲染是靠CPU计算各种坐标并绘制，主要是占用内存；硬件渲染是靠GPU，主要占用显存，一般的3D图形程序（OpenGL、DirectX）都是GPU加速的。 在Android3.0之前，2D绘图API只支持软件渲染模式，从Android3.0开始，2D绘图API开始支持GPU硬件渲染，即View中的Canvas的绘图操作会使用GPU，所以从Andro">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android-图形的渲染" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android图像的渲染
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-02
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>1、 图形的渲染可分为两种：软件渲染和硬件渲染。软件渲染是靠CPU计算各种坐标并绘制，主要是占用内存；硬件渲染是靠GPU，主要占用显存，一般的3D图形程序（OpenGL、DirectX）都是GPU加速的。</p>
+<p>在Android3.0之前，2D绘图API只支持软件渲染模式，从Android3.0开始，2D绘图API开始支持GPU硬件渲染，即View中的Canvas的绘图操作会使用GPU，所以从Android 3.0（API Level 11）开始，View中就多了一些和硬件相关的方法。如果App的AndroidManifest.xml文件中定义的 targetSdkVersion大于或等于14（android 4.0），那么Android会默认为App启用GPU渲染2D图形，我们也可以自己决定是否使用GPU，见下文。如果开启了GPU硬件加速，那么Android会用OpengGL绘图中常见的Display List技术对OpenGL ES中的绘图命令进行缓存，提高绘图效率与速度</p>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>在AndroidMenifest.xml的中添加如下的属性即可在整个App的所有Activity的View中启用GPU硬件加速渲染2D图形：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;application android:hardwareAccelerated=&quot;true&quot; &gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h2><p>你既可以在Application级别上控制GPU是否启用，也可以在Activity级别对其就进行控制。比如你的App中有多个Activity，你想让大部分Activity启用GPU硬件加速，但有一个Activity你不想启用硬件加速，你可以通过以下的配置实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;application android:hardwareAccelerated=&quot;true&quot;&gt;</div><div class="line">    &lt;activity ... /&gt;</div><div class="line">    &lt;activity android:hardwareAccelerated=&quot;false&quot; /&gt;</div><div class="line">&lt;/application&gt;</div></pre></td></tr></table></figure>
+<h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><p>如果你想要更加细粒度地对GPU的使用进行控制，你可以通过代码对指定的Window启用GPU硬件加速，如下代码所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">getWindow().setFlags(</div><div class="line">    WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,</div><div class="line">    WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);</div></pre></td></tr></table></figure>
+<p>需要注意的是在运行时不能通过代码禁用掉某个Window的硬件加速。</p>
+<h2 id="基于软件的绘制模式"><a href="#基于软件的绘制模式" class="headerlink" title="基于软件的绘制模式"></a>基于软件的绘制模式</h2><p>在软件绘制模式，view是按照下面两个步骤进行绘制的：</p>
+<p>1、无效化View层次结构</p>
+<p>2、绘制View的层次结构</p>
+<p>当应用需要更新它的一部分UI，它会调用view的invalidate方法，无效化消息就会通过各种途径传递到View的层次结构，然后计算屏幕中需要重绘的区域（脏区域），android系统还会对View层次结构中脏区域相交的所有view进行绘制，对于这种绘制模式，有两个不好的地方：</p>
+<p>第一、这个模式在每一次绘制都需要执行大量的代码，比如，如果你的应用对一个button调用invalidate，而这个button坐标在其他view的上方，那么android系统就会重绘这些view，即使他们没有发生改变，仅仅因为它们处于和button相交的区域</p>
+<p>第二、绘制模式会有一些隐藏bug，当android系统重绘那些相交的views的时候，即使你没有调用invalidate，相交区域内的一个被改变过的view可能也会进行重绘，这个时候，你通过其他的view的绘制来给这个view进行重绘，当你不经意间修改你的代码，这个时候可能你已经忘了这一段代码有这个隐藏的bug，修改代码后你发现显示的效果有问题，本该进行重绘的区域没有重绘，你就会怀疑是自己的代码逻辑出现问题了，所以应该尽可能在修改view的数据或状态的时候，对每一个你修改过的自定义View，主动调用他们的invalidate方法。</p>
+<p>PS：当view的属性发生改变的时候，例如TextView上的background color或者text，这个时候android view会自动调用invalidate，进行重绘</p>
+<h2 id="硬件加速绘制模式"><a href="#硬件加速绘制模式" class="headerlink" title="硬件加速绘制模式"></a>硬件加速绘制模式</h2><p>android系统依然使用invalidate和draw函数来请求屏幕刷新渲染界面，但实际上绘制的时候是有区别的，不同于立即执行绘制命令，android系统会先把它们记录在display list上，这个display lists包含view的层次结构的绘制代码。其他的优化是android系统只需要记录和更新display lists，通过调用invalidate函数来标记那些脏view，那些没有被标记为invalidate的view可以简单的进行重绘通过事先记录在display list上的记录。新的绘制模式包含三个步骤：</p>
+<p>1、无效化View的层次结构</p>
+<p>2、记录和更新显示列表</p>
+<p>3、绘制显示列表</p>
+<p>使用这个模式，你不能再依赖脏区域内相交的view来绘制其他的view，为了确保android系统记录这个view的display list，你必须调用invalidate，不调用的话，就会导致一个view看起来跟之前是一样的，即使你已经改变它了。所以这就一次性解决了两个问题，对于View层次结构中不想重绘的View，只要不调用那个View的invalidae即可。</p>
+<p>使用display list对动画效果也有好处，因为设置指定的属性，例如alpha或者rotation，不需要调用目标view的invalidate，因为它会自动完成，这个优化也应用到view的display list。例如，假设有一个LinearLayout在Button上面有一个ListView，那么对于LinearLayout的display list就会像这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DrawDisplayList（ListView）</div><div class="line"></div><div class="line">DrawDisplayList（Button）</div></pre></td></tr></table></figure>
+<p>假设现在你通过调用setAlpha(0.5)来修改ListView的透明度，那么display list就变成这样了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">SaveLayerAlpha（0.5）</div><div class="line"></div><div class="line">DrawDisplayList（ListView）</div><div class="line"></div><div class="line">Restore</div><div class="line"></div><div class="line">DrawDisplayList（Button）</div></pre></td></tr></table></figure></p>
+<p>关于ListView的复杂的绘制代码并没有被执行，系统只是更新了LinearLayout的display list，如果应用没有启用硬件加速，那么listview以及它的父容器LinearLayout的绘制代码都会再次执行。</p>
+<p>参考：<a href="http://blog.csdn.net/iispring/article/details/49835061" target="_blank" rel="external">http://blog.csdn.net/iispring/article/details/49835061</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:49</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/02/Android-图形的渲染/" title="Android图像的渲染">https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/&title=《Android图像的渲染》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/&title=《Android图像的渲染》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android图像的渲染》 — MrWu Blog&url=https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/06/02/Android-图形的渲染/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Application"><span class="post-toc-text">Application</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activity"><span class="post-toc-text">Activity</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Window"><span class="post-toc-text">Window</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基于软件的绘制模式"><span class="post-toc-text">基于软件的绘制模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#硬件加速绘制模式"><span class="post-toc-text">硬件加速绘制模式</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/18/Android-开发技巧二/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android开发技巧二
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/05/18/使用nginx、tomcat搭建静态网站/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">使用nginx，tomcat搭建静态博客网站</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

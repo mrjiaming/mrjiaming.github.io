@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android样式开发 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536solid: 设置形状填充的颜色，只有android:color一个属性android:color 填充的颜色padding: 设置内容与形状边界的内间距，可分别设置左右上下的距离android:left 左内间距android:right 右内间距android:top">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android样式开发">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536solid: 设置形状填充的颜色，只有android:color一个属性android:color 填充的颜色padding: 设置内容与形状边界的内间距，可分别设置左右上下的距离android:left 左内间距android:right 右内间距android:top">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:53:02.104Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android样式开发">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536solid: 设置形状填充的颜色，只有android:color一个属性android:color 填充的颜色padding: 设置内容与形状边界的内间距，可分别设置左右上下的距离android:left 左内间距android:right 右内间距android:top">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android-样式的开发：shape" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android样式开发
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-07-08
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">solid: 设置形状填充的颜色，只有android:color一个属性</div><div class="line"></div><div class="line">android:color 填充的颜色</div><div class="line">padding: 设置内容与形状边界的内间距，可分别设置左右上下的距离</div><div class="line"></div><div class="line">android:left 左内间距</div><div class="line">android:right 右内间距</div><div class="line">android:top 上内间距</div><div class="line">android:bottom 下内间距</div><div class="line">gradient: 设置形状的渐变颜色，可以是线性渐变、辐射渐变、扫描性渐变</div><div class="line"></div><div class="line">android:type 渐变的类型</div><div class="line">linear 线性渐变，默认的渐变类型</div><div class="line">radial 放射渐变，设置该项时，android:gradientRadius也必须设置</div><div class="line">sweep 扫描性渐变</div><div class="line">android:startColor 渐变开始的颜色</div><div class="line">android:endColor 渐变结束的颜色</div><div class="line">android:centerColor 渐变中间的颜色</div><div class="line">android:angle 渐变的角度，线性渐变时才有效，必须是45的倍数，0表示从左到右，90表示从下到上</div><div class="line">android:centerX 渐变中心的相对X坐标，放射渐变时才有效，在0.0到1.0之间，默认为0.5，表示在正中间</div><div class="line">android:centerY 渐变中心的相对X坐标，放射渐变时才有效，在0.0到1.0之间，默认为0.5，表示在正中间</div><div class="line">android:gradientRadius 渐变的半径，只有渐变类型为radial时才使用</div><div class="line">android:useLevel 如果为true，则可在LevelListDrawable中使用</div><div class="line">corners: 设置圆角，只适用于rectangle类型，可分别设置四个角不同半径的圆角，当设置的圆角半径很大时，比如200dp，就可变成弧形边了</div><div class="line"></div><div class="line">android:radius 圆角半径，会被下面每个特定的圆角属性重写</div><div class="line">android:topLeftRadius 左上角的半径</div><div class="line">android:topRightRadius 右上角的半径</div><div class="line">android:bottomLeftRadius 左下角的半径</div><div class="line">android:bottomRightRadius 右下角的半径</div><div class="line">stroke: 设置描边，可描成实线或虚线。</div><div class="line"></div><div class="line">android:color 描边的颜色</div><div class="line">android:width 描边的宽度</div><div class="line">android:dashWidth 设置虚线时的横线长度</div><div class="line">android:dashGap 设置虚线时的横线之间的距离</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"line"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 实际显示的线 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></div><div class="line"><span class="tag">        <span class="attr">android:width</span>=<span class="string">"1dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:color</span>=<span class="string">"#2F90BD"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:dashGap</span>=<span class="string">"2dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:dashWidth</span>=<span class="string">"4dp"</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 形状的高度 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">size</span> <span class="attr">android:height</span>=<span class="string">"4dp"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>画线时，有几点特性必须要知道的：</p>
+<p>只能画水平线，画不了竖线；</p>
+<p>##线的高度是通过stroke的android:width属性设置的；</p>
+<p>##size的android:height属性定义的是整个形状区域的高度；</p>
+<p>##size的height必须大于stroke的width，否则，线无法显示；<br>线在整个形状区域中是居中显示的；<br>线左右两边会留有空白间距，线越粗，空白越大；<br>引用虚线的view需要添加属性android:layerType，值设为”software”，否则显示不了虚线。</p>
+<p>首先，shape根元素有些属性只适用于ring类型，先过目下这些属性吧：</p>
+<p>android:innerRadius 内环的半径<br>android:innerRadiusRatio 浮点型，以环的宽度比率来表示内环的半径，默认为3，表示内环半径为环的宽度除以3，该值会被android:innerRadius覆盖<br>android:thickness 环的厚度<br>android:thicknessRatio 浮点型，以环的宽度比率来表示环的厚度，默认为9，表示环的厚度为环的宽度除以9，该值会被android:thickness覆盖<br>android:useLevel 一般为false，否则可能环形无法显示，只有作为LevelListDrawable使用时才设为true</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:innerRadiusRatio</span>=<span class="string">"3"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:shape</span>=<span class="string">"ring"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:thicknessRatio</span>=<span class="string">"9"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:useLevel</span>=<span class="string">"false"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">gradient</span></span></div><div class="line"><span class="tag">        <span class="attr">android:endColor</span>=<span class="string">"#2F90BD"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:startColor</span>=<span class="string">"#FFFFFF"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:type</span>=<span class="string">"sweep"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">stroke</span></span></div><div class="line"><span class="tag">        <span class="attr">android:width</span>=<span class="string">"1dp"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:color</span>=<span class="string">"@android:color/black"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果想让这个环形旋转起来，变成可用的进度条，则只要在shape外层包多一个rotate元素就可以了。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">rotate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:fromDegrees</span>=<span class="string">"0"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:toDegrees</span>=<span class="string">"360"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span></div><div class="line"><span class="tag"></span></div><div class="line"><span class="tag">     &gt;</span></div><div class="line">   </div><div class="line">    <span class="tag">&lt;<span class="name">shape</span></span></div><div class="line"><span class="tag">        <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:innerRadiusRatio</span>=<span class="string">"3"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:shape</span>=<span class="string">"ring"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:thicknessRatio</span>=<span class="string">"14"</span></span></div><div class="line"><span class="tag">        <span class="attr">android:useLevel</span>=<span class="string">"false"</span></span></div><div class="line"><span class="tag"></span></div><div class="line"><span class="tag">        &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">gradient</span></span></div><div class="line"><span class="tag">            <span class="attr">android:endColor</span>=<span class="string">"#BFBFBF"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:type</span>=<span class="string">"sweep"</span></span></div><div class="line"><span class="tag">            <span class="attr">android:startColor</span>=<span class="string">"#FFFFFF"</span> &gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">gradient</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">rotate</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:53</p>
+        <p>原始链接： <a class="post-url" href="/2017/07/08/Android-样式的开发：shape/" title="Android样式开发">https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/&title=《Android样式开发》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/&title=《Android样式开发》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android样式开发》 — MrWu Blog&url=https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/07/08/Android-样式的开发：shape/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/07/08/Android-图片放置哪个文件夹合适/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android图片放置在哪个文件夹合适
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/28/使用Docker搭建gitlab/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">使用Docker搭建gitlab</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

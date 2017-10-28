@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android应用优化-网络优化 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="网络优化为什么? 现在App几乎都需要联网操作,做好网络优化一方面可以提高体验,另一方面可以减少流量和电量的损耗.另外,无论是对用户还是网络服务提供者,网络同样是一种资源,任何开发者都不应该假设网络资源是无限制的. 如何检测?1、使用Android Studio里的Network Traffic Tools来查看网络请求2、使用Android Studio中的Monitor3、使用Fidder或者">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android应用优化-网络优化">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="网络优化为什么? 现在App几乎都需要联网操作,做好网络优化一方面可以提高体验,另一方面可以减少流量和电量的损耗.另外,无论是对用户还是网络服务提供者,网络同样是一种资源,任何开发者都不应该假设网络资源是无限制的. 如何检测?1、使用Android Studio里的Network Traffic Tools来查看网络请求2、使用Android Studio中的Monitor3、使用Fidder或者">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:47:33.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android应用优化-网络优化">
+<meta name="twitter:description" content="网络优化为什么? 现在App几乎都需要联网操作,做好网络优化一方面可以提高体验,另一方面可以减少流量和电量的损耗.另外,无论是对用户还是网络服务提供者,网络同样是一种资源,任何开发者都不应该假设网络资源是无限制的. 如何检测?1、使用Android Studio里的Network Traffic Tools来查看网络请求2、使用Android Studio中的Monitor3、使用Fidder或者">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android应用优化--网络优化-、内存优化、图片优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android应用优化-网络优化
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-10-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="网络优化"><a href="#网络优化" class="headerlink" title="网络优化"></a>网络优化</h3><p>为什么?</p>
+<p>现在App几乎都需要联网操作,做好网络优化一方面可以提高体验,另一方面可以减少流量和电量的损耗.另外,无论是对用户还是网络服务提供者,网络同样是一种资源,任何开发者都不应该假设网络资源是无限制的.</p>
+<h3 id="如何检测"><a href="#如何检测" class="headerlink" title="如何检测?"></a>如何检测?</h3><p>1、使用Android Studio里的Network Traffic Tools来查看网络请求<br><br>2、使用Android Studio中的Monitor<br><br>3、使用Fidder或者Charles等抓包工具分析网络数据包<br><br>4、如何优化?<br></p>
+<p>有必要的时候务必做好缓存,无论是图片还是普通的数据,使用LruCache和DiskLruCache构建自己的缓存系统,并根据实际场景设计缓存策略<br><br>避免过度的网络同步,合并相关的网络请求<br><br>根据实际场景确定请求策略,避免使用固定的间隔频率来进行网络操作.比如连接WiFi并充电的情况下请求频率可以高,第一次网络请求失败后可以使用双倍的时间间隔来进行下一次<br><br>减少数据传输量,对传输的数据做压缩.如果传输的是图片,需要选择合适的图片格式以及根据显示大小请求合适规格的图片.对于普通数据,可以考虑使用ProtocalBuffers来减小传输数据的大小.<br></p>
+<p>###某些情况下可以采用IP直连,一方面可以减少DNS解析时间,另一方面可以防止域名劫持</p>
+<p>youhua</p>
+<h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><p>为什么?</p>
+<p>资源总是有限的,内存同样也是一种资源.在Android当中,过度的/不恰当占用内存资源,会导致应用频繁被杀死,最终也会影响用户的整体体验.任何一名开发者,都应该将节省内存牢记心中.</p>
+<p>如何检测?</p>
+<p>1、使用LeakCanary<br><br>2、使用MAT分析Java堆<br><br>3、使用Android Device Monitor中的Application Tracker追踪内存分配信息<br><br>4、Android Studio中的Android Monitor,选择其中的Memory<br><br>5、如何优化?<br></p>
+<p>主动的释放内存,在onLowMemory()和onTrimMemory()中适当的释放内存<br></p>
+<p>避免内存泄漏和内存溢出<br></p>
+<p>在使用Bitmap的时候,考虑对其进行压缩,使用缓存或者改变颜色模式,比如android默认的颜色格式是ARGB_8888,在要求不高的情况下可以采用<br>RGB_565,这样每个像素占用的内存就可懂4byte到2byte.</p>
+<p>###减少帧动画的使用,如果需要,通过SurfaceView实现<br></p>
+<p>使用更轻量级的数据结构,比如ArrayMap/SparseArray<br></p>
+<p>合理的使用相关组件,比如Service和Webview,在不需要的时候主动结束其生命周期<br><br><br><br>合理的使用多进程,比如像音乐播放器类,可以分为主进程和播放进程<br></p>
+<p>使用异步队列时考虑有界队列<br></p>
+<p>如果你能明确知道HashMap的大小,那就再初始化时为其制定容量<br></p>
+<p>Android SDK中包含一个“zipalign”的工具，它能够对打包的应用程序进行优化。在你的应用程序上运行zipalign，使得在运行时Android与应用程序间的交互更加有效率。因此，这种方式能够让应用程序和整个系统运行得更快。<br></p>
+<p> 为了能够手动对齐程序包，Android 1.6及以后的SDK的tools/文件夹下都有zipalign工具。你可以使用它来对齐任何版本下的程序包。你必须在签名apk文件后进行，使用以下命令：zipalign -v 4 source.apk destination.apk<br><br>验证对齐：<br><br>以下的命令用于检查程序包是否进行了对齐：zipalign -c -v 4 application.apk</p>
+<h3 id="图片优化"><a href="#图片优化" class="headerlink" title="图片优化"></a>图片优化</h3><p>1 主动释放ImageView的图片资源<br><br>由于我们在实际开发中，很多情况是在xml布局文件中设置ImageView的src或者在代码中调用ImageView.setImageResource/setImageURI/setImageDrawable等方法设置图像，下面代码可以回收这个ImageView所对应的资源：<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">recycleImageViewBitMap</span><span class="params">(ImageView imageView)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (imageView != <span class="keyword">null</span>) &#123;</div><div class="line">        BitmapDrawable bd = (BitmapDrawable) imageView.getDrawable();</div><div class="line">        rceycleBitmapDrawable(bd);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rceycleBitmapDrawable</span><span class="params">(BitmapDrawable bitmapDrawable)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (bitmapDrawable != <span class="keyword">null</span>) &#123;</div><div class="line">        Bitmap bitmap = bitmapDrawable.getBitmap();</div><div class="line">        rceycleBitmap(bitmap);</div><div class="line">    &#125;</div><div class="line">    bitmapDrawable = <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rceycleBitmap</span><span class="params">(Bitmap bitmap)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (bitmap != <span class="keyword">null</span> &amp;&amp; !bitmap.isRecycled()) &#123;</div><div class="line">        bitmap.recycle();</div><div class="line">        bitmap = <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2主动释放ImageView的背景资源<br><br>如果你的ImageView是有Background，那么下面的代码可以释放他：<br><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">recycleBackgroundBitMap</span><span class="params">(ImageView view)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (view != <span class="keyword">null</span>) &#123;</div><div class="line">        BitmapDrawable bd = (BitmapDrawable) view.getBackground();</div><div class="line">        rceycleBitmapDrawable(bd);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">recycleImageViewBitMap</span><span class="params">(ImageView imageView)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (imageView != <span class="keyword">null</span>) &#123;</div><div class="line">        BitmapDrawable bd = (BitmapDrawable) imageView.getDrawable();</div><div class="line">        rceycleBitmapDrawable(bd);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">rceycleBitmapDrawable</span><span class="params">(BitmapDrawable bitmapDrawable)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (bitmapDrawable != <span class="keyword">null</span>) &#123;</div><div class="line">        Bitmap bitmap = bitmapDrawable.getBitmap();</div><div class="line">        rceycleBitmap(bitmap);</div><div class="line">    &#125;</div><div class="line">    bitmapDrawable = <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="使用zipalign优化你的apk"><a href="#使用zipalign优化你的apk" class="headerlink" title="使用zipalign优化你的apk"></a>使用zipalign优化你的apk</h3><p>在编写完所有代码，并通过编译系统生成APK之后，你需要使用zipalign对APK进行重新校准。如果你不做这个步骤，会导致你的APK需要更多的RAM，因为一些类似图片资源的东西不能被mapped。</p>
+<p>Notes::Google Play不接受没有经过zipalign的APK。</p>
+<h3 id="使用组件和多进程的方式"><a href="#使用组件和多进程的方式" class="headerlink" title="使用组件和多进程的方式"></a>使用组件和多进程的方式</h3><p>如果合适的话，有一个更高级的技术可以帮助你的app管理内存使用：通过把你的app组件切分成多个组件，运行在不同的进程中。这个技术必须谨慎使用，大多数app都不应该运行在多个进程中。因为如果使用不当，它会显著增加内存的使用，而不是减少。当你的app需要在后台运行与前台一样的大量的任务的时候，可以考虑使用这个技术。</p>
+<p>一个典型的例子是创建一个可以长时间后台播放的Music Player。如果整个app运行在一个进程中，当后台播放的时候，前台的那些UI资源也没有办法得到释放。类似这样的app可以切分成2个进程：一个用来操作UI，另外一个用来后台的Service.</p>
+<p>你可以通过在manifest文件中声明’android:process’属性来实现某个组件运行在另外一个进程的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;service android:name=&quot;.PlaybackService&quot;         android:process=&quot;:background&quot; /&gt;</div></pre></td></tr></table></figure></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:47</p>
+        <p>原始链接： <a class="post-url" href="/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/" title="Android应用优化-网络优化">https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/&title=《Android应用优化-网络优化》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/&title=《Android应用优化-网络优化》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android应用优化-网络优化》 — MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/Android应用优化--网络优化-、内存优化、图片优化/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#网络优化"><span class="post-toc-text">网络优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何检测"><span class="post-toc-text">如何检测?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内存优化"><span class="post-toc-text">内存优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图片优化"><span class="post-toc-text">图片优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用zipalign优化你的apk"><span class="post-toc-text">使用zipalign优化你的apk</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用组件和多进程的方式"><span class="post-toc-text">使用组件和多进程的方式</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/10/28/Android-关闭导航栏/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android关闭系统导航栏
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/10/28/andorid开发进阶/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">andorid开发进阶</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

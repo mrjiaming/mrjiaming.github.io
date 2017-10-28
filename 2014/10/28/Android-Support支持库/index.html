@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android support支持库的讲解 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="v4 支持库这些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。与其他支持库相比，它们包含的 API 集合最大，包括对应用组件、用户界面功能、辅助功能、数据处理、网络连接以及编程实用工具的支持。 如需了解有关 v4 支持库所提供类和方法的完整详细信息，请参阅 API 参考中的 android.support.v4 软件包。 注：在支持库修订版 24.2.0 之前，存在一个">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android support支持库的讲解">
+<meta property="og:url" content="https://mrjiaming.github.io/2014/10/28/Android-Support支持库/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="v4 支持库这些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。与其他支持库相比，它们包含的 API 集合最大，包括对应用组件、用户界面功能、辅助功能、数据处理、网络连接以及编程实用工具的支持。 如需了解有关 v4 支持库所提供类和方法的完整详细信息，请参阅 API 参考中的 android.support.v4 软件包。 注：在支持库修订版 24.2.0 之前，存在一个">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:58:33.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android support支持库的讲解">
+<meta name="twitter:description" content="v4 支持库这些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。与其他支持库相比，它们包含的 API 集合最大，包括对应用组件、用户界面功能、辅助功能、数据处理、网络连接以及编程实用工具的支持。 如需了解有关 v4 支持库所提供类和方法的完整详细信息，请参阅 API 参考中的 android.support.v4 软件包。 注：在支持库修订版 24.2.0 之前，存在一个">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android-Support支持库" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android support支持库的讲解
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2014-10-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="v4-支持库"><a href="#v4-支持库" class="headerlink" title="v4 支持库"></a>v4 支持库</h2><p>这些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。与其他支持库相比，它们包含的 API 集合最大，包括对应用组件、用户界面功能、辅助功能、数据处理、网络连接以及编程实用工具的支持。</p>
+<p>如需了解有关 v4 支持库所提供类和方法的完整详细信息，请参阅 API 参考中的 android.support.v4 软件包。</p>
+<p>注：在支持库修订版 24.2.0 之前，存在一个 v4 支持库。为了提高效率，此库拆分成多个模块。出于向后兼容的考虑，如果您在 Gradle 脚本中列出了 support-v4，您的 APK 将包含所有的 v4 模块。不过，要减少 APK 大小，我们建议仅列出应用需要的特定模块。</p>
+<h2 id="v4-compat-库"><a href="#v4-compat-库" class="headerlink" title="v4 compat 库"></a>v4 compat 库</h2><p>为众多框架 API 提供兼容性包装器，例如 Context.obtainDrawable() 和 View.performAccessibilityAction()。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-compat:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure>
+<h2 id="v4-core-utils-库"><a href="#v4-core-utils-库" class="headerlink" title="v4 core-utils 库"></a>v4 core-utils 库</h2><p>提供大量实用程序类，例如 AsyncTaskLoader 和 PermissionChecker。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-core-utils:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="v4-core-ui-库"><a href="#v4-core-ui-库" class="headerlink" title="v4 core-ui 库"></a>v4 core-ui 库</h2><p>实现各种 UI 相关组件，例如 ViewPager、NestedScrollView 和 ExploreByTouchHelper。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-core-ui:25.0.0</div></pre></td></tr></table></figure></p>
+<h2 id="v4-media-compat-库"><a href="#v4-media-compat-库" class="headerlink" title="v4 media-compat 库"></a>v4 media-compat 库</h2><p>向后移植部分媒体框架，包括 MediaBrowser 和 MediaSession。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-media-compat:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="v4-fragment-库"><a href="#v4-fragment-库" class="headerlink" title="v4 fragment 库"></a>v4 fragment 库</h2><p>添加对使用片段封装用户界面和功能的支持，从而使应用能够提供可以在大屏幕设备与小屏幕设备之间进行调节的布局。此模块依赖于 compat、core-utils、core-ui 和 media-compat。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-fragment:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="Dalvik-可执行文件分包支持库"><a href="#Dalvik-可执行文件分包支持库" class="headerlink" title="Dalvik 可执行文件分包支持库"></a>Dalvik 可执行文件分包支持库</h2><p>此库可以为使用多个 Dalvik Executable (DEX) 文件开发应用提供支持。引用超过 65536 个方法的应用须使用 Dalvik 可执行文件分包配置。如需了解有关使用 Dalvik 可执行文件分包的详细信息，请参阅使用超过 6.4 万种方法开发应用。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:multidex:<span class="number">1.0</span>.0</div></pre></td></tr></table></figure>
+<h2 id="v7-支持库"><a href="#v7-支持库" class="headerlink" title="v7 支持库"></a>v7 支持库</h2><p>一些库旨在与 Android 2.3（API 级别 9）及更高版本搭配使用。这些库提供了特定的功能集，并且可以单独添加到应用中，与其他库互不影响。</p>
+<p>##　v7 appcompat 库<br>此库添加了对操作栏用户界面设计模式的支持。此库包含对 Material Design 用户界面实现的支持。</p>
+<h2 id="注：此库依赖于-v4-支持库．"><a href="#注：此库依赖于-v4-支持库．" class="headerlink" title="注：此库依赖于 v4 支持库．"></a>注：此库依赖于 v4 支持库．</h2><p>下面是 v7 appcompat 库中包含的一些关键类：</p>
+<ul>
+<li>ActionBar - 提供操作栏用户界面模式的实现。如需了解有关使用操作栏的详细信息，请参阅操作栏开发者指南。<br></li>
+<li>AppCompatActivity - 添加一个应用 Activity 类，此类可作为使用支持库操作栏实现的 Activity 的基础类。<br></li>
+<li>AppCompatDialog - 添加一个对话框类，此类可作为 AppCompat 主题对话框的基础类。<br></li>
+<li>ShareActionProvider - 包含对可以添加到操作栏中的标准化分享操作（例如电子邮件或发帖至社交应用）的支持。<br><br>此库的 Gradle 构建脚本依赖关系标识符如下所示：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:appcompat-v7:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure>
+<p>##　v7 palette 库<br><br>v7 palette 支持库包含 Palette 类，此类让您可以从图像中抽取突出颜色。例如，音乐应用可以使用 Palette 对象从专辑封面抽取主要颜色，然后使用这些颜色创建一个色彩协调的歌曲标题卡。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:palette-v7:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="v7-Preference-支持库"><a href="#v7-Preference-支持库" class="headerlink" title="v7 Preference 支持库"></a>v7 Preference 支持库<br></h2><p>首选项软件包提供的 API 支持添加 preference 对象（例如 CheckBoxPreference 和 ListPreference），方便用户修改 UI 设置。</p>
+<p>v7 Preference 库添加了对接口（例如 Preference.OnPreferenceChangeListener 和 Preference.OnPreferenceClickListener）以及类（例如 CheckBoxPreference 和 ListPreference）的支持。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:preference-v7:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="v7-mediarouter-库"><a href="#v7-mediarouter-库" class="headerlink" title="v7 mediarouter 库"></a>v7 mediarouter 库</h2><p>此库可以提供 MediaRouter、MediaRouteProvider 和支持 Google Cast 的相关媒体类。</p>
+<p>一般而言，利用 v7 mediarouter 库中的 API，您可以控制当前设备到外部屏幕、扬声器和其他目标设备的媒体渠道和流的路由。此库包含的 API 可以用于发布应用特定的媒体路由提供程序、发现和选择目标设备，以及检查媒体状态，等等。如需了解有关 v7 mediarouter 库 API 的详细信息，请参阅 API 参考中的 android.support.v7.media 软件包。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:mediarouter-v7:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<p>支持库 r18 中引入的 v7 mediarouter 库 API 在后续版本的支持库中可能会发生更改。目前，我们建议仅使用与 Google Cast 有关的库。</p>
+<h2 id="注解支持库"><a href="#注解支持库" class="headerlink" title="注解支持库"></a>注解支持库</h2><p>注解软件包提供的 API 支持向应用中添加注解元数据。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:support-annotations:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="设计支持库"><a href="#设计支持库" class="headerlink" title="设计支持库"></a>设计支持库</h2><p>设计软件包提供的 API 支持向应用中添加 Material Design 组件和模式。</p>
+<p>设计支持库添加了对应用开发者依赖的各种 Material Design 组件和模式的支持，例如抽屉式导航栏、浮动操作按钮 (FAB)、快捷信息栏和标签页。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:design:25.0.0</div></pre></td></tr></table></figure></p>
+<h2 id="自定义标签页支持库"><a href="#自定义标签页支持库" class="headerlink" title="自定义标签页支持库"></a>自定义标签页支持库</h2><p>自定义标签页软件包提供的 API 支持向应用中添加自定义标签页并对其进行管理。</p>
+<p>自定义标签页支持库添加了对自定义标签页服务和自定义标签页回调等各种类的支持。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:customtabs:<span class="number">25.0</span>.0</div></pre></td></tr></table></figure></p>
+<h2 id="百分比支持库"><a href="#百分比支持库" class="headerlink" title="百分比支持库"></a>百分比支持库</h2><p>百分比软件包提供的 API 支持向应用中添加基于百分比的尺寸并对其进行管理。</p>
+<p>百分比支持库添加了对 PercentLayoutHelper.PercentLayoutParams 接口和各种类的支持，例如 PercentFrameLayout 和 PercentRelativeLayout。</p>
+<p>此库的 Gradle 构建脚本依赖关系标识符如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">com.android.support:percent:25.0.0</div></pre></td></tr></table></figure></p>
+<h2 id="support-v4-触角太深"><a href="#support-v4-触角太深" class="headerlink" title="support-v4 触角太深"></a>support-v4 触角太深</h2><p>v4 包从 2011 年开始出来，由于 ViewPager、FragmentActivity 等类，v4 被大量其他包引用，早已子孙遍全球，比如 v7 兼容包 appcompat-v7 就依赖 v4。</p>
+<p>我们可以尝试通过 exclude module 可以把 v7 中 v4 去掉，然并卵，v7 依赖 FragmentActivity 这个类，而 FragmentActivity 位于 v4 的 support-fragment 中，所以依赖变成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">compile (&apos;com.android.support:appcompat-v7:25.0.0&apos;) &#123;</div><div class="line">    exclude module: &apos;support-v4&apos;</div><div class="line">&#125;</div><div class="line">compile &apos;com.android.support:support-fragment:25.0.0&apos;</div></pre></td></tr></table></figure>
+<p>上面介绍过现在 com.android.support:support-fragment 与 com.android.support:support-v4 已经几乎无异，所以对于依赖 v7 的 App 来说这次的 v4 拆分不能带来任何依赖包体积的精简。</p>
+<p>初步看来 data-binding 也依赖与 support-v4。</p>
+<p>参考资料：<br></p>
+<ul>
+<li><a href="https://developer.android.com/topic/libraries/support-library/features.html?hl=zh-cn#v7" target="_blank" rel="external">https://developer.android.com/topic/libraries/support-library/features.html?hl=zh-cn#v7</a> <br></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&amp;mid=2654472617&amp;idx=1&amp;sn=f8a61e2232c40329d83b05e94d5a7159&amp;scene=4#wechat_redirect" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&amp;mid=2654472617&amp;idx=1&amp;sn=f8a61e2232c40329d83b05e94d5a7159&amp;scene=4#wechat_redirect</a></li>
+</ul>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:58</p>
+        <p>原始链接： <a class="post-url" href="/2014/10/28/Android-Support支持库/" title="Android support支持库的讲解">https://mrjiaming.github.io/2014/10/28/Android-Support支持库/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2014/10/28/Android-Support支持库/&title=《Android support支持库的讲解》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2014/10/28/Android-Support支持库/&title=《Android support支持库的讲解》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2014/10/28/Android-Support支持库/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android support支持库的讲解》 — MrWu Blog&url=https://mrjiaming.github.io/2014/10/28/Android-Support支持库/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2014/10/28/Android-Support支持库/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2014/10/28/Android-Support支持库/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v4-支持库"><span class="post-toc-text">v4 支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v4-compat-库"><span class="post-toc-text">v4 compat 库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v4-core-utils-库"><span class="post-toc-text">v4 core-utils 库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v4-core-ui-库"><span class="post-toc-text">v4 core-ui 库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v4-media-compat-库"><span class="post-toc-text">v4 media-compat 库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v4-fragment-库"><span class="post-toc-text">v4 fragment 库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dalvik-可执行文件分包支持库"><span class="post-toc-text">Dalvik 可执行文件分包支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v7-支持库"><span class="post-toc-text">v7 支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注：此库依赖于-v4-支持库．"><span class="post-toc-text">注：此库依赖于 v4 支持库．</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v7-Preference-支持库"><span class="post-toc-text">v7 Preference 支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#v7-mediarouter-库"><span class="post-toc-text">v7 mediarouter 库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注解支持库"><span class="post-toc-text">注解支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计支持库"><span class="post-toc-text">设计支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自定义标签页支持库"><span class="post-toc-text">自定义标签页支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#百分比支持库"><span class="post-toc-text">百分比支持库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#support-v4-触角太深"><span class="post-toc-text">support-v4 触角太深</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2015/03/28/Android-Layout属性的讲解/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android layout属性的讲解
+        
+      </span>
+    </a>
+  
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

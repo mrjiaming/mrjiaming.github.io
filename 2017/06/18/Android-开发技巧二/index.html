@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android开发技巧二 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。android:layout_gravity是设置控件相对父控件的位置android:gravity是设置控件内部的内容的位置，如button的text的位置设置就使用android:gravity View类的post和postDelayed方法稍微有点经验的安卓开发人员应该都知道View类的p">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发技巧二">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。android:layout_gravity是设置控件相对父控件的位置android:gravity是设置控件内部的内容的位置，如button的text的位置设置就使用android:gravity View类的post和postDelayed方法稍微有点经验的安卓开发人员应该都知道View类的p">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:51:09.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发技巧二">
+<meta name="twitter:description" content="能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。android:layout_gravity是设置控件相对父控件的位置android:gravity是设置控件内部的内容的位置，如button的text的位置设置就使用android:gravity View类的post和postDelayed方法稍微有点经验的安卓开发人员应该都知道View类的p">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Android-开发技巧二" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android开发技巧二
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-06-18
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="能用简单的布局就用简单的，特别是FrameLayout，它的layout-gravity属性非常好用。"><a href="#能用简单的布局就用简单的，特别是FrameLayout，它的layout-gravity属性非常好用。" class="headerlink" title="能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。"></a>能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。</h2><p>android:layout_gravity是设置控件相对父控件的位置<br>android:gravity是设置控件内部的内容的位置，如button的text的位置设置就使用android:gravity</p>
+<h2 id="View类的post和postDelayed方法"><a href="#View类的post和postDelayed方法" class="headerlink" title="View类的post和postDelayed方法"></a>View类的post和postDelayed方法</h2><p>稍微有点经验的安卓开发人员应该都知道View类的post和postDelayed方法。我们知道调用这个方法可以保证在UI线程中进行需要的操作，方便地进行异步通信。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">post</span><span class="params">(Runnable action)</span> </span>&#123;    </div><div class="line">  <span class="keyword">final</span> AttachInfo attachInfo = mAttachInfo;</div><div class="line">  <span class="keyword">if</span> (attachInfo != <span class="keyword">null</span>) &#123;       </div><div class="line">  <span class="keyword">return</span> attachInfo.mHandler.post(action);</div><div class="line">  &#125;    </div><div class="line"><span class="comment">// Assume that post will succeed later       </span></div><div class="line">  ViewRootImpl.getRunQueue().post(action); </div><div class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>意思是将任务添加到消息队列中，保证在UI线程执行。从本质上说，它还是依赖于以Handler、Looper、MessageQueue、Message为基础的异步消息处理机制。相对于新建Handler进行处理更加便捷。下面举一个常用的例子，比如在onCreate方法中获取某个view的宽高,而直接View#getWidth获取到的值是0。要知道View显示到界面上需要经历onMeasure、onLayout和onDraw三个过程，而View的宽高是在onLayout阶段才能最终确定的，而在Activity#onCreate中并不能保证View已经执行到了onLayout方法，也就是说Activity的声明周期与View的绘制流程并不是一一绑定。那为什么调用post方法就能起作用呢？首先MessageQueue是按顺序处理消息的，而在setContentView()后队列中会包含一条询问是否完成布局的消息，而我们的任务通过View#post方法被添加到队列尾部，保证了在layout结束以后才执行。</p>
+<h2 id="Activity-onUserLeaveHint"><a href="#Activity-onUserLeaveHint" class="headerlink" title="Activity onUserLeaveHint()"></a>Activity onUserLeaveHint()</h2><p>用户手动离开当前activity，会调用该方法，比如用户主动切换任务，短按home进入桌面等。系统自动切换activity不会调用此方法，如来电，灭屏等。</p>
+<p>activity无论分发按键事件、触摸事件或者轨迹球事件都会调用Activity#onUserInteraction()。<br> </p>
+<p>如果你想知道用户用某种方式和你正在运行的activity交互，可以重写Activity#onUserInteraction()。 <br></p>
+<p>所有调用Activity#onUserLeaveHint()的回调都会首先回调　Activity#onUserInteraction()。 <br></p>
+<p>Fragment在onAttach方法中接收回调：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAttach</span><span class="params">(Activity activity)</span> </span>&#123;</div><div class="line">       <span class="keyword">super</span>.onAttach(activity);</div><div class="line">       <span class="keyword">try</span> &#123;</div><div class="line">           mPageSelectedListener = (PageSelectedListener) activity;</div><div class="line">           mMenuBtnOnclickListener = (MenuBtnOnClickListener) activity;</div><div class="line">           mCommitBtnOnClickListener = (CommitBtnOnClickListener) activity;</div><div class="line">       &#125; <span class="keyword">catch</span> (ClassCastException e) &#123;</div><div class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> ClassCastException(activity.toString() + <span class="string">"must implements listener"</span>);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="finish-跟System-exit-0-的区别"><a href="#finish-跟System-exit-0-的区别" class="headerlink" title="finish()跟System.exit(0)的区别"></a>finish()跟System.exit(0)的区别</h2><p>首先一个Activity是有生命周期的，onCreate,onStart,onResume,onPause,onStop,onDestroy…</p>
+<p>finish是Activity的类，仅仅针对Activity，当调用finish()时，只是将活动推向后台，并没有立即释放内存，活动的资源并没有被清理；当调用System.exit(0)时，杀死了整个进程，这时候活动所占的资源也会被释放。</p>
+<p>＃＃　requestCode 小于0<br>两个activity传递数据和返回数据时，请求方的onActivityResult始终无响应，通过debug调试模式也没见调用该方法。查看了各种配置和程序代码，均未发现有错误之处。阅读API才发现requestCode &gt;= 0才起作用。有时使用Activity.RESULT_OK，一样不回调，也是因为.RESULT_OK = -1。</p>
+<p>源码的startActivityForResult(Intent intent,int requestCode)的requestCode说明是 ： If &gt;= 0, this code will be returned in onActivityResult() when the activity exits.</p>
+<p>重要的是这一句：如果用负值的requestCode和调用startActivity是一样的，所以代码不走startActivityForResult而是startActivity</p>
+<p>Using a negative requestCode is the same as calling </p>
+<pre><code>* {@link #startActivity} (the activity is not launched as a sub-activity).
+</code></pre><p><a href="https://developer.android.google.cn/studio/releases/gradle-plugin.html" target="_blank" rel="external">Gradle的Android插件version和Gradle的verion对应关系问题。</a></p>
+<p>参考：<a href="http://www.jianshu.com/p/b1d5e31e2011#" target="_blank" rel="external">http://www.jianshu.com/p/b1d5e31e2011#</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:51</p>
+        <p>原始链接： <a class="post-url" href="/2017/06/18/Android-开发技巧二/" title="Android开发技巧二">https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/&title=《Android开发技巧二》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/&title=《Android开发技巧二》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android开发技巧二》 — MrWu Blog&url=https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/06/18/Android-开发技巧二/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#能用简单的布局就用简单的，特别是FrameLayout，它的layout-gravity属性非常好用。"><span class="post-toc-text">能用简单的布局就用简单的，特别是FrameLayout，它的layout_gravity属性非常好用。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#View类的post和postDelayed方法"><span class="post-toc-text">View类的post和postDelayed方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Activity-onUserLeaveHint"><span class="post-toc-text">Activity onUserLeaveHint()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#finish-跟System-exit-0-的区别"><span class="post-toc-text">finish()跟System.exit(0)的区别</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/06/20/使用GitHub-Pages来Hexo一个独立博客/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          使用github pages来搭建一个博客
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/06/02/Android-图形的渲染/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android图像的渲染</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="首先了解一下工作区与暂存区的关系图 git reset revert 回退回滚取消提交返回上一版本总有一天你会遇到下面的问题.(1)改完代码匆忙提交,上线发现有问题,怎么办? 赶紧回滚. (2)改完代码测试也没有问题,但是上线发现你的修改影响了之前运行正常的代码报错,必须回滚. 这些开发中很常见的问题,所以git的取消提交,回退甚至返回上一版本都是特别重要的. 大致分为下面2种情况: 1.没有pu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MrWu Blog">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="首先了解一下工作区与暂存区的关系图 git reset revert 回退回滚取消提交返回上一版本总有一天你会遇到下面的问题.(1)改完代码匆忙提交,上线发现有问题,怎么办? 赶紧回滚. (2)改完代码测试也没有问题,但是上线发现你的修改影响了之前运行正常的代码报错,必须回滚. 这些开发中很常见的问题,所以git的取消提交,回退甚至返回上一版本都是特别重要的. 大致分为下面2种情况: 1.没有pu">
+<meta property="og:locale" content="Java">
+<meta property="og:image" content="https://github.com/AndroidPreView/AndroidNote/blob/masterX/blog/blogpicture/git%20stage.jpeg">
+<meta property="og:updated_time" content="2017-10-28T09:31:23.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MrWu Blog">
+<meta name="twitter:description" content="首先了解一下工作区与暂存区的关系图 git reset revert 回退回滚取消提交返回上一版本总有一天你会遇到下面的问题.(1)改完代码匆忙提交,上线发现有问题,怎么办? 赶紧回滚. (2)改完代码测试也没有问题,但是上线发现你的修改影响了之前运行正常的代码报错,必须回滚. 这些开发中很常见的问题,所以git的取消提交,回退甚至返回上一版本都是特别重要的. 大致分为下面2种情况: 1.没有pu">
+<meta name="twitter:image" content="https://github.com/AndroidPreView/AndroidNote/blob/masterX/blog/blogpicture/git%20stage.jpeg">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-git-命令详细讲解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="首先了解一下工作区与暂存区的关系图"><a href="#首先了解一下工作区与暂存区的关系图" class="headerlink" title="首先了解一下工作区与暂存区的关系图"></a>首先了解一下工作区与暂存区的关系图</h2><p><img src="https://github.com/AndroidPreView/AndroidNote/blob/masterX/blog/blogpicture/git%20stage.jpeg" alt=""></p>
+<h2 id="git-reset-revert-回退回滚取消提交返回上一版本"><a href="#git-reset-revert-回退回滚取消提交返回上一版本" class="headerlink" title="git reset revert 回退回滚取消提交返回上一版本"></a>git reset revert 回退回滚取消提交返回上一版本</h2><h2 id="总有一天你会遇到下面的问题"><a href="#总有一天你会遇到下面的问题" class="headerlink" title="总有一天你会遇到下面的问题."></a>总有一天你会遇到下面的问题.</h2><p>(1)改完代码匆忙提交,上线发现有问题,怎么办? 赶紧回滚.</p>
+<p>(2)改完代码测试也没有问题,但是上线发现你的修改影响了之前运行正常的代码报错,必须回滚.</p>
+<p>这些开发中很常见的问题,所以git的取消提交,回退甚至返回上一版本都是特别重要的.</p>
+<p>大致分为下面2种情况:</p>
+<h2 id="1-没有push"><a href="#1-没有push" class="headerlink" title="1.没有push"></a>1.没有push</h2><p>这种情况发生在你的本地代码仓库,可能你add ,commit 以后发现代码有点问题,准备取消提交,用到下面命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">reset</div><div class="line">git reset [--soft | --mixed | --hard</div><div class="line"></div><div class="line">git reset -soft :取消了commit  </div><div class="line">git reset -mixed（默认） :取消了commit ，取消了add</div><div class="line">git reset -hard :取消了commit ，取消了add，取消源文件修改</div></pre></td></tr></table></figure>
+<p>上面常见三种类型</p>
+<p>##–mixed</p>
+<p>会保留源码,只是将git commit和index 信息回退到了某个版本.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset 默认是 --mixed 模式 </div><div class="line">git reset --mixed  等价于  git reset</div></pre></td></tr></table></figure>
+<h2 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h2><p>保留源码,只回退到commit 信息到某个版本.不涉及index的回退,如果还需要提交,直接commit即可.</p>
+<h2 id="–hard"><a href="#–hard" class="headerlink" title="–hard"></a>–hard</h2><p>源码也会回退到某个版本,commit和index 都回回退到某个版本.(注意,这种方式是改变本地代码仓库源码)</p>
+<p>当然有人在push代码以后,也使用 reset –hard <commit...> 回退代码到某个版本之前,但是这样会有一个问题,你线上的代码没有变,线上commit,index都没有变,当你把本地代码修改完提交的时候你会发现权是冲突…..</commit...></p>
+<p>所以,这种情况你要使用下面的方式</p>
+<h2 id="2-已经push"><a href="#2-已经push" class="headerlink" title="2.已经push"></a>2.已经push</h2><p>对于已经把代码push到线上仓库,你回退本地代码其实也想同时回退线上代码,回滚到某个指定的版本,线上,线下代码保持一致.你要用到下面的命令</p>
+<p>revert</p>
+<p>git revert用于反转提交,执行evert命令时要求工作树必须是干净的.</p>
+<p>git revert用一个新提交来消除一个历史提交所做的任何修改.</p>
+<p>revert 之后你的本地代码会回滚到指定的历史版本,这时你再 git push 既可以把线上的代码更新.(这里不会像reset造成冲突的问题)</p>
+<p>revert 使用,需要先找到你想回滚版本唯一的commit标识代码,可以用 git log 或者在adgit搭建的web环境历史提交记录里查看.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert c011eb3c20ba6fb38cc94fe5a8dda366a3990c61</div></pre></td></tr></table></figure>
+<p>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit</p>
+<p>看似达到的效果是一样的,其实完全不同.</p>
+<p>第一:</p>
+<p>上面我们说的如果你已经push到线上代码库, reset 删除指定commit以后,你git push可能导致一大堆冲突.但是revert 并不会.</p>
+<p>第二:</p>
+<p>如果在日后现有分支和历史分支需要合并的时候,reset 恢复部分的代码依然会出现在历史分支里.但是revert 方向提交的commit 并不会出现在历史分支里.</p>
+<p>第三:</p>
+<p>reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的 HEAD 是一直向前的.</p>
+<h2 id="总结-git-revert是撤销每次提交，git-reset是撤销每次的操作。"><a href="#总结-git-revert是撤销每次提交，git-reset是撤销每次的操作。" class="headerlink" title="总结:git revert是撤销每次提交，git reset是撤销每次的操作。"></a>总结:git revert是撤销每次提交，git reset是撤销每次的操作。</h2><h2 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h2><p>rebase 是在分支之间合并工作的第二种方法。rebase 就是取出一系列的提交记录，“复制”它们，然后把它们放在别的地方。</p>
+<p><strong>rebasing 的优势是可以创造更线性的提交历史。</strong></p>
+<p>解析：git rebase [branch]操作也是用来合并分支，但是合并时并不产生新的提交记录，而是复制那个分支下的所有提交记录加入到当前的分支下面，同样地，该操作不改变当前分支。</p>
+<p>解析：git merge [branch]操作是将指定的分支合并到当前的分支，该操作会创建一个新的提交记录，但是不会改变当前分支。</p>
+<p>学习git最好的方式就是动手实践，逐步认识每一个命令的含义，不断使用git log –graph命令观察git flow的变化，知行而一。</p>
+<p>推荐一个使用动画的效果演示git工作的流程一个网站，强烈推荐</p>
+<p><a href="https://learngitbranching.js.org/?demo" target="_blank" rel="external">https://learngitbranching.js.org/?demo</a></p>
+<p>参考：<a href="http://yijiebuyi.com/blog/8f985d539566d0bf3b804df6be4e0c90.html" target="_blank" rel="external">http://yijiebuyi.com/blog/8f985d539566d0bf3b804df6be4e0c90.html</a></p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:31</p>
+        <p>原始链接： <a class="post-url" href="/2017/10/28/git-命令详细讲解/" title="">https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/&title=MrWu Blog&pic=https://mrjiaming.github.ioimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/&title=MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/git-命令详细讲解/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#首先了解一下工作区与暂存区的关系图"><span class="post-toc-text">首先了解一下工作区与暂存区的关系图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-reset-revert-回退回滚取消提交返回上一版本"><span class="post-toc-text">git reset revert 回退回滚取消提交返回上一版本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总有一天你会遇到下面的问题"><span class="post-toc-text">总有一天你会遇到下面的问题.</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-没有push"><span class="post-toc-text">1.没有push</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#–soft"><span class="post-toc-text">–soft</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#–hard"><span class="post-toc-text">–hard</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-已经push"><span class="post-toc-text">2.已经push</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结-git-revert是撤销每次提交，git-reset是撤销每次的操作。"><span class="post-toc-text">总结:git revert是撤销每次提交，git reset是撤销每次的操作。</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#git-rebase"><span class="post-toc-text">git rebase</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/10/28/相机开发过程遇到的坑/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          (no title)
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/10/28/px-与-dp换算公式？/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title"></span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

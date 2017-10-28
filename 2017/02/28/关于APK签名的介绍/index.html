@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于apk签名的介绍 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="从您的构建文件中移除签署信息在您创建签署配置时，Android Studio 会以纯文本形式将您的签署信息添加到模块的 build.gradle 文件中。如果您是团队协作开发或者将您的代码开源，那么您应当将此敏感信息从构建文件中移出，以免被其他人轻易获取。为此，您应创建一个单独的属性文件来存储安全信息并按以下步骤操作，在您的构建文件中引用该文件： 创建一个签署配置，并将其分配至一个或多个构建类型。">
+<meta name="keywords" content="Andorid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于apk签名的介绍">
+<meta property="og:url" content="https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="从您的构建文件中移除签署信息在您创建签署配置时，Android Studio 会以纯文本形式将您的签署信息添加到模块的 build.gradle 文件中。如果您是团队协作开发或者将您的代码开源，那么您应当将此敏感信息从构建文件中移出，以免被其他人轻易获取。为此，您应创建一个单独的属性文件来存储安全信息并按以下步骤操作，在您的构建文件中引用该文件： 创建一个签署配置，并将其分配至一个或多个构建类型。">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T09:40:33.282Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于apk签名的介绍">
+<meta name="twitter:description" content="从您的构建文件中移除签署信息在您创建签署配置时，Android Studio 会以纯文本形式将您的签署信息添加到模块的 build.gradle 文件中。如果您是团队协作开发或者将您的代码开源，那么您应当将此敏感信息从构建文件中移出，以免被其他人轻易获取。为此，您应创建一个单独的属性文件来存储安全信息并按以下步骤操作，在您的构建文件中引用该文件： 创建一个签署配置，并将其分配至一个或多个构建类型。">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-关于APK签名的介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      关于apk签名的介绍
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-02-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="从您的构建文件中移除签署信息"><a href="#从您的构建文件中移除签署信息" class="headerlink" title="从您的构建文件中移除签署信息"></a>从您的构建文件中移除签署信息</h2><p>在您创建签署配置时，Android Studio 会以纯文本形式将您的签署信息添加到模块的 build.gradle 文件中。如果您是团队协作开发或者将您的代码开源，那么您应当将此敏感信息从构建文件中移出，以免被其他人轻易获取。为此，您应创建一个单独的属性文件来存储安全信息并按以下步骤操作，在您的构建文件中引用该文件：</p>
+<p>创建一个签署配置，并将其分配至一个或多个构建类型。这些说明假设您已经按照上面配置构建流程以自动签署您的 APK 部分所述，为发布构建类型配置了一个签署配置。<br><br>在项目的根目录下创建一个名称为 keystore.properties 的文件。此文件应当包含您的签署信息，如下所示：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">storePassword=myStorePassword</div><div class="line">keyPassword=mykeyPassword</div><div class="line">keyAlias=myKeyAlias</div><div class="line">storeFile=myStoreFileLocation</div></pre></td></tr></table></figure></p>
+<p>在模块的 build.gradle 文件中，于 android {} 块的前面添加用于加载 keystore.properties 文件的代码。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// Create a variable called keystorePropertiesFile, and initialize it to your</div><div class="line">// keystore.properties file, in the rootProject folder.</div><div class="line">def keystorePropertiesFile = rootProject.file("keystore.properties")</div><div class="line"></div><div class="line">// Initialize a new Properties() object called keystoreProperties.</div><div class="line">def keystoreProperties = new Properties()</div><div class="line"></div><div class="line">// Load your keystore.properties file into the keystoreProperties object.</div><div class="line">keystoreProperties.load(new FileInputStream(keystorePropertiesFile))</div><div class="line"></div><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注：您可以选择将 keystore.properties 文件存储在其他位置（例如，存储在模块文件夹中而不是项目的根文件夹中，或者如果您使用连续集成工具，也可以存储在构建服务器上）。在这种情况下，您应当修改上面的代码，以便使用实际 keystore.properties 文件的位置正确初始化 keystorePropertiesFile。</p>
+<p>您可以使用语法 keystoreProperties[‘属性名称’] 引用存储在 keystoreProperties 中的属性。修改模块 build.gradle 文件的 signingConfigs 块，以便使用此语法引用存储在 keystoreProperties 中的签署信息。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    signingConfigs &#123;</div><div class="line">        config &#123;</div><div class="line">            keyAlias keystoreProperties['keyAlias']</div><div class="line">            keyPassword keystoreProperties['keyPassword']</div><div class="line">            storeFile file(keystoreProperties['storeFile'])</div><div class="line">            storePassword keystoreProperties['storePassword']</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>打开 Build Variants 工具窗口并确保已选择发布构建类型。<br><br>点击 Build &gt; Build APK 以构建您的发布构建，并确认 Android Studio 已在模块的 build/outputs/apk/ 目录中创建一个签署的 APK。<br>由于您的构建文件不再包含敏感信息，您现在可以将其包含在源控制中或者上传到共享的代码库。务必保证 keystore.properties 文件的安全。您可能需要将其从您的源控制系统中移除。</p>
+<p>1、什么是数字签名</p>
+<p>数字签名就是为你的程序打上一种标记，来作为你自己的标识，当别人看到签名的时候会知道它是与你相关的。</p>
+<p>2、为什么要数字签名</p>
+<p>最简单直接的回答：系统要求的。</p>
+<p>Android系统要求每一个Android应用程序必须要经过数字签名才能</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 17:40</p>
+        <p>原始链接： <a class="post-url" href="/2017/02/28/关于APK签名的介绍/" title="关于apk签名的介绍">https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/&title=《关于apk签名的介绍》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/&title=《关于apk签名的介绍》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关于apk签名的介绍》 — MrWu Blog&url=https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/02/28/关于APK签名的介绍/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从您的构建文件中移除签署信息"><span class="post-toc-text">从您的构建文件中移除签署信息</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/03/18/Android-proguard混淆的一些理解/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android proguard混淆的一些理解
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2017/01/28/Android-开发：开始一个项目前，做好哪些准备可以事半功倍？/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android开始一个项目前，首先做什么？</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>

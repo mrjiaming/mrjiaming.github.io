@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Digitalocean 搭建ss的方法 | MrWu Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MrWu Blog" />
+  
+  <meta name="description" content="安装Shadowsocks和Supervisor安装命令 12345# yum -y install epel-release# yum update# yum -y install python-setuptools supervisor# easy_install pip# pip install shadowsocks 配置Shadowsocks执行一下命令1# vi /etc/shadow">
+<meta name="keywords" content="Shadowsocks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Digitalocean 搭建ss的方法">
+<meta property="og:url" content="https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/index.html">
+<meta property="og:site_name" content="MrWu Blog">
+<meta property="og:description" content="安装Shadowsocks和Supervisor安装命令 12345# yum -y install epel-release# yum update# yum -y install python-setuptools supervisor# easy_install pip# pip install shadowsocks 配置Shadowsocks执行一下命令1# vi /etc/shadow">
+<meta property="og:locale" content="Java">
+<meta property="og:updated_time" content="2017-10-28T10:00:23.492Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Digitalocean 搭建ss的方法">
+<meta name="twitter:description" content="安装Shadowsocks和Supervisor安装命令 12345# yum -y install epel-release# yum update# yum -y install python-setuptools supervisor# easy_install pip# pip install shadowsocks 配置Shadowsocks执行一下命令1# vi /etc/shadow">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MrWu Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MrWu Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 Android 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MrWu" target="_blank" href="https://mrjiaming.github.io/">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/androidpreview">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" ">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" ">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-DigitalOcean--搭建Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Digitalocean 搭建ss的方法
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Shadowsocks/">Shadowsocks</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2016-10-28
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h2 id="安装Shadowsocks和Supervisor"><a href="#安装Shadowsocks和Supervisor" class="headerlink" title="安装Shadowsocks和Supervisor"></a>安装Shadowsocks和Supervisor</h2><p>安装命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># yum -y install epel-release</div><div class="line"># yum update</div><div class="line"># yum -y install python-setuptools supervisor</div><div class="line"># easy_install pip</div><div class="line"># pip install shadowsocks</div></pre></td></tr></table></figure>
+<h2 id="配置Shadowsocks"><a href="#配置Shadowsocks" class="headerlink" title="配置Shadowsocks"></a>配置Shadowsocks</h2><p>执行一下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># vi /etc/shadowsocks.json</div></pre></td></tr></table></figure></p>
+<p>复制一下命令到 /etc/shadowsocks.json中（请自行修改server-portserver-port和password，其他参数不用修改）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">     &quot;server&quot;: &quot;0.0.0.0&quot;,</div><div class="line">     &quot;server_port&quot;: 5080,</div><div class="line">     &quot;local_address&quot;: &quot;127.0.0.1&quot;,</div><div class="line">     &quot;local_port&quot;: 1080,</div><div class="line">     &quot;password&quot;: &quot;123456&quot;,</div><div class="line">     &quot;timeout&quot;: 500,</div><div class="line">     &quot;method&quot;: &quot;rc4-md5&quot;,</div><div class="line">     &quot;fast_open&quot;: true</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>配置文件说明</p>
+<ul>
+<li>server：服务监听的地址，服务端可填写的0.0.0.0</li>
+<li>server-port:服务器端口</li>
+<li>local-port：本地端的端口</li>
+<li>local-address：本地端监听的地址</li>
+<li>password：用于加密的密码</li>
+<li>timeout：超时时间</li>
+<li>method：加密方式，建议rc4-md5，因为这个速度快</li>
+<li>fast-open：</li>
+</ul>
+<p>##配置：Supervisor</p>
+<p>配置Supervisor是为了方便管理Supervisor进程<br>执行如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># vi /etc/supervisord.conf</div></pre></td></tr></table></figure></p>
+<p> 用方向键将光标调整至文件部的空行处，然后一次性复制一下的内容到下面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[program:shadowsocks]</div><div class="line">command=ssserver -c /etc/shadowsocks.json</div><div class="line">autostart=true</div><div class="line">autorestart=true</div><div class="line">user=root</div><div class="line">``` </div><div class="line"></div><div class="line">添加服务冰启动supervisord</div></pre></td></tr></table></figure></p>
+<h1 id="systemctl-enable-supervisord"><a href="#systemctl-enable-supervisord" class="headerlink" title="systemctl enable supervisord"></a>systemctl enable supervisord</h1><h1 id="systemctl-start-supervisord"><a href="#systemctl-start-supervisord" class="headerlink" title="systemctl start supervisord"></a>systemctl start supervisord</h1><h1 id="supervisorctl-reload"><a href="#supervisorctl-reload" class="headerlink" title="supervisorctl reload"></a>supervisorctl reload</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">重启：</div></pre></td></tr></table></figure>
+<p>reboot<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">到这一步done：     </div><div class="line"></div><div class="line">远程登陆VPS</div></pre></td></tr></table></figure></p>
+<p>ssh root@ip<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## SwitchyOmega的使用</div><div class="line"></div><div class="line">![](https://github.com/AndroidPreView/AndroidNote/blob/master/blog/blogpicture/auto-switch.png)</div><div class="line"></div><div class="line">![](https://github.com/AndroidPreView/AndroidNote/blob/master/blog/blogpicture/ss.png)</div><div class="line"></div><div class="line">之后添加：https://github.com/gfwlist/gfwlist</div><div class="line"></div><div class="line">## shadowsocks 多用户配置失败原因及解决方法</div><div class="line"></div><div class="line"> 前几天，自己搭建了一个vps，通过shadowsocks的方式，可以实现科学上网。基本的原理就是，通过shadowsocks的客户端，修改代理服务器的地址。将代理服务器的ip地址设置到远程vps的地址。并通过设置端口号，来实现vpn的功能。</div><div class="line"></div><div class="line">这里主要讲一下shadowsock配置多用户的过程和失败的原因。</div><div class="line"></div><div class="line"> 网上很多用户vps安装的linux是debian或ubuntu的，所以可以通过修改/etc/shadowsock.json文件，通过添加端口号以及密码的方法，进行多用户配置。这种配置方案，网上可以搜出很多。我这里也粘贴一下具体修改json文件的方法.示例如下：</div></pre></td></tr></table></figure></p>
+<p>{<br> “server”:”my_server_ip”，<br> “local_address”: “127.0.0.1”,<br> “local_port”:1080,<br>  “port_password”: {<br>     “8381”: “foobar1”,<br>     “8382”: “foobar2”,<br>     “8383”: “foobar3”,<br>     “8384”: “foobar4”<br> },<br> “timeout”:300,<br> “method”:”aes-256-cfb”,<br> “fast_open”: false<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中，port_password就是将之前的服务器端口和对应的密码结合起来。然后通过使用以下命令，就可以启动多端口多用户了。</div><div class="line"></div><div class="line">## 使用命令</div><div class="line"></div><div class="line">启动：/etc/init.d/shadowsocks start</div><div class="line"></div><div class="line">停止：/etc/init.d/shadowsocks stop</div><div class="line"></div><div class="line">重启：/etc/init.d/shadowsocks restart</div><div class="line"></div><div class="line">状态：/etc/init.d/shadowsocks status</div><div class="line"></div><div class="line">你可以将之shadowsocks.json添加到开机自启动的中。具体方法如下：</div><div class="line"></div><div class="line">修改rc.local文件，运行命令 vi /etc/rc.local,编辑rc.local文件，添加字段</div></pre></td></tr></table></figure></p>
+<p>ssserver -c /etc/shadowsocks.json -d start<br>```</p>
+<p>然后重启vps就可以完成开机自启动。</p>
+<p>重点在于下面，如果你是debian或ubuntu的用户，基本上可以忽略了。因为这样配置完之后，重启vps就能够实现多端口多用户。但是，如果你的是centos用户的话，这样肯定还是不能够多端口多用户。我们通过命令看一下各个端口的运行情况，具体命令为：netstat －antu。可以查看各个端口的运行情况。我发现我新增的端口其目的地址一直是0.0.0.0，具体如图，而且其状态一直为listen。所以，基本可以断定是端口问题。</p>
+<pre><code>  centos默认的防火墙机制，会阻隔掉我们的多端口配置。所以，解决方法就是，将这个端口打开tcp和udp通信。这里需要说明的事，在centos版本的更新迭代过程中，centos7和centos6之间的差异性较大。在centos7，采用的是最新的防火墙filewall而不是传统的iptables。所以，为了更加合理的提供端口号解决方案，我这里提供两种方法，个人推荐第2种。
+
+第一种：
+
+具体操作为：iptables -A INPUT -p tcp –dport 443 -j ACCEPT。//443为示例端口，你可以改为你需要的。
+
+然后重启防火墙：service iptables restart。这个时候我们可以再通过netstat -antu 查看一下，就会发现那个端口能够正常工作了。然后就可以科学上网啦。
+
+第二种：
+
+具体操作为，先进入firewalled的配置端口目录，路径为etc/firewalled/zones/。打开public.xml文件进行端口的编辑，例如 &lt;port protocol=&quot;tcp&quot; port=&quot;449&quot;/&gt;   &lt;portprotocol=&quot;udp&quot; port=&quot;443&quot;/&gt;。即添加了tcp和udp的权限。
+
+然后systemctrl firewall restart。重启防火墙，端口就添加到防火墙的白名单中啦。这个时候就能科学上网啦，同时，其他的端口如果需要通过防火墙的白名单，也都是通过这里添加。
+</code></pre>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月28日 18:00</p>
+        <p>原始链接： <a class="post-url" href="/2016/10/28/DigitalOcean--搭建Shadowsocks/" title="Digitalocean 搭建ss的方法">https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/</a></p>
+        <footer>
+            <a href="https://mrjiaming.github.io">
+                <img src="/images/logo.png" alt="Mrwu">
+                Mrwu
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/&title=《Digitalocean 搭建ss的方法》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/&title=《Digitalocean 搭建ss的方法》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Digitalocean 搭建ss的方法》 — MrWu Blog&url=https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/&via=https://mrjiaming.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2016/10/28/DigitalOcean--搭建Shadowsocks/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Shadowsocks/" class="color2">Shadowsocks</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装Shadowsocks和Supervisor"><span class="post-toc-text">安装Shadowsocks和Supervisor</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置Shadowsocks"><span class="post-toc-text">配置Shadowsocks</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#systemctl-enable-supervisord"><span class="post-toc-text">systemctl enable supervisord</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#systemctl-start-supervisord"><span class="post-toc-text">systemctl start supervisord</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#supervisorctl-reload"><span class="post-toc-text">supervisorctl reload</span></a>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2017/01/25/Android-onPause与onStop的一些理解/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          Android onPause和onStop的讲解
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2016/10/28/Android-Studio-管理gradle配置以及第三方App_key/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Android studio 管理gradle配置</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 Mrwu<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://mrjiaming.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Android/">Android</a><a class="category-link" href="/categories/Git/">Git</a><a class="category-link" href="/categories/Java/">Java</a><a class="category-link" href="/categories/Shadowsocks/">Shadowsocks</a><a class="category-link" href="/categories/nginx/">nginx</a><a class="category-link" href="/categories/其他/">其他</a><a class="category-link" href="/categories/工具/">工具</a><a class="category-link" href="/categories/数据库/">数据库</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Andorid/" style="font-size: 20px;">Andorid</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/其他/" style="font-size: 15px;">其他</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
+</body>
+</html>
