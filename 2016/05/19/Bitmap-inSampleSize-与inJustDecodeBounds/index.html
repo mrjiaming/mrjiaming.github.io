@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MrWu Blog</title>
+  <title>Android Bitmap属性讲解 | MrWu Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="MrWu Blog" />
   
-  <meta name="description" content="1、Android 会检测当前设备配置并为应用加载合适的资源。2、Android 会通过将设备配置信息与资源目录名称中的限定符进行比较，选择最符合当前设备的各个资源版本。">
+  <meta name="description" content="BitmapFactory.Option类型的参数进行取缩略图，在Option中，属性值inSampleSize表示缩略图大小为原始图片大小的几分之一，即如果这个值为2，则取出的缩略图的宽和高都是原始图片的1/2，图片大小就为原始大小的1/4。 Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什么意思了，SDK中的E文是这么说的 　　If set to tr">
+<meta name="keywords" content="Andorid">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MrWu Blog">
-<meta property="og:url" content="https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/index.html">
+<meta property="og:title" content="Android Bitmap属性讲解">
+<meta property="og:url" content="https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/index.html">
 <meta property="og:site_name" content="MrWu Blog">
-<meta property="og:description" content="1、Android 会检测当前设备配置并为应用加载合适的资源。2、Android 会通过将设备配置信息与资源目录名称中的限定符进行比较，选择最符合当前设备的各个资源版本。">
+<meta property="og:description" content="BitmapFactory.Option类型的参数进行取缩略图，在Option中，属性值inSampleSize表示缩略图大小为原始图片大小的几分之一，即如果这个值为2，则取出的缩略图的宽和高都是原始图片的1/2，图片大小就为原始大小的1/4。 Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什么意思了，SDK中的E文是这么说的 　　If set to tr">
 <meta property="og:locale" content="Java">
-<meta property="og:updated_time" content="2017-10-28T09:31:23.900Z">
+<meta property="og:updated_time" content="2017-10-28T10:51:50.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MrWu Blog">
-<meta name="twitter:description" content="1、Android 会检测当前设备配置并为应用加载合适的资源。2、Android 会通过将设备配置信息与资源目录名称中的限定符进行比较，选择最符合当前设备的各个资源版本。">
+<meta name="twitter:title" content="Android Bitmap属性讲解">
+<meta name="twitter:description" content="BitmapFactory.Option类型的参数进行取缩略图，在Option中，属性值inSampleSize表示缩略图大小为原始图片大小的几分之一，即如果这个值为2，则取出的缩略图的宽和高都是原始图片的1/2，图片大小就为原始大小的1/4。 Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什么意思了，SDK中的E文是这么说的 　　If set to tr">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -109,18 +110,51 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-Android系统如何在多个资源文件夹下查找匹配最合适的资源" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Bitmap-inSampleSize-与inJustDecodeBounds" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Android Bitmap属性讲解
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/Android/">Android</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2016-05-19
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
     
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>1、Android 会检测当前设备配置并为应用加载合适的资源。<br>2、Android 会通过将设备配置信息与资源目录名称中的限定符进行比较，选择最符合当前设备的各个资源版本。</p>
+            <p>  BitmapFactory.Option类型的参数进行取缩略图，在Option中，属性值inSampleSize表示缩略图大小为原始图片大小的几分之一，即如果这个值为2，则取出的缩略图的宽和高都是原始图片的1/2，图片大小就为原始大小的1/4。</p>
+<p>Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什么意思了，SDK中的E文是这么说的</p>
+<p>　　If set to true, the decoder will return null (no bitmap), but the out… fields will still be set, allowing the caller to query the bitmap without having to allocate the memory for its pixels.</p>
+<p>意思就是说如果该值设为true那么将不返回实际的bitmap不给其分配内存空间而里面只包括一些解码边界信息即图片大小信息，那么相应的方法也就出来了，通过设置inJustDecodeBounds为true，获取到outHeight(图片原始高度)和 outWidth(图片的原始宽度)，然后计算一个inSampleSize(缩放值)，然后就可以取图片了，这里要注意的是，inSampleSize 可能小于0，必须做判断。也就是说先将Options的属性inJustDecodeBounds设为true，先获取图片的基本大小信息数据（信息没有保存在bitmap里面，而是保存在options里面），通过options.outHeight和 options. outWidth获取的大小信息以及自己想要到得图片大小计算出来缩放比例inSampleSize，然后紧接着将inJustDecodeBounds设为false，就可以根据已经得到的缩放比例得到自己想要的图片缩放图了。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2017年10月28日 17:31</p>
-        <p>原始链接： <a class="post-url" href="/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/" title="">https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/</a></p>
+        <p>最后更新： 2017年10月28日 18:51</p>
+        <p>原始链接： <a class="post-url" href="/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/" title="Android Bitmap属性讲解">https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/</a></p>
         <footer>
             <a href="https://mrjiaming.github.io">
                 <img src="/images/logo.png" alt="Mrwu">
@@ -142,7 +176,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/&title=MrWu Blog&pic=https://mrjiaming.github.ioimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/&title=《Android Bitmap属性讲解》 — MrWu Blog&pic=/images/android.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -152,22 +186,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/&title=MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/&title=《Android Bitmap属性讲解》 — MrWu Blog&source=专注 Android 开发的技术博客" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=MrWu Blog&url=https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/&via=https://mrjiaming.github.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Bitmap属性讲解》 — MrWu Blog&url=https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/&via=https://mrjiaming.github.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -177,7 +211,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://mrjiaming.github.io/2016/05/19/Bitmap-inSampleSize-与inJustDecodeBounds/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -186,6 +220,13 @@
         <ul class="article-footer-menu">
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
     </footer>
@@ -196,19 +237,19 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/10/28/Bitmap-inSampleSize-与inJustDecodeBounds/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/05/28/Android-设置应用的底部导航栏(虚拟按键)背景颜色/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          (no title)
+          Android设置应用的底部导航栏
         
       </span>
     </a>
   
   
-    <a href="/2017/10/28/Android-最新-Support-V4-包拆分有用吗？/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title"></span>
+    <a href="/2016/05/15/IP地址/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">IP地址</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   

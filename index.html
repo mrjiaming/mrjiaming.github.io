@@ -110,22 +110,41 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-OAuth2.0授权方式的理解" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-如何避免ANR" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/如何避免ANR/"  target="_blank"  >如何避免anr</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/OAuth2.0授权方式的理解/"  target="_blank" >
+            <a href="/2017/10/28/如何避免ANR/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="如何避免anr" title="如何避免anr">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                一、应用场景为了理解OAuth的适用场合，让我举一个假设的例子。有一个”云冲印”的网站，可以将用户储存在Google的照片，冲印出来。用户为了使用该服务，必须让”云冲印”读取自己储存在Google上的照片。
-问题是只有得到用户的授权，Google才会同意”云冲印”读取这些照片。那么，”云冲印”怎样获得用户的授权呢？传统方法是，用户将自己的Google用户名和密码，告诉”云...
+                哪些操作会导致ANR 在主线程执行以下操作：1、高耗时的操作，如图像变换 2、磁盘读写，数据库读写操作3、大量的创建新对象
+如何避免1、UI线程尽量只做跟UI相关的工作2、耗时的操作(比如数据库操作，I/O，连接网络或者别的有可能阻塞UI线程的操作)把它放在单独的线程处理3、尽量用Handler来处理UIThread和别的Thread之间的交互
+解决的逻辑1、使用Asyn...
             </p>
         </div>
       
@@ -137,9 +156,16 @@
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/OAuth2.0授权方式的理解/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/如何避免ANR/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -147,26 +173,42 @@
 
 
   
-    <article id="post-Home" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-学习过程中遇到的生词" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/学习过程中遇到的生词/"  target="_blank"  >学习使用过程的单词</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/其他/">其他</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Home/"  target="_blank" >
+            <a href="/2017/10/28/学习过程中遇到的生词/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="学习使用过程的单词" title="学习使用过程的单词">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                Android 开发录Android-开发：开始一个项目前，做好哪些准备可以事半功倍？
-Android-Bitmap-Decodefile-and-DecodeResource的区别
-Android-Common类方法
-Android-ImageView-ScaleType-Src-Background的区别
-Android-Layout属性的讲解
-Android-性能优...
+                1 、Shimmer 微光,闪烁
+2 、unobtrusive 不唐突的；谦虚的；不引人注目的
+3、Spruce 整洁的，打扮整齐的
+
             </p>
         </div>
       
@@ -178,9 +220,16 @@ Android-性能优...
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/其他/" class="color3">其他</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Home/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/学习过程中遇到的生词/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -188,97 +237,39 @@ Android-性能优...
 
 
   
-    <article id="post-Bitmap-inSampleSize-与inJustDecodeBounds" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-善用tools" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/10/28/Bitmap-inSampleSize-与inJustDecodeBounds/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                  BitmapFactory.Option类型的参数进行取缩略图，在Option中，属性值inSampleSize表示缩略图大小为原始图片大小的几分之一，即如果这个值为2，则取出的缩略图的宽和高都是原始图片的1/2，图片大小就为原始大小的1/4。
-Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什么意思了，SDK中的E文是这么说的
-　...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
+      <header class="article-header">
         
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
-            
-            
-        </ul>
-        
-            <a href="/2017/10/28/Bitmap-inSampleSize-与inJustDecodeBounds/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
   
-    <article id="post-Android系统如何在多个资源文件夹下查找匹配最合适的资源" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                1、Android 会检测当前设备配置并为应用加载合适的资源。2、Android 会通过将设备配置信息与资源目录名称中的限定符进行比较，选择最符合当前设备的各个资源版本。
-
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
-            
-            
-        </ul>
-        
-            <a href="/2017/10/28/Android系统如何在多个资源文件夹下查找匹配最合适的资源/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/善用tools/"  target="_blank"  >善用tools属性</a>
+    </h1>
   
-    <article id="post-Android-最新-Support-V4-包拆分有用吗？" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
     
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Android-最新-Support-V4-包拆分有用吗？/"  target="_blank" >
+            <a href="/2017/10/28/善用tools/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="善用tools属性" title="善用tools属性">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                https://mp.weixin.qq.com/s?__biz=MzAxNjI3MDkzOQ==&amp;mid=2654472617&amp;idx=1&amp;sn=f8a61e2232c40329d83b05e94d5a7159&amp;scene=4#wechat_redirect
-
+                tools:context这个属性用在layout文件的根元素上，指明与当前layout相关联的Activity，从而在预览时使用Activity的主题（theme一般定义在Manifest文件中并且与activities联系在一起，而非layout）。可以使用Activity的全名，也可以利用manifest中定义的包名作为前缀：12345678&lt;?xml ver...
             </p>
         </div>
       
@@ -290,46 +281,16 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
                 <li><i class="fa fa-calendar"></i>2017-10-28</li>
             
             
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
         </ul>
         
-            <a href="/2017/10/28/Android-最新-Support-V4-包拆分有用吗？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Android-Common类方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/10/28/Android-Common类方法/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io/images/banner.jpg" alt="" title="">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                https://github.com/Trinea/android-common/blob/master/src/cn/trinea/android/common/util/NetWorkUtils.java
-
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
-            
-            
-        </ul>
-        
-            <a href="/2017/10/28/Android-Common类方法/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/善用tools/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -399,14 +360,14 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
 
 
   
-    <article id="post-如何避免ANR" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-ImageView-ScaleType-Src-Background的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/如何避免ANR/"  target="_blank"  >如何避免anr</a>
+      <a class="article-title" href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank"  >Android imageview属性讲解</a>
     </h1>
   
 
@@ -423,17 +384,16 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/如何避免ANR/"  target="_blank" >
+            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="如何避免anr" title="如何避免anr">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android imageview属性讲解" title="Android imageview属性讲解">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                哪些操作会导致ANR 在主线程执行以下操作：1、高耗时的操作，如图像变换 2、磁盘读写，数据库读写操作3、大量的创建新对象
-如何避免1、UI线程尽量只做跟UI相关的工作2、耗时的操作(比如数据库操作，I/O，连接网络或者别的有可能阻塞UI线程的操作)把它放在单独的线程处理3、尽量用Handler来处理UIThread和别的Thread之间的交互
-解决的逻辑1、使用Asyn...
+                首先ImageView有两个显示图片的属性，分别是src和background。从名字上看可以知道第一个是资源（画），第二个是背景（画框）。
+12345678910//backgroundmImageView.setBackground();mImageView.setBackgroundResource();mImageView.setBackgroundColor()...
             </p>
         </div>
       
@@ -454,7 +414,7 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
 
         </ul>
         
-            <a href="/2017/10/28/如何避免ANR/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -525,14 +485,14 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
 
 
   
-    <article id="post-善用tools" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-drawable与bitmap内存占用大小" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/善用tools/"  target="_blank"  >善用tools属性</a>
+      <a class="article-title" href="/2017/08/28/drawable与bitmap内存占用大小/"  target="_blank"  >Android Drawable与Bitmap内存占用大小</a>
     </h1>
   
 
@@ -549,15 +509,17 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/善用tools/"  target="_blank" >
+            <a href="/2017/08/28/drawable与bitmap内存占用大小/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="善用tools属性" title="善用tools属性">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android Drawable与Bitmap内存占用大小" title="Android Drawable与Bitmap内存占用大小">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                tools:context这个属性用在layout文件的根元素上，指明与当前layout相关联的Activity，从而在预览时使用Activity的主题（theme一般定义在Manifest文件中并且与activities联系在一起，而非layout）。可以使用Activity的全名，也可以利用manifest中定义的包名作为前缀：12345678&lt;?xml ver...
+                1，  比较Drawable与Bitmap占用内存大小2，  比较BitmapFactory类的decodeResource方法与decodeStream方法的效率
+好吧，先来看第1个测试！以下这个是测试加载1000个Drawable对象的代码，很简单的，我就不解释了！
+123456789101112131415161718192021 public class Main...
             </p>
         </div>
       
@@ -566,7 +528,7 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
         
         <ul class="article-footer-menu">
             
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+                <li><i class="fa fa-calendar"></i>2017-08-28</li>
             
             
   <li class="article-footer-tags">
@@ -578,7 +540,196 @@ Options中有个属性inJustDecodeBounds，研究了一下，终于明白是什�
 
         </ul>
         
-            <a href="/2017/10/28/善用tools/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/08/28/drawable与bitmap内存占用大小/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android中一张图片占内存多大" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank"  >Android中一张图片占内存多大</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android中一张图片占内存多大" title="Android中一张图片占内存多大">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                Android中一张图片（Bitmap）占用的内存由以下三个因素决定：1、图片的像素点个数2、单位像素占用的字节数3、其中图片的像素点个数是图片的宽度与调试的积，所以一张图片占用的内存值为：    图片长度    图片宽度    单位像素占用的字节数
+ALPHA_8只存储透明度信息而无颜色值；ARGB_8888是指把每个像素点的透明度、R、G、B色值都用一个byte来表示...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-08-28</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/08/28/Android中一张图片占内存多大/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android下Affinities和Task" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/09/Android下Affinities和Task/"  target="_blank"  >andoridAffinities和Task</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/08/09/Android下Affinities和Task/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="andoridAffinities和Task" title="andoridAffinities和Task">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                 默认情况下，一个应用程序中的所有activity都有一个affinity–这让它们属于同一个task。然而，每个activity可以通过中的taskAffinity属性设置单独的affinity。不同应用程序中的activity可以共享同一个affinity，同一个应用程序中的不同activity也可以设置成不同的affinity。affinity属性在2种情况下起作用...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-08-09</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/08/09/Android下Affinities和Task/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Socket-怎样三次握手，怎样保持长连接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/"  target="_blank"  >Android socket怎么三次握手，保持长连接</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android socket怎么三次握手，保持长连接" title="Android socket怎么三次握手，保持长连接">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                通过IP地址，端口号，协议号进行通信识别TCP／IP通常采用5个信息来识别一个通信。它们是，源IP地址，目标IP地址，协议号，源端口号，目标端口号。
+server的生命周期大致如下：1、创建socket。2、绑定（bind）地址端口3、监听网络连接4、接受连接5、关闭连接
+client的生命周期则稍微简单点：1、创建socket2、绑定地址3、发起连接4、关闭连接
+soc...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-08-07</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+    <a href="/tags/Java/" class="color5">Java</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
