@@ -253,12 +253,12 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/28/依赖注入/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/28/Android-性能优化之布局优化/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          依赖注入
+          Android性能优化-布局优化
         
       </span>
     </a>
@@ -274,26 +274,11 @@
 
 
     
-        
-const myTheme = {
-  render(state, instance) {
-    const container = document.createElement('div')
-    container.lang = "en-US"
-    container.className = 'gitment-container gitment-root-container'
-    container.appendChild(instance.renderHeader(state, instance))
-    container.appendChild(instance.renderEditor(state, instance))
-    container.appendChild(instance.renderComments(state, instance))
-    container.appendChild(instance.renderFooter(state, instance))
-    return container
-  },
-}
-
-<div id="container"></div>
+        <div id="container"></div>
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  theme: myTheme,
   id: 'Your page ID', // 可选。默认为 location.href
   owner: 'AndroidPreView',
   repo: 'AndroidNote',

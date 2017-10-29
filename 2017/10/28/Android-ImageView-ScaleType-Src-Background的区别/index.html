@@ -277,8 +277,8 @@
     </a>
   
   
-    <a href="/2017/08/28/drawable与bitmap内存占用大小/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">Android Drawable与Bitmap内存占用大小</span>
+    <a href="/2017/10/28/如何避免ANR/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">如何避免anr</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -287,26 +287,11 @@
 
 
     
-        
-const myTheme = {
-  render(state, instance) {
-    const container = document.createElement('div')
-    container.lang = "en-US"
-    container.className = 'gitment-container gitment-root-container'
-    container.appendChild(instance.renderHeader(state, instance))
-    container.appendChild(instance.renderEditor(state, instance))
-    container.appendChild(instance.renderComments(state, instance))
-    container.appendChild(instance.renderFooter(state, instance))
-    return container
-  },
-}
-
-<div id="container"></div>
+        <div id="container"></div>
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  theme: myTheme,
   id: 'Your page ID', // 可选。默认为 location.href
   owner: 'AndroidPreView',
   repo: 'AndroidNote',
