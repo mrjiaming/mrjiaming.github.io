@@ -120,14 +120,14 @@
       <div class="outer">
         <section id="main" class="body-wrap">
   
-    <article id="post-Android-ImageView-ScaleType-Src-Background的区别" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-善用tools" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank"  >Android imageview属性讲解</a>
+      <a class="article-title" href="/2017/10/28/善用tools/"  target="_blank"  >善用tools属性</a>
     </h1>
   
 
@@ -144,16 +144,15 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank" >
+            <a href="/2017/10/28/善用tools/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android imageview属性讲解" title="Android imageview属性讲解">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="善用tools属性" title="善用tools属性">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                首先ImageView有两个显示图片的属性，分别是src和background。从名字上看可以知道第一个是资源（画），第二个是背景（画框）。
-12345678910//backgroundmImageView.setBackground();mImageView.setBackgroundResource();mImageView.setBackgroundColor()...
+                tools:context这个属性用在layout文件的根元素上，指明与当前layout相关联的Activity，从而在预览时使用Activity的主题（theme一般定义在Manifest文件中并且与activities联系在一起，而非layout）。可以使用Activity的全名，也可以利用manifest中定义的包名作为前缀：12345678&lt;?xml ver...
             </p>
         </div>
       
@@ -174,7 +173,132 @@
 
         </ul>
         
-            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/善用tools/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-andorid开发进阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/andorid开发进阶/"  target="_blank"  >andorid开发进阶</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/10/28/andorid开发进阶/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="andorid开发进阶" title="andorid开发进阶">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                MrWu-This is a summary一. 主题简介
+  MiHo 是一款单栏响应式的Hexo主题；基于 Hexo 3.0+ 制作，兼容移动端浏览；主题的代码托管在GitHub上，欢迎Star和Fork；如遇到问题或发表建议，可以提Issues，也可以在博客中留言给我。
+
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/10/28/andorid开发进阶/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android-关闭导航栏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/28/Android-关闭导航栏/"  target="_blank"  >Android关闭系统导航栏</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/10/28/Android-关闭导航栏/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android关闭系统导航栏" title="Android关闭系统导航栏">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                软件名：悬浮菜单。软件本身不需要root，关虚拟按键才需要rootroot手机，用abd命令取得system读写权限，之后修改build文件，最后一行添加qemu.hw.mainkeys=0推荐打开系统的悬浮球，防止一不小心手抖在后台把悬浮菜单关掉。
+
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-10-28</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/10/28/Android-关闭导航栏/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -246,129 +370,6 @@
 
 
   
-    <article id="post-善用tools" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/善用tools/"  target="_blank"  >善用tools属性</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Android/">Android</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/10/28/善用tools/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="善用tools属性" title="善用tools属性">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                tools:context这个属性用在layout文件的根元素上，指明与当前layout相关联的Activity，从而在预览时使用Activity的主题（theme一般定义在Manifest文件中并且与activities联系在一起，而非layout）。可以使用Activity的全名，也可以利用manifest中定义的包名作为前缀：12345678&lt;?xml ver...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Andorid/" class="color3">Andorid</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/10/28/善用tools/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
-    <article id="post-Android-关闭导航栏" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/Android-关闭导航栏/"  target="_blank"  >Android关闭系统导航栏</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Android/">Android</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/10/28/Android-关闭导航栏/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android关闭系统导航栏" title="Android关闭系统导航栏">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                软件名：悬浮菜单。软件本身不需要root，关虚拟按键才需要rootroot手机，用abd命令取得system读写权限，之后修改build文件，最后一行添加qemu.hw.mainkeys=0推荐打开系统的悬浮球，防止一不小心手抖在后台把悬浮菜单关掉。
-
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-10-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Andorid/" class="color3">Andorid</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/10/28/Android-关闭导航栏/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
     <article id="post-如何避免ANR" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -432,14 +433,14 @@
 
 
   
-    <article id="post-andorid开发进阶" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android-ImageView-ScaleType-Src-Background的区别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/28/andorid开发进阶/"  target="_blank"  >andorid开发进阶</a>
+      <a class="article-title" href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank"  >Android imageview属性讲解</a>
     </h1>
   
 
@@ -456,17 +457,16 @@
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/10/28/andorid开发进阶/"  target="_blank" >
+            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="andorid开发进阶" title="andorid开发进阶">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android imageview属性讲解" title="Android imageview属性讲解">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                MrWu-This is a summary一. 主题简介
-  MiHo 是一款单栏响应式的Hexo主题；基于 Hexo 3.0+ 制作，兼容移动端浏览；主题的代码托管在GitHub上，欢迎Star和Fork；如遇到问题或发表建议，可以提Issues，也可以在博客中留言给我。
-
+                首先ImageView有两个显示图片的属性，分别是src和background。从名字上看可以知道第一个是资源（画），第二个是背景（画框）。
+12345678910//backgroundmImageView.setBackground();mImageView.setBackgroundResource();mImageView.setBackgroundColor()...
             </p>
         </div>
       
@@ -487,7 +487,69 @@
 
         </ul>
         
-            <a href="/2017/10/28/andorid开发进阶/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/10/28/Android-ImageView-ScaleType-Src-Background的区别/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+        
+    </footer>
+  </div>
+</article>
+
+
+  
+    <article id="post-Android中一张图片占内存多大" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank"  >Android中一张图片占内存多大</a>
+    </h1>
+  
+
+          
+              <span class="header-cate">
+                <i class="fa fa-map-marker"></i>
+                  
+                  <a href="/categories/Android/">Android</a>
+                  
+              </span>
+          
+      </header>
+    
+    <div class="article-entry " itemprop="articleBody">
+      
+        <div class="article-img">
+            <a href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank" >
+                
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android中一张图片占内存多大" title="Android中一张图片占内存多大">
+                
+            </a>
+        </div>
+        <div class="article-feed">
+            <p>
+                Android中一张图片（Bitmap）占用的内存由以下三个因素决定：1、图片的像素点个数2、单位像素占用的字节数3、其中图片的像素点个数是图片的宽度与调试的积，所以一张图片占用的内存值为：    图片长度    图片宽度    单位像素占用的字节数
+ALPHA_8只存储透明度信息而无颜色值；ARGB_8888是指把每个像素点的透明度、R、G、B色值都用一个byte来表示...
+            </p>
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+        
+        <ul class="article-footer-menu">
+            
+                <li><i class="fa fa-calendar"></i>2017-08-28</li>
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Andorid/" class="color3">Andorid</a>
+      
+  </li>
+
+        </ul>
+        
+            <a href="/2017/08/28/Android中一张图片占内存多大/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
@@ -558,68 +620,6 @@
 
 
   
-    <article id="post-Android中一张图片占内存多大" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank"  >Android中一张图片占内存多大</a>
-    </h1>
-  
-
-          
-              <span class="header-cate">
-                <i class="fa fa-map-marker"></i>
-                  
-                  <a href="/categories/Android/">Android</a>
-                  
-              </span>
-          
-      </header>
-    
-    <div class="article-entry " itemprop="articleBody">
-      
-        <div class="article-img">
-            <a href="/2017/08/28/Android中一张图片占内存多大/"  target="_blank" >
-                
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android中一张图片占内存多大" title="Android中一张图片占内存多大">
-                
-            </a>
-        </div>
-        <div class="article-feed">
-            <p>
-                Android中一张图片（Bitmap）占用的内存由以下三个因素决定：1、图片的像素点个数2、单位像素占用的字节数3、其中图片的像素点个数是图片的宽度与调试的积，所以一张图片占用的内存值为：    图片长度    图片宽度    单位像素占用的字节数
-ALPHA_8只存储透明度信息而无颜色值；ARGB_8888是指把每个像素点的透明度、R、G、B色值都用一个byte来表示...
-            </p>
-        </div>
-      
-    </div>
-    <footer class="article-footer">
-        
-        <ul class="article-footer-menu">
-            
-                <li><i class="fa fa-calendar"></i>2017-08-28</li>
-            
-            
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Andorid/" class="color3">Andorid</a>
-      
-  </li>
-
-        </ul>
-        
-            <a href="/2017/08/28/Android中一张图片占内存多大/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
-        
-    </footer>
-  </div>
-</article>
-
-
-  
     <article id="post-Android下Affinities和Task" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -681,14 +681,14 @@ ALPHA_8只存储透明度信息而无颜色值；ARGB_8888是指把每个像素�
 
 
   
-    <article id="post-Socket-怎样三次握手，怎样保持长连接" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-android图片圆角怎么简单高效实现？" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/"  target="_blank"  >Android socket怎么三次握手，保持长连接</a>
+      <a class="article-title" href="/2017/08/07/android图片圆角怎么简单高效实现？/"  target="_blank"  >Android圆角怎么简单高效实现</a>
     </h1>
   
 
@@ -705,18 +705,16 @@ ALPHA_8只存储透明度信息而无颜色值；ARGB_8888是指把每个像素�
     <div class="article-entry " itemprop="articleBody">
       
         <div class="article-img">
-            <a href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/"  target="_blank" >
+            <a href="/2017/08/07/android图片圆角怎么简单高效实现？/"  target="_blank" >
                 
-                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android socket怎么三次握手，保持长连接" title="Android socket怎么三次握手，保持长连接">
+                <img src="https://mrjiaming.github.io//images/android.jpg" alt="Android圆角怎么简单高效实现" title="Android圆角怎么简单高效实现">
                 
             </a>
         </div>
         <div class="article-feed">
             <p>
-                通过IP地址，端口号，协议号进行通信识别TCP／IP通常采用5个信息来识别一个通信。它们是，源IP地址，目标IP地址，协议号，源端口号，目标端口号。
-server的生命周期大致如下：1、创建socket。2、绑定（bind）地址端口3、监听网络连接4、接受连接5、关闭连接
-client的生命周期则稍微简单点：1、创建socket2、绑定地址3、发起连接4、关闭连接
-soc...
+                https://www.zhihu.com/question/47496609
+
             </p>
         </div>
       
@@ -733,13 +731,11 @@ soc...
       
     <a href="/tags/Andorid/" class="color3">Andorid</a>
       
-    <a href="/tags/Java/" class="color5">Java</a>
-      
   </li>
 
         </ul>
         
-            <a href="/2017/08/07/Socket-怎样三次握手，怎样保持长连接/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
+            <a href="/2017/08/07/android图片圆角怎么简单高效实现？/#more" class="article-more-link"  target="_blank" >more&gt;&gt;</a>
         
     </footer>
   </div>
